@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const accessToken = 'IGQWRNbFRDVU95UW10SzlkeXNZAOS11ZAV8xdHFwSWNvblFGR3M2ZAVFwX1puaTVTSzh0emdpdnpLRlBpaEJjRnJ1ZAlIzcDUwMWp1bEtsQkVCbS00a0c1ZAnk4WFh2bTV2OWtkVDBvcHFCMWxRZAwZDZD';
+    const accessToken = 'IGQWRPaG1FYU1UbjhHVkFsZAEtuTUlERi1rX0U1bDBuaFhhNTlDZAHJDWC1INy1Hc2J3QW5sU2FPM3JxZAEVqb1JpQ2d4YUx0dGZARX1RpUzBHRTNZATDVYWW5RMVpQQWZAfSmxNNjh6U2tvMTUyQQZDZD';
 
     async function fetchInstagramData() {
         try {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { username, media } = data;
 
         // Vérifier qu'on a bien 7 photos
-        if (media.length < 8) {
+        if (media.length < 12) {
             console.error('Moins de 8 photos disponibles.');
             return;
         }
@@ -109,14 +109,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Remplir les images dans les bons blocs
-        document.getElementById('large-image').src = media[0].media_url; // Grande image
-        document.getElementById('center-image-1').src = media[1].media_url; // 1ère image centre
-        document.getElementById('center-image-2').src = media[2].media_url; // 2ème image centre
-        document.getElementById('right-image-1').src = media[3].media_url; // 1ère image droite colonne 1
-        document.getElementById('right-image-2').src = media[4].media_url; // 2ème image droite colonne 1
-        document.getElementById('right-image-3').src = media[5].media_url; // 3ème image droite colonne 1
-        document.getElementById('right-image-4').src = media[6].media_url; // 1ère image droite colonne 2
-        document.getElementById('right-image-5').src = media[7].media_url; // 2ème image droite colonne 2
+        document.getElementById('img-item-0').src = media[0].media_url; // Grande image
+        document.getElementById('img-item-1').src = media[1].media_url; // 1ère image centre
+        document.getElementById('img-item-2').src = media[2].media_url; // 2ème image centre
+        document.getElementById('img-item-3').src = media[3].media_url; // 1ère image droite colonne 1
+        document.getElementById('img-item-4').src = media[4].media_url; // 2ème image droite colonne 1
+        document.getElementById('img-item-5').src = media[5].media_url; // 3ème image droite colonne 1
+        document.getElementById('img-item-6').src = media[6].media_url; // 1ère image droite colonne 2
+        document.getElementById('img-item-7').src = media[7].media_url; // 2ème image droite colonne 2
+        document.getElementById('img-item-8').src = media[8].media_url; // Image supplémentaire 1
+        document.getElementById('img-item-9').src = media[9].media_url; // Image supplémentaire 2
+        document.getElementById('img-item-10').src = media[10].media_url; // Image supplémentaire 2
+        document.getElementById('img-item-11').src = media[11].media_url; // Image supplémentaire 2
+        document.getElementById('img-item-12').src = media[12].media_url; // Image supplémentaire 2
+        document.getElementById('img-item-13').src = media[12].media_url; // Image supplémentaire 2
+
+
+
+        
+
         // Le logo Instagram est statique, pas besoin de le remplir avec l'API
     }
 
@@ -140,60 +151,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Ouvrir la popup
-    document.querySelector("a[href='shop.html']").addEventListener("click", function(e) {
-        e.preventDefault(); // Empêcher le comportement par défaut
-        document.getElementById("wip-popup").style.display = "block";
-    });
 
-    // Fermer la popup
-    document.querySelector(".wip-popup-close").addEventListener("click", function() {
-        document.getElementById("wip-popup").style.display = "none";
-    });
-
-    // Rendre la popup déplaçable
-    dragElement(document.getElementById("wip-popup"));
-
-    function dragElement(element) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        var header = element.querySelector(".wip-popup-header");
-
-        if (header) {
-            header.onmousedown = dragMouseDown;
-            header.classList.add('grab'); // Ajouter la classe "grab" par défaut
-        }
-
-        function dragMouseDown(e) {
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-
-            // Changer le curseur en "grabbing" (main fermée)
-            header.classList.remove('grab');
-            header.classList.add('grabbing');
-
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            element.style.top = (element.offsetTop - pos2) + "px";
-            element.style.left = (element.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-
-            // Remettre le curseur en "grab" (main ouverte)
-            header.classList.remove('grabbing');
-            header.classList.add('grab');
-        }
-    }
-});

@@ -16,7 +16,7 @@
 <body class="index-body">
     <div id="preloader">
         <div class="title-container">
-            <h1 class="title">Les <span class="highlight">Ni<span class="cedille">c</span>ois</span></h1>
+            <img src="assets/img/logo-les-nicois.png" alt="Les Niçois Logo" class="logo">
         </div>
     </div>
     <div id="index-content" data-barba="container" data-barba-namespace="index">
@@ -24,6 +24,7 @@
         <!-- Section 1 - Restaurant -->
         <a href="./restaurant-2.html" class="index-section-link">
             <section id="index-section-1" class="index-section">
+                <div class="hover-background"></div>
                 <div class="index-content">
                     <p>Resto</p>
                 </div>
@@ -33,6 +34,7 @@
         <!-- Section 2 - Shop -->
         <a href="shop.html" class="index-section-link">
             <section id="index-section-2" class="index-section">
+                <div class="hover-background"></div>
                 <div class="index-content">
                     <p>Shop</p>
                 </div>
@@ -42,6 +44,7 @@
         <!-- Section 3 - radio -->
         <a href="radio.html" class="index-section-link">
             <section id="index-section-3" class="index-section">
+                <div class="hover-background"></div>
                 <div class="index-content">
                     <p>Radio</p>
                 </div>
@@ -49,82 +52,14 @@
         </a>
     </div>
 
-    <!-- Encart Info -->
-    <div id="index-infos-encart" class="index-infos-encart">
-        <p>Infos</p>
-    </div>
 
-    <!-- Menu Infos -->
-    <div id="index-infos-menu" class="index-infos-menu">
-        <div class="index-infos-menu-content">
-            <div class="index-infos-left">
-                <h2>LES NIÇOIS</h2>
-                <p>SAS ET ALORS<br>14, rue Saint-Lazare<br>75009 Paris</p>
-            </div>
-            <div class="index-infos-center">
-                <h3>INFOS LÉGALES</h3>
-                <div class="index-infos-center">
-                    <p><a href="">CGV</a></p>
-                    <p><a href="">CGU</a></p>
-                    <p><a href="">Politique de confidentialité</a></p>
-                    <p><a href="">Contact</a></p>
-                </div>
-            </div>
-            <div class="index-infos-right">
-                <h3>SUIVEZ-NOUS</h3>
-                <div class="index-infos-social-icons">
-                    <a href="https://facebook.com" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
 
 
     <!-- JS Scripts -->
     <script src="assets/js/animation.js"></script>
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/features.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll('.index-section');
-            let lastHoveredIndex = null; // Pour garder en mémoire la dernière section survolée
-        
-            sections.forEach((section, index) => {
-                section.addEventListener('mouseenter', function () {
-                    if (lastHoveredIndex === null) {
-                        // Première interaction, on ne fait rien de spécial
-                        lastHoveredIndex = index;
-                    } else {
-                        if (index > lastHoveredIndex) {
-                            // Si on passe à une section plus à droite
-                            section.classList.add('hover-from-left');
-                            section.classList.remove('hover-from-right');
-                        } else {
-                            // Si on passe à une section plus à gauche
-                            section.classList.add('hover-from-right');
-                            section.classList.remove('hover-from-left');
-                        }
-                        lastHoveredIndex = index;
-                    }
-                });
-        
-                section.addEventListener('mouseleave', function () {
-                    // Réinitialisation des classes lorsque l'on quitte la section
-                    section.classList.remove('hover-from-left', 'hover-from-right');
-                });
-            });
-        });
-        
-        
-    </script>
-
 </body>
 </html>

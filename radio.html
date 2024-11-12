@@ -28,49 +28,53 @@
         <main>
             <section class="radio-section">
                 <div class="radio-header">
-                    <h1 class="radio-title"><span>LES</span> NIÇOIS</h1>
-                    <div class="radio-player-info">
-                        <button class="radio-button" id="play-pause-button"><i class="fas fa-play"></i></button>
+                    <img src="./assets/img/logo-les-nicois-white-transparent.png" alt="" srcset="">
+                    <div class="radio-buttons-container">
+                        <div class="radio-player-info">
+                            <button class="radio-button" id="play-pause-button"><i class="fas fa-play"></i></button>
+                            <button class="radio-button" id="volume-button"><i class="fas fa-volume-off"></i></button>
+                        </div>
+                        <div class="control-box volume-popup">
+                            <div class="volume-control">
+                                <div class="speker"><i class="fas fa-volume-off"></i></div>
+                                <div class="bars">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <input type="range" min="0" max="100" step="20" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <audio id="radio-player"  src="https://str0.creacast.com/purelectro2" preload="none"></audio>
+
                     </div>
                 </div>
             </section>
             </section>
-            <audio id="radio-player"  src="https://str0.creacast.com/purelectro2" preload="none"></audio>
 
         </main>
-          <!-- Encart Info -->
-          <div id="index-infos-encart" class="index-infos-encart">
+        <!-- Cercle central avec le bouton "Infos" -->
+        <div id="info-button" class="circle">
             <p>Infos</p>
         </div>
-    
-        <!-- Menu Infos -->
-        <div id="index-infos-menu" class="index-infos-menu">
-            <div class="index-infos-menu-content">
-                <div class="index-infos-left">
-                    <h2>LES NIÇOIS</h2>
-                    <p>SAS ET ALORS<br>14, rue Saint-Lazare<br>75009 Paris</p>
-                </div>
-                <div class="index-infos-center">
-                    <h3>INFOS LÉGALES</h3>
-                    <p><a href="">CGV</a></p>
-                    <p><a href="">CGU</a></p>
-                    <p><a href="">Politique de confidentialité</a></p>
-                    <p><a href="">Contact</a></p>
-                </div>
-                <div class="index-infos-right">
-                    <h3>SUIVEZ-NOUS</h3>
-                    <div class="index-infos-social-icons">
-                        <a href="https://facebook.com" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
+
+
+
+        <!-- Cercle autour contenant les liens avec des bordures internes pour séparer les quarts -->
+        <div id="info-menu" class="outer-circle">
+            <div class="quarter" id="quarter1">
+                <a href="#" class="circle-link">CGV</a>
+            </div>
+            <div class="quarter" id="quarter2">
+                <a href="#" class="circle-link">CGU</a>
+            </div>
+            <div class="quarter" id="quarter3">
+                <a href="#" class="circle-link">Politique de confidentialité</a>
+            </div>
+            <div class="quarter" id="quarter4">
+                <a href="#" class="circle-link">Contact</a>
             </div>
         </div>
     </div>
@@ -80,5 +84,6 @@
     <script src="assets/js/animation.js"></script>
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/features.js"></script>
+    <script src="./assets//js/radio.js"></script>
 </body>
 </html>

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const popupReservation = document.querySelector('.popup-reservation-frame');
-    const openReservationBtns = document.querySelectorAll('.restaurant-button a');
+    const openReservationBtns = document.querySelectorAll('.open-popup-res');
     const closeReservationBtn = document.querySelector('.popup-reservation-close');
     const header = document.querySelector('.popup-reservation-header');
 
@@ -87,20 +87,74 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const reservationTab = document.getElementById('reservation-tab');
+    const privatisationTab = document.getElementById('privatisation-tab');
+    const reservationContent = document.getElementById('reservation-content');
+    const privatisationContent = document.getElementById('privatisation-content');
+    const header = document.querySelector('.popup-reservation-header');
+    
+    // Afficher le contenu de la réservation par défaut
+    reservationTab.classList.add('active');
+    reservationContent.style.display = 'block';
+    privatisationContent.style.display = 'none';
+    
+    // Gérer le clic sur l'onglet "Réservation"
+    reservationTab.addEventListener('click', function () {
+        reservationTab.classList.add('active');
+        privatisationTab.classList.remove('active');
+        reservationContent.style.display = 'block';
+        privatisationContent.style.display = 'none';
+        
+        // Retire la classe qui rend le fond du header blanc
+        header.classList.remove('white-background');
+    });
+
+    // Gérer le clic sur l'onglet "Privatisation"
+    privatisationTab.addEventListener('click', function () {
+        privatisationTab.classList.add('active');
+        reservationTab.classList.remove('active');
+        reservationContent.style.display = 'none';
+        privatisationContent.style.display = 'block';
+
+        // Applique la classe pour que tout l'en-tête ait un fond blanc
+        header.classList.add('white-background');
+    });
+    
+    // Gérer la fermeture de la popup
+    const closeButton = document.querySelector('.popup-reservation-close');
+    closeButton.addEventListener('click', function () {
+        document.querySelector('.popup-reservation-frame').style.display = 'none';
+    });
+});
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    const infoEncart = document.getElementById('index-infos-encart');
-    const infoMenu = document.getElementById('index-infos-menu');
-    const restaurantButtons = document.querySelector('.restaurant-buttons');
+    const popup = document.getElementById('carte-popup');
+    const popupReservation = document.getElementsByClassName('popup-reservation-frame')
+    const openBtn = document.querySelector('.open-popup');
+    const closeBtn = document.querySelector('.close-popup');
+    const carteButtonContainer = document.querySelector('.restaurant-buttons'); // Sélectionne le conteneur de boutons
 
-    // Fonction pour ouvrir et fermer le menu Infos
-    infoEncart.addEventListener('click', function() {
-        infoMenu.classList.toggle('active'); // Ajoute/enlève la classe active
+    // Ouvrir la popup et masquer le bouton "Réserver"
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        popup.style.display = 'block';
+        document.body.classList.add('popup-active'); // Ajout de la classe "popup-active"
+    });
 
-        // Vérifie si le menu est ouvert
-        if (infoMenu.classList.contains('active')) {
-            restaurantButtons.classList.add('menu-active'); // Ajoute la classe pour les boutons
-        } else {
-            restaurantButtons.classList.remove('menu-active'); // Enlève la classe
+    // Fermer la popup et réafficher le bouton "Réserver"
+    closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+        document.body.classList.remove('popup-active'); // Retrait de la classe "popup-active"
+    });
+
+    // Fermer la popup lorsqu'on clique à l'extérieur
+    window.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+            document.body.classList.remove('popup-active'); // Retrait de la classe "popup-active"
         }
     });
 });

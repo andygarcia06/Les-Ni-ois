@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Niçois - Shop</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+
+    <meta name="view-transition" content="same-origin"/>
+    <style>
+        /* Styles de la popup */
+        .popup-product-frame {
+            position: fixed;
+            top: 10%;
+            right: 0;
+            width: 400px;
+            height: 80vh;
+            background-color: white;
+            z-index: 1000;
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: none;
+            resize: both; /* Permet de redimensionner */
+        }
+
+        .popup-product-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .popup-product-close {
+            font-size: 24px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .popup-product-content {
+            height: calc(100% - 40px);
+            overflow-y: auto;
+        }
+
+        .popup-product-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .popup-product-frame {
+                width: 95%; /* 95% de la largeur */
+                height: 95vh; /* 95% de la hauteur de l'écran */
+                left: 2.5%; /* Centré horizontalement */
+                right: auto;
+                top: 2.5%; /* Centré verticalement */
+                border-radius: 10px; /* Ajuster les bordures arrondies */
+            }
+        }
+    </style>
+</head>
+<body class="shop-body">
+    <div id="audio-container">
+        <audio id="radio-player" src="https://str0.creacast.com/purelectro2" preload="none"></audio>
+    </div>
+    <header>
+        <nav class="restaurant-nav">
+            <ul>
+                <li><a href="restaurant-2.html">Resto</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="radio.html">Radio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="shop-content">
+        <!-- Section existante -->
+        <section class="shop-section">
+            <h1 class="shop-title">BRIC-À-BRAC</h1>
+            <div class="shop-item">
+                <img src="path/to/bob.jpg" alt="Bob Belotte Society" class="shop-item-image">
+                <p class="shop-item-description">Bob « Belotte Society » - 30€</p>
+            </div>
+            <div class="shop-item">
+                <img src="path/to/tshirt1.jpg" alt="T-shirt Not Nice People" class="shop-item-image">
+                <p class="shop-item-description">T-shirt « Not Nice People » - 25€</p>
+            </div>
+        </section>
+
+        <!-- Nouvelle section "L'Épicerie × Les Niçois" -->
+        <section class="shop-section">
+            <h1 class="shop-title">L'Épicerie × Les Niçois</h1>
+            <!-- Produit 1 avec lien vers une page Shopify -->
+            <div class="shop-item" data-url="https://shop.lesnicois.com/products/olives-picholines">
+                <img src="path/to/product1.jpg" alt="Olives Picholines" class="shop-item-image">
+                <p class="shop-item-description">Olives Picholines - 5.50€</p>
+            </div>
+            <!-- Produit 2 -->
+            <div class="shop-item" >
+                <img src="path/to/product2.jpg" alt="Tapenade Noire" class="shop-item-image">
+                <p class="shop-item-description">Tapenade Noire - 7.00€</p>
+            </div>
+            <!-- Produit 3 -->
+            <div class="shop-item" data-url="https://shop.lesnicois.com/products/huile-d-olive-extra-vierge">
+                <img src="path/to/product3.jpg" alt="Huile d'Olive Extra Vierge" class="shop-item-image">
+                <p class="shop-item-description">Huile d'Olive Extra Vierge - 15.00€</p>
+            </div>
+            <!-- Produit 4 -->
+            <div class="shop-item" data-url="https://shop.lesnicois.com/products/aioli">
+                <img src="path/to/product4.jpg" alt="Aïoli" class="shop-item-image">
+                <p class="shop-item-description">Aïoli - 4.50€</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup pour afficher le contenu des produits -->
+    <div class="popup-product-frame">
+        <div class="popup-product-header">
+            <span class="popup-product-close">&times;</span>
+        </div>
+        <div class="popup-product-content">
+            <iframe id="product-frame" src="./product.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="assets/js/transition.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.querySelector('.popup-product-frame');
+            const closeBtn = document.querySelector('.popup-product-close');
+            const iframe = document.getElementById('product-frame');
+
+            // Ouvrir la popup lorsqu'on clique sur un produit
+            document.querySelectorAll('.shop-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const productUrl = this.getAttribute('data-url');
+                    iframe.src = "./product.html"; // Charger l'URL du produit dans l'iframe
+                    popup.style.display = 'block'; // Afficher la popup
+                });
+            });
+
+            // Fermer la popup
+            closeBtn.addEventListener('click', function() {
+                popup.style.display = 'none';
+                iframe.src = ''; // Réinitialiser l'iframe
+            });
+
+            // Permettre de déplacer la popup
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            const header = document.querySelector('.popup-product-header');
+            header.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialX = popup.offsetLeft;
+                initialY = popup.offsetTop;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    popup.style.left = initialX + dx + 'px';
+                    popup.style.top = initialY + dy + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+        });
+    </script>
+    
+</body>
+</html>

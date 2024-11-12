@@ -26,15 +26,37 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li>
                     <a href="radio.html">Radio</a>
-                    <!-- Bouton Play/Pause intégré dans le menu Radio -->
-                    <button class="nav-play-pause" id="nav-play-pause-button"><i class="fas fa-play"></i></button>
+                    <!-- Conteneur pour les boutons Play/Pause et Volume -->
+                    <div class="nav-radio-controls">
+                        <!-- Bouton Play/Pause -->
+                        <button class="nav-play-pause" id="nav-play-pause-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <!-- Bouton Volume -->
+                        <button class="nav-radio-button" id="nav-volume-button">
+                            <i class="fas fa-volume-off"></i>
+                        </button>
+                    </div>
                 </li>
             </ul>
         </nav>
     </header>
 
+    <div class="nav-control-box nav-volume-popup">
+        <div class="nav-volume-control">
+            <div class="nav-speker"><i class="fas fa-volume-off"></i></div>
+            <div class="nav-bars">
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <input type="range" id="nav-volume-range" min="0" max="100" step="20" value="0">
+            </div>
+        </div>
+    </div>
+
     <section class="manifesto-sections-container">
-        <!-- Section Left -->
         <div class="manifesto-section manifesto-section-left">
             <div class="manifesto-image" id="left-image" style="background-image: url('./assets/img/restaurant/photo-1.jpg');"></div>
             <div class="manifesto-content">
@@ -42,7 +64,6 @@
             </div>
         </div>
     
-        <!-- Section Middle -->
         <div class="manifesto-section manifesto-section-middle">
             <div class="manifesto-content" id="manifesto-main-content">
                 <img src="./assets/img/square/les-niçois-square.png" alt="Les Niçois">
@@ -50,7 +71,6 @@
             <div class="manifesto-image" id="middle-image" style="background-image: url('./assets/img/restaurant/photo-2.jpg');"></div>
         </div>
     
-        <!-- Section Right -->
         <div class="manifesto-section manifesto-section-right">
             <div class="manifesto-image" id="right-image" style="background-image: url('./assets/img/restaurant/photo-3.jpg');"></div>
             <div class="manifesto-content">
@@ -59,101 +79,140 @@
         </div>
     </section>
     <section class="manifesto-ig-container">
-
+        <div class="parent">
+            <div class="angry-grid">
+                <div id="item-0">
+                    <img id="img-item-0" alt="">
+                </div>
+                <div id="item-1">
+                    <img id="img-item-1" alt="">
+                </div>
+                <div id="item-2">
+                    <img id="img-item-2" alt="">
+                </div>
+                <div id="item-3">
+                    <img id="img-item-3" alt="">
+                </div>
+                <div id="item-4">
+                    <img id="img-item-4" alt="">
+                </div>
+                <div id="item-5">
+                    <img id="img-item-5" alt="">
+                </div>
+                <div id="item-6">
+                    <img id="img-item-6" alt="">
+                </div>
+                <div id="item-7">
+                    <img id="img-item-7" alt="">
+                </div>
+                <div id="item-8">
+                    <img id="img-item-8" alt="">
+                </div>
+                <div id="item-9">
+                    <img id="img-item-9" alt="">
+                </div>
+                <div id="item-10">
+                    <div class="manifesto-ig-logo">
+                        <!-- Logo Instagram ici -->
+                        <img src="./assets/img/mnt/instagram-logo.jpeg" alt="Instagram logo" class="manifesto-ig-instagram-logo">
+                        <div class="manifesto-ig-button-container">
+                          <a href="https://www.instagram.com/lesnicois" class="manifesto-ig-button">@lesnicois</a>
+                        </div>
+                </div>
+                <div id="item-11">
+                    <img id="img-item-10" alt="">
+                </div>
+                <div id="item-12">
+                    <img id="img-item-11" alt="">
+                </div>
+                <div id="item-13">
+                    <img id="img-item-12" alt="">
+                </div>
+              </div>
+        </div>
+    </section>
     
-    <div class="manifesto-ig-row">
-        <!-- Colonne gauche - Grande image -->
-        <div class="manifesto-ig-left">
-            <img id="large-image" src="#" alt="Grande image Instagram">
-        </div>
-
-        <!-- Colonne milieu - Deux images de taille réduite -->
-        <div class="manifesto-ig-middle">
-            <div class="manifesto-ig-image">
-                <img id="center-image-1" src="#" alt="Image centre 1">
-            </div>
-            <div class="manifesto-ig-image">
-                <img id="center-image-2" src="#" alt="Image centre 2">
-            </div>
-        </div>
-
-        <!-- Colonne droite - Deux sous-colonnes avec 3 images chacune -->
-        <div class="manifesto-ig-right">
-            <div class="manifesto-ig-right-column">
-                <div class="manifesto-ig-small-image">
-                    <img id="right-image-1" src="#" alt="Image droite 1">
-                </div>
-                <div class="manifesto-ig-small-image">
-                    <img id="right-image-2" src="#" alt="Image droite 2">
-                </div>
-                <div class="manifesto-ig-small-image">
-                    <img id="right-image-3" src="#" alt="Image droite 3">
-                </div>
-            </div>
-            <div class="manifesto-ig-right-column">
-                <div class="manifesto-ig-small-image">
-                    <img id="right-image-4" src="#" alt="Image droite 4">
-                </div>
-                <div class="manifesto-ig-small-image">
-                    <img id="right-image-5" src="#" alt="Image droite 5">
-                </div>
-                <div class="manifesto-ig-logo">
-                    <img src="./assets/img/mnt/instagram-logo.jpeg" alt="Instagram logo" class="manifesto-ig-instagram-logo">
-                    <div class="manifesto-ig-button-container">
-                        <a href="https://www.instagram.com/lesnicois" class="manifesto-ig-button">@lesnicois</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</section>
-
     <section class="manifesto-swiper-container swiper">
         <div class="swiper-wrapper">
             <!-- Slide 1 -->
-            <div class="manifesto-swiper-slide swiper-slide">
+            <div class="manifesto-swiper-slide swiper-slide" id="manifesto-swiper-1">
                 <div class="manifesto-swiper-slide-container">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/1.png">
-                        <div class="swiper-slide manifesto-slide">
-                            <div class="manifesto-content">
-                                <h1>À TABLE</h1>
-                            </div>
-                        </div>
-                    </picture>
+                  <picture>
+                    <!-- Version mobile -->
+                    <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/1.png">
+                    <!-- Version desktop/tablette en HTML -->
+                    <div class="manifesto-html-content">
+                      <div class="manifesto-content">
+                        <div class="manifesto-line large-text">À TABLE</div>
+                      </div>
+                    </div>
+                  </picture>
                 </div>
-            </div>
+              </div>
+              
     
             <!-- Slide 2 -->
-            <div class="manifesto-swiper-slide swiper-slide">
+            <div class="manifesto-swiper-slide swiper-slide" id="manifesto-swiper-2">
                 <div class="manifesto-swiper-slide-container">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/2.png">
-                        <img src="./assets/img/manifesto/2.jpg" alt="Image 2">
-                    </picture>
+                  <picture>
+                    <!-- Version mobile -->
+                    <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/2.png">
+                    <!-- Version desktop/tablette avec du HTML -->
+                    <div class="manifesto-html-content">
+                      <img src="./assets/img/manifesto/desktop/2.jpg" alt="Market Image" class="background-image">
+                      <div class="manifesto-content">
+                        <div class="manifesto-line">ICI C'EST COMME ALLER AU MARCHÉ COURS SALEYA</div>
+                        <div class="manifesto-line">MAIS SANS ÊTRE OBLIGÉ DE PRENDRE UN AIRBNB GÉRÉ PAR UN PARISIEN ET DE SE LEVER <span class="little-manifesto">LE</span>  DIMANCHE MATIN</div>
+                      </div>
+                    </div>
+                  </picture>
                 </div>
-            </div>
+              </div>
+              
+              
     
             <!-- Slide 3 -->
-            <div class="manifesto-swiper-slide swiper-slide">
+            <div class="manifesto-swiper-slide swiper-slide" id="manifesto-swiper-3">
                 <div class="manifesto-swiper-slide-container">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/3.png">
-                        <img src="./assets/img/manifesto/3.jpg" alt="Image 3">
-                    </picture>
+                  <picture>
+                    <!-- Version mobile -->
+                    <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/3.png">
+                    <!-- Version desktop/tablette en HTML -->
+                    <div class="manifesto-html-content">
+                      <div class="manifesto-content">
+                        <div class="manifesto-line">DE TOUTES FACONS, ON NE VA PAS SE MENTIR,<br> ON VOUS PRÉFÈRE CHEZ VOUS.</div>
+                        <div class="manifesto-image-container">
+                          <img src="./assets/img/manifesto/desktop/1.jpg" alt="French Riviera" class="manifesto-image">
+                        </div>
+                        <div class="manifesto-line small-text">MERCI PARISCHICSTYLE.COM DE NOUS LAISSER <br>NOTRE CRÉDIT CAR C'EST PAS PARIS PLACE ICI</div>
+                      </div>
+                    </div>
+                  </picture>
                 </div>
-            </div>
+              </div>
+              
     
             <!-- Slide 4 -->
-            <div class="manifesto-swiper-slide swiper-slide">
+            <div class="manifesto-swiper-slide swiper-slide" id="manifesto-swiper-4">
                 <div class="manifesto-swiper-slide-container">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/4.png">
-                        <img src="./assets/img/manifesto/4.jpg" alt="Image 4">
-                    </picture>
+                  <picture>
+                    <!-- Version mobile -->
+                    <source media="(max-width: 768px)" srcset="./assets/img/manifesto/mobile/4.png">
+                    <!-- Version desktop/tablette en HTML -->
+                    <div class="manifesto-html-content">
+                      <div class="manifesto-content">
+                        <div class="manifesto-line">TU TROUVES QU'ON EXAGÈRE ?</div>
+                        <div class="manifesto-line">NON, ON SAIT, C'EST TOUT. ICI C'EST MIEUX.</div>
+                        <div class="manifesto-image-container">
+                          <img src="./assets/img/manifesto/desktop/" alt="Plate Image" class="manifesto-image">
+                        </div>
+                        <div class="manifesto-line">D'AILLEURS IL Y A QUOI DANS TON ASSIETTE LÀ ?</div>
+                      </div>
+                    </div>
+                  </picture>
                 </div>
-            </div>
+              </div>
+              
     
             <!-- Slide 5 -->
             <div class="manifesto-swiper-slide swiper-slide">
@@ -224,18 +283,6 @@
             </div>
         </div>
     </section>
-
-    <div id="wip-popup" class="wip-popup">
-        <div class="wip-popup-header">
-            <span class="wip-popup-close">&times;</span>
-        </div>
-        <div class="wip-popup-body">
-            <p class="wip-popup-title">ON EST ENCORE À LA PLAGE</p>
-            <img src="assets/img/mnt/Port Saint Laurent 10.jpg" alt="Port Saint Laurent" class="wip-popup-image">
-            <p class="wip-popup-text">MAIS ON S'Y MET BIENTÔT</p>
-        </div>
-    </div>
-    
     
     <div id="carte-popup" class="popup">
         <div class="popup-content">
@@ -246,77 +293,57 @@
 
     <div class="popup-reservation-frame" style="display: none;">
         <div class="popup-reservation-header">
+            <!-- Les deux onglets pour "Réservation" et "Privatisation" -->
+            <div class="popup-nav">
+                <div class="popup-nav-item active" id="reservation-tab">Réservation</div>
+                <div class="popup-nav-item" id="privatisation-tab">Privatisation</div>
+            </div>
             <span class="popup-reservation-close">&times;</span>
         </div>
+        
+        <!-- Contenu de la popup -->
         <div class="popup-reservation-content">
-            <div class="reservation-form-container">
+            <!-- Section Réservation -->
+            <div class="reservation-form-container" id="reservation-content">
                 <div class="reservation-form">
-                    <h2>Envoie-nous ta demande en cliquant sur le bouton réserver !
-                        Si tu as des demandes particulières tu peux aussi nous envoyer un message sur insta, ou faire un mail à</h2>
+                    <h2>Envoie-nous ta demande en cliquant sur le bouton réserver ! Si tu as des demandes particulières tu peux aussi nous envoyer un message sur insta, ou faire un mail à</h2>
                     <p>jess@lesnicois.com</p>
-                    <form>
-                        <div class="form-group">
-                            <label for="guests">Nombre de couverts</label>
-                            <select id="guests" name="guests">
-                                <option>2 couverts</option>
-                                <option>3 couverts</option>
-                                <option>4 couverts</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <select id="date" name="date">
-                                <option>Aujourd'hui</option>
-                                <option>Demain</option>
-                                <option>Après-demain</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="reservation-button">Réserver</button>
-                    </form>
+                    <iframe src="https://widget.thefork.com/7eb5a697-0080-442d-bb68-4ecfb64984c8" allow="payment *" style="width: 100%; min-height:800px; border:none; overflow:scroll;"></iframe>
                 </div>
+            </div>
+            
+            <!-- Section Privatisation (vide pour le moment) -->
+            <div class="reservation-form-container" id="privatisation-content" style="display: none;">
+                <!-- Contenu de privatisation à ajouter ici ultérieurement -->
             </div>
         </div>
     </div>
-
-        <!-- Encart Info -->
-        <div id="index-infos-encart" class="index-infos-encart">
-            <p>Infos</p>
-        </div>
     
-        <!-- Menu Infos -->
-        <div id="index-infos-menu" class="index-infos-menu">
-            <div class="index-infos-menu-content">
-                <div class="index-infos-left">
-                    <h2>LES NIÇOIS</h2>
-                    <p>SAS ET ALORS<br>14, rue Saint-Lazare<br>75009 Paris</p>
-                </div>
-                <div class="index-infos-center">
-                    <h3>INFOS LÉGALES</h3>
-                    <p><a href="">CGV</a></p>
-                    <p><a href="">CGU</a></p>
-                    <p><a href="">Politique de confidentialité</a></p>
-                    <p><a href="">Contact</a></p>
-                </div>
-                <div class="index-infos-right">
-                    <h3>SUIVEZ-NOUS</h3>
-                    <div class="index-infos-social-icons">
-                        <a href="https://facebook.com" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Cercle central avec le bouton "Infos" -->
+    <div id="info-button" class="circle">
+        <i class="fas fa-question"></i>
+    </div>
+
+    <!-- Cercle autour contenant les liens avec des bordures internes pour séparer les quarts -->
+    <div id="info-menu" class="outer-circle">
+        <div class="quarter" id="quarter1">
+            <a href="./cgv.html" class="circle-link">CGV&CGU</a>
         </div>
+        <div class="quarter" id="quarter2">
+            <a href="./confidentialité.html" class="circle-link">confidentialité</a>
+        </div>
+        <div class="quarter" id="quarter3">
+            <a href="./contact.html" class="circle-link">contact</a>
+        </div>
+        <div class="quarter" id="quarter4">
+            <a href="./newsletter.html" class="circle-link">newsletter</a>
+        </div>
+    </div>
 
     <div class="restaurant-buttons">
-        <button class="restaurant-button"><a href="#" class="open-popup">La carte</a></button>
-        <button class="restaurant-button"><a>Réserver</a></button>
+        <button class="restaurant-button open-popup"><a href="#" >La carte</a></button>
+        <button class="restaurant-button open-popup-res"><a>Réserver</a></button>
     </div>
     <script src="./assets/js/manifesto.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -327,9 +354,19 @@
     <script src="./assets//js/animation.js"></script>
 
 
+
 </body>
 
 <script>
-    
+  // Fonction pour vérifier la largeur de l'écran et afficher le bon HTML
+  function loadResponsiveHTML() {
+    const isMobile = window.innerWidth <= 768; // Vous pouvez ajuster la largeur ici
+    document.querySelector('.container.desktop').style.display = isMobile ? 'none' : 'grid';
+    document.querySelector('.container.mobile').style.display = isMobile ? 'grid' : 'none';
+  }
+
+  // Exécute la fonction au chargement et à chaque redimensionnement de la fenêtre
+  window.addEventListener('load', loadResponsiveHTML);
+  window.addEventListener('resize', loadResponsiveHTML);
 </script>
 </html>
