@@ -1,79 +1,97 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const allImages = [
-        "./assets/img/restaurant/photo-1.jpg",
-        "./assets/img/restaurant/photo-2.jpg",
-        "./assets/img/restaurant/photo-3.jpg",
-        "./assets/img/restaurant/photo-4.jpg",
-        "./assets/img/restaurant/photo-5.jpg",
-        "./assets/img/restaurant/photo-6.jpg",
-        "./assets/img/restaurant/photo-7.jpg",
-        "./assets/img/restaurant/photo-8.jpg",
-        "./assets/img/restaurant/photo-9.jpg",
-        "./assets/img/restaurant/photo-10.jpg",
-        "./assets/img/restaurant/photo-11.jpg",
-        "./assets/img/restaurant/photo-12.jpg",
-        "./assets/img/restaurant/photo-13.jpg",
-        "./assets/img/restaurant/photo-14.jpg",
-        "./assets/img/restaurant/photo-15.jpg",
-        "./assets/img/restaurant/photo-16.jpg",
-        "./assets/img/restaurant/photo-17.jpg",
-        "./assets/img/restaurant/photo-18.jpg"
+    // Listes d'images pour chaque section
+    const leftImages = [
+        "./assets/img/restaurant/left/1.jpg",
+        "./assets/img/restaurant/left/2.jpg",
+        "./assets/img/restaurant/left/3.jpg",
+        "./assets/img/restaurant/left/4.jpg",
+        "./assets/img/restaurant/left/5.jpg",
+        "./assets/img/restaurant/left/6.jpg",
+        "./assets/img/restaurant/left/7.jpg",
+        "./assets/img/restaurant/left/8.jpg",
+        "./assets/img/restaurant/left/9.jpg"
     ];
 
-    const leftImages = allImages.slice(0, 6);   // Images 1 à 6
-    const middleImages = allImages.slice(6, 12); // Images 7 à 12
-    const rightImages = allImages.slice(12, 18); // Images 13 à 18
+    const middleImages = [
+        "./assets/img/restaurant/center/1.jpg",
+        "./assets/img/restaurant/center/2.jpg",
+        "./assets/img/restaurant/center/3.jpg",
+        "./assets/img/restaurant/center/4.jpg",
+        "./assets/img/restaurant/center/5.jpg",
+        "./assets/img/restaurant/center/6.jpg",
+        "./assets/img/restaurant/center/7.jpg",
+        "./assets/img/restaurant/center/8.jpg",
+        "./assets/img/restaurant/center/9.jpg"
+    ];
+
+    const rightImages = [
+        "./assets/img/restaurant/right/1.jpg",
+        "./assets/img/restaurant/right/2.jpg",
+        "./assets/img/restaurant/right/3.jpg",
+        "./assets/img/restaurant/right/4.jpg",
+        "./assets/img/restaurant/right/5.jpg",
+        "./assets/img/restaurant/right/6.jpg",
+        "./assets/img/restaurant/right/7.jpg",
+        "./assets/img/restaurant/right/8.jpg",
+        "./assets/img/restaurant/right/9.jpg"
+    ];
 
     let leftIndex = 0;
     let middleIndex = 0;
     let rightIndex = 0;
 
-    function changeImage(elementId, images, index) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.style.backgroundImage = `url(${images[index]})`;
-        } else {
-            console.error(`Element with ID '${elementId}' not found.`);
+    function crossfadeImages(currentId, nextId, images, index) {
+        const currentImage = document.getElementById(currentId);
+        const nextImage = document.getElementById(nextId);
+
+        if (currentImage && nextImage) {
+            nextImage.style.backgroundImage = `url(${images[index]})`;
+            nextImage.classList.add("fade-in");
+
+            setTimeout(() => {
+                currentImage.style.backgroundImage = `url(${images[index]})`;
+                nextImage.classList.remove("fade-in");
+            }, 1000); // Durée de l'animation de fondu
         }
     }
 
-    function rotateImages(section, images, index) {
+    function rotateImages(currentId, nextId, images, index) {
         index = (index + 1) % images.length;
-        changeImage(section, images, index);
+        crossfadeImages(currentId, nextId, images, index);
         return index;
     }
 
-    // Initialisation des index
-    let leftTimer = 0;
-    let middleTimer = 2000; // Début avec 1 seconde de retard
-    let rightTimer = 3000;  // Début avec 2 secondes de retard
+    // Initialisation des timers avec décalages
+    const leftTimer = 2000;
+    const middleTimer = 4000; // Décalage de 2 secondes
+    const rightTimer = 4000;  // Décalage de 4 secondes
 
-    // Fonction pour démarrer les rotations d'images avec des décalages
     function startRotations() {
         setInterval(() => {
-            leftIndex = rotateImages('left-image', leftImages, leftIndex);
+            leftIndex = rotateImages('left-image-current', 'left-image-next', leftImages, leftIndex);
         }, 4000); // Change toutes les 4 secondes pour la section gauche
 
         setTimeout(() => {
             setInterval(() => {
-                middleIndex = rotateImages('middle-image', middleImages, middleIndex);
+                middleIndex = rotateImages('middle-image-current', 'middle-image-next', middleImages, middleIndex);
             }, 4000); // Change toutes les 4 secondes pour la section du milieu
         }, middleTimer);
 
         setTimeout(() => {
             setInterval(() => {
-                rightIndex = rotateImages('right-image', rightImages, rightIndex);
+                rightIndex = rotateImages('right-image-current', 'right-image-next', rightImages, rightIndex);
             }, 4000); // Change toutes les 4 secondes pour la section droite
         }, rightTimer);
     }
 
     startRotations(); // Lance les rotations
-    
 });
 
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const accessToken = 'IGQWRPaG1FYU1UbjhHVkFsZAEtuTUlERi1rX0U1bDBuaFhhNTlDZAHJDWC1INy1Hc2J3QW5sU2FPM3JxZAEVqb1JpQ2d4YUx0dGZARX1RpUzBHRTNZATDVYWW5RMVpQQWZAfSmxNNjh6U2tvMTUyQQZDZD';
+    const accessToken = 'IGQWROU2c5cm9CZA0I4aHJjVnNYZAXVyOWVnWUMxQUxWUXBTNEU0RzNXdDh1cU9RSndaZAFlGZAU93bDZAiSVlPRml6aVVjRmkwVE5yRFdHbUJHdHk4eUdZAN1hnLXVFQjVzUloxdXJMQXNlQWd4dwZDZD';
 
     async function fetchInstagramData() {
         try {

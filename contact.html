@@ -16,16 +16,69 @@
 </head>
 <body class="body-contact">
     <header>
-        <nav class="restaurant-nav">
+        <nav class="other-nav">
             <ul>
-                <li><a href="./index.html"><i class="fas fa-home"></i></a></li>
-                <li><a href="./cgv.html">CGV&CGU</a></li>
-                <li><a href="./confidentialité.html">Confidentialité</a></li>
-                <li><a href="./contact.html" class="active">Contact</a></li>
-                <li><a href="./newsletter.html">Newsletter</a></li>
+                <li class="nav-logo"><a href="./index.html"><img src="./assets/img/logo-les-nicois-white-transparent.png" alt=""></a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./newsletter.html" class="active">Newsletter</a></li>
+                <li><a href="./cgv.html" class="active">CGV/CGU</a></li>
             </ul>
         </nav>
+
     </header>
+    <main>
+    
+            <div class="contact-container">
+                <!-- Image d'en-tête -->
+                <img src="./assets//img//contact/contact.jpg" alt="Contact Image" class="contact-image">
+        
+                <!-- Formulaire de contact -->
+                <div class="contact-form">
+                    <h2>CONTACTEZ-NOUS</h2>
+        
+                    <!-- Nom et Téléphone -->
+                    <div class="form-row">
+                        <input type="text" id="name" name="name" placeholder="Nom" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Téléphone" required>
+                    </div>
+        
+                    <!-- Adresse e-mail -->
+                    <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
+        
+                    <!-- Sélection du Sujet -->
+                    <div class="question-subject-container">
+                        <div class="form-section">
+                            <div class="section-title">Sujet</div>
+                            <div id="subject" class="subject-options">
+                                <button type="button" value="resto">Resto</button>
+                                <button type="button" value="shop">Shop</button>
+                                <button type="button" value="autre">Autre</button>
+                            </div>
+                            <input type="hidden" name="subject" required>
+                        </div>
+                    
+                        <!-- Sélection de la Question (dépendante du sujet) -->
+                        <div class="form-section">
+                            <div class="section-title">Question</div>
+                            <div id="question" class="question-options">
+                                <!-- Les boutons seront ajoutés ici dynamiquement via JavaScript -->
+                            </div>
+                            <input type="hidden" name="question" required>
+                        </div>
+                    
+                    </div>
+        
+                    <!-- Message libre -->
+                    <div class="form-section">
+                        <div class="section-title">Message</div>
+                        <textarea id="message" name="message" placeholder="Chez nous, c'est mieux." required></textarea>
+                    </div>
+        
+                    <!-- Bouton Envoyer -->
+                    <button type="submit">Envoyer</button>
+                </div>
+            </div>
+    </main>
 </body>
     <script src="./assets/js/manifesto.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -34,6 +87,7 @@
     <script src="assets/js/popup.js"></script>
     <script src="assets/js/player"></script>
     <script src="./assets//js/animation.js"></script>
+    <script src="./assets/js/contact.js"></script>
 
 
 

@@ -98,23 +98,21 @@ a{
 
 /* Style du logo */
 #preloader .logo {
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
-    transform: scale(4);
-}
-
-/* Media Queries pour le responsive */
-@media (min-width: 768px) {
-    #preloader .logo {
-        max-width: 40%;
+    transform: scale(2);
+  
+    // Pour les petits écrans (tablettes)
+    @media (max-width: 768px) {
+      transform: scale(1); // Réduire légèrement le logo
     }
-}
-
-@media (min-width: 1200px) {
-    #preloader .logo {
-        max-width: 20%;
+  
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+      transform: scale(0.2); // Réduire encore plus le logo
     }
-}
+  }
+
 
 
 /* Styles pour la page d'accueil */
@@ -183,6 +181,15 @@ body.index-body {
         z-index: 1;
         color: black;
         z-index: 2;
+
+        @media (max-width: 768px) {
+            font-size: 58px; // Augmenter légèrement la taille du texte pour les tablettes
+          }
+        
+          // Pour les très petits écrans (mobiles)
+          @media (max-width: 480px) {
+            font-size: 40px; // Augmenter davantage la taille du texte pour les mobiles
+          }
     }
 }
 
@@ -191,16 +198,22 @@ body.index-body {
 
 
 #index-section-1 {
-    background-image: url('../img/background/section-1.jpg'); /* Image pour la section 1 */
+    background-image: url('../img/background/1.1.jpg'); /* Image pour la section 1 */
+    background-position: top left;
 }
 
 #index-section-2 {
-    background-image: url('../img/background/section-2.jpg'); /* Image pour la section 2 */
+    background-image: url('../img/background/2.1.jpg');
+    background-position: 0px 10%;
+
+
 }
 
 #index-section-3 {
-    background-image: url('../img/background/section-3.jpg'); /* Image pour la section 3 */
-    background-position: left;
+    background-image: url('../img/background/3.1.jpg'); /* Image pour la section 3 */
+    background-size: 115% 100%;
+
+ 
 }
 
 /* Contenu des sections invisible par défaut */
@@ -224,8 +237,12 @@ body.index-body {
 /* Responsive Media Query pour les tablettes */
 @media (max-width: 768px) {
 
+    .index-logo {
+        transform: scale(1.2) !important;
+    }
+
     .title-container {
-        transform: scale(0.9) !important;
+        transform: scale(2.9) !important;
     }
 
     .index-section {
@@ -236,20 +253,20 @@ body.index-body {
     }
 
     #index-section-1 {
-        background-image: url('../img/background/background-mobile.png'); /* Image pour la section 1 en mobile */
+        background-image: url('../img/background/1.0.jpg'); /* Image pour la section 1 en mobile */
     }
 
     #index-section-2 {
-        background-image: url('../img/background/section-2.jpg'); /* Image pour la section 2 en mobile */
-        background-size: 200%;
+        background-image: url('../img/background/2.0.jpg'); /* Image pour la section 2 en mobile */
+        background-size: 120%;
     }
 
     #index-section-3 {
-        background-image: url('../img/background/section-3.jpg'); /* Image pour la section 3 en mobile */
+        background-image: url('../img/background/3.0.jpg'); /* Image pour la section 3 en mobile */
     }
 
     .index-content {
-        font-size: 4rem; /* Ajuster la taille du texte pour les tablettes */
+        font-size: 8rem; /* Ajuster la taille du texte pour les tablettes */
     }
 }
 
@@ -260,14 +277,10 @@ body.index-body {
     }
 
     .index-logo {
-        font-size: 2.5rem;
-        top: -60px; /* Ajustement supplémentaire pour les écrans très petits */
-
-        .index-highlight {
-            font-size: 5rem;
-            top: 30px; /* Ajustement supplémentaire pour la position relative de .index-highlight */
-        }
+        transform: scale(1.2);
     }
+
+
 }
 
 
@@ -280,7 +293,334 @@ body.restaurant-body {
     box-sizing: border-box;
 }
 
+/* Menu latéral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initialement en dehors de l'écran */
+    width: 12%;
+    height: 100%;
+    background-color: #fff; /* Fond blanc */
+    color: black;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace; 
+    text-align: right !important;
+
+    @media (max-width: 768px){
+        width: 45%;
+    }
+
+    @media (max-width: 450px){
+        width: 45%;
+    }
+
+    &.open {
+        right: 0; /* Glisse le menu dans l'écran */
+    }
+
+    /* Menu principal */
+    .main-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        font-family: "JeanLuc Thin",;
+        text-transform: uppercase; 
+
+
+        .big-menu-item{
+            font-size: 400%;
+            text-align: right;
+        }
+
+
+        li {
+            margin: 15px 0;
+            font-size: 2.5rem; /* Taille plus grande pour les titres principaux */ /* Police JeanLuc Thin pour les titres */
+            font-weight: normal;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        /* Sous-menu */
+
+
+        
+    }
+
+    .submenu {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 20px 0;
+        font-family: 'Apercu Mono' !important; /* Police Apercu Mono pour le sous-menu */
+        font-weight: normal;
+        text-transform: lowercase ;
+        text-align: right;
+
+
+        li {
+            margin: 5px 0;
+            font-size: 1rem;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .main-submenu{
+        a{
+            color: black;
+            font-weight: normal;
+
+        }
+
+        .secondary-menu-a{
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%; 
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */
+                transition: all 0.3s ease;
+            }
+        }
+    }
+
+    .legal-menu,
+    .secondary-menu {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: right;
+        position: relative;
+    
+        /* Style pour les éléments principaux avec effet de soulignement */
+        .legal-toggle,
+        .secondary-menu li {
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Apercu Mono', monospace;
+            position: relative;
+            margin: 10px 0;
+            cursor: pointer;
+    
+            a {
+                color: black;
+                text-decoration: none; /* Pas de soulignement par défaut */
+            }
+    
+            /* Barre de soulignement dynamique */
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%;     
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */           
+                text-align: right;
+                transition: all 0.3s ease;
+
+
+
+            }
+        }
+    
+        /* Ajuste le soulignement lorsque le sous-menu est ouvert */
+        .legal-toggle.open::after {
+            bottom: -100px;
+
+            @media (max-width: 768px){
+                bottom: -120px;
+            }
+
+            @media (max-width: 450px){
+}
+        }
+    
+        /* Sous-menu avec transition pour affichage progressif */
+        .legal-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            font-family: 'Apercu Mono', monospace;
+            font-weight: normal;
+    
+            li {
+                margin: 8px 0;
+                font-size: 1rem;
+    
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    
+        /* Affiche le sous-menu en augmentant sa hauteur maximale */
+        .legal-toggle.open + .legal-submenu {
+            max-height: 100px; /* Ajustez cette valeur selon la hauteur nécessaire */
+        }
+    }
+    
+    
+    /* Section des réseaux sociaux */
+    .social-section {
+        margin-top: 20px;
+        text-align: right;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold; /* Apercu Bold pour "Suivez-nous" */
+            font-family: 'Apercu Mono', monospace;
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: right;
+            gap: 10px;
+
+            a {
+                color: black; /* Couleur de l'icône */
+                font-size: 1.5rem; /* Taille des icônes */
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #555; /* Couleur au survol */
+                }
+            }
+        }
+    }
+}
+
+
+
+/* Burger button  */
+.burger-container {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2000;
+    background-color: #000;
+    padding: 2px 5px;
+}
+
+.burger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+
+    span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 3px;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+
+   /* Ajustements pour le mode ouvert */
+   &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+
+&.open span:nth-child(2) {
+    opacity: 0;
+}
+
+&.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+}
+
 /* Navigation Styles */
+
+// Other nav
+.other-nav {
+    background: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 6vh; /* Hauteur fixe pour le menu de navigation */
+
+    ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%; /* Pour que les `li` prennent toute la hauteur */
+    }
+
+    .nav-logo {
+        flex: 0 0 20%; /* Logo occupe 10% de la largeur */
+        background-color: #000 !important;
+        
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-color: #000 !important;
+        }
+
+        img {
+            width: 40%; /* Ajuster la taille de l'image selon les besoins */
+            height: auto;
+        }
+    }
+
+    li {
+        flex: 1; /* Les autres éléments prennent une part égale des 90% restants */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Prend toute la hauteur du nav */
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #000; /* Texte noir pour les éléments non actifs */
+            background: #fff; /* Fond blanc pour les éléments non actifs */
+            text-decoration: none;
+
+            &.active {
+                background: #000; /* Fond noir pour l'élément actif */
+                color: #fff; /* Texte blanc pour l'élément actif */
+            }
+        }
+    }
+}
+
+
 .restaurant-nav {
     background: #000;
     position: fixed;
@@ -289,7 +629,8 @@ body.restaurant-body {
     width: 100%;
     z-index: 1000;
     height: 6vh;
-    display: flex; /* Aligns nav items to full height */
+    display: flex; 
+    
 
     ul {
         list-style: none;
@@ -304,54 +645,48 @@ body.restaurant-body {
         flex: 1;
         display: flex;
         align-items: center;
-        justify-content: center; /* Centre le contenu horizontalement */
-        height: 100%; /* Prendre toute la hauteur de la nav */
-        /* Alignement des boutons Play/Pause et Volume */
+        justify-content: center;
+        height: 100%;
+
+
         .nav-radio-controls {
-            display: inline-flex; /* Aligner les boutons en ligne */
+            display: inline-flex;
             align-items: center;
             position: relative;
             left: -35%;
-            gap: 10px; /* Espace entre les deux boutons */
-            margin-left: 10px; /* Ajoute un petit espace entre le texte "Radio" et les boutons */
+            gap: 10px;
+            margin-left: 10px;
         }
-        
+
         .nav-play-pause, .nav-radio-button {
             background: none;
             border: none;
             cursor: pointer;
-            color: white; /* Couleur blanche pour les deux boutons */
-            font-size: 1.2rem; /* Taille des icônes */
+            color: white;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             padding: 0;
         }
-        
+
         .nav-play-pause i, .nav-radio-button i {
-            font-size: 1.2rem; /* Assure que les icônes soient de la même taille */
+            font-size: 1.2rem;
         }
-        
+
         /* Responsivité */
         @media (max-width: 768px) {
             .nav-radio-controls {
                 gap: 20px; 
                 left: -10%;
-
             }
         }
-        
-        
     }
-
-    
-
-    
 
     a {
         color: #fff;
         text-decoration: none;
         text-align: center;
-        display: flex; /* Utilisez flex pour centrer le texte */
+        display: flex; /* Centrer le texte */
         align-items: center; /* Centre verticalement */
         justify-content: center; /* Centre horizontalement */
         padding: 10px;
@@ -362,7 +697,6 @@ body.restaurant-body {
             background: #fff;
             color: #000;
         }
-
 
         /* Quand l'icône change de play à pause, le texte "Radio" se décale légèrement vers la gauche */
         .fa-pause {
@@ -379,14 +713,10 @@ body.restaurant-body {
         .nav-play-pause:hover {
             color: yellow; /* Couleur au hover */
         }
-
-        
     }
-
-    
 }
 
-/* Style pour la popup */
+/* Popup de volume */
 .nav-volume-popup {
     display: none; /* Masquer par défaut */
     position: absolute;
@@ -397,22 +727,18 @@ body.restaurant-body {
     padding: 0px 10px ;
     z-index: 1000;
 
-}
-
-@media (max-width: 768px) {
-    .nav-volume-popup {
+    @media (max-width: 768px) {
         top: 50%; /* Centré verticalement */
         left: 50%; /* Centré horizontalement */
-        transform: translate(-50%, -50%); /* Centre la popup au milieu de l'écran */
-        width: 80%; /* Réduit la largeur pour les petits écrans */
-        padding: 10px 20px; /* Ajuste le padding pour mieux occuper l'espace */
-        border-radius: 8px; /* Ajoute un léger arrondi */
+        transform: translate(-50%, -50%); /* Centre la popup */
+        width: 80%; /* Largeur réduite pour petits écrans */
+        padding: 10px 20px;
+        border-radius: 8px; /* Arrondi léger */
     }
 }
 
-
 .nav-volume-popup.nav-active {
-    display: block; /* Afficher la popup quand elle est active */
+    display: block; /* Affiche la popup lorsqu'elle est active */
 }
 
 .nav-volume-control {
@@ -505,6 +831,8 @@ body.restaurant-body {
 
 
 
+
+
 /* Carousel Section Styles */
 .carousel-section {
     position: relative;
@@ -575,7 +903,7 @@ body.restaurant-body {
 .restaurant-buttons {
     display: flex;
     justify-content: center;
-    gap: 100px; /* Ajuster l'espacement entre les boutons */
+    gap: 60px !important; /* Ajuster l'espacement entre les boutons */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -586,30 +914,43 @@ body.restaurant-body {
 }
 
 .restaurant-button {
-    padding: 20px 40px;
-    font-size: 2vw;
+    padding: 10px 45px !important;
+    font-size: 1.5vw !important;
     background-color: #000;
     color: #fff !important;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    // border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Apercu Mono';
-
-    &:hover {
-        background-color: white;
-        color: black;
-    }
-
-    a{color: #fff;}
-
-    a:hover{
-        color: #000;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    transform: scale(1);
 }
+
+.restaurant-button a {
+    color: #fff; /* Couleur par défaut du lien */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease;
+}
+
+.restaurant-button:hover {
+    transform: scale(1.03);
+}
+
+
 
 .restaurant-button a{
     color: white !important;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        }
+
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+        font-size: 1rem;    }
 }
 
 body.popup-active .restaurant-button {
@@ -698,95 +1039,57 @@ $reservation-button-color: #000;
 
 
 // shop.html
-body.shop-body {
-    font-family: $primary-font;
-    color: #000;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-}
 
-.shop-content {
-    text-align: center;
-    margin-top: 20vh;
-}
-
-
-.shop-section {
-    margin-bottom: 40px;
-
-    .shop-item {
-        margin-bottom: 30px;
-        height: 30vh;
-        
-        .shop-item-image {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .shop-item-description {
-            font-family: $primary-font;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-    }
-}
-
-.shop-cart-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border: none;
-    border-radius: 50%;
+.soon-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments */
+    padding-top: 10vh;
 
-    img {
-        width: 70%;
-        height: auto;
+    h1, h2 {
+        font-size: 5rem;
+        width: 90vw; /* Limite la largeur du texte à celle de l'image */
+        max-width: 900px; /* Largeur maximale pour le texte et l'image en desktop */
+        text-align: center;
+        margin: 0;
+        margin-top: 3vh;
     }
 
-    &:hover {
-        background-color: lighten(#000, 10%);
+    .soon-image-container {
+        width: 90vw; /* Limite la largeur de l'image */
+        max-width: 900px; /* Largeur maximale pour l'image en desktop */
+        margin: 0 auto;
+
+        .soon-main-image {
+            width: 100%;
+            height: auto;
+        }
     }
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
-    .shop-title {
-        font-size: 2rem;
+    .soon-container {
+        padding-top: 3vh;
+
+        h1, h2 {
+            font-size: 3rem; /* Réduit la taille de la police en mobile */
+            width: 90vw; /* Maintient la même largeur que l'image */
+        }
+
+        .soon-image-container {
+            width: 90vw; /* Image maintient 90% de la largeur de l'écran */
+        }
     }
 
-    .shop-item-image {
-        max-width: 250px;
-    }
-
-    .shop-cart-button {
-        width: 45px;
-        height: 45px;
+    @media (max-width: 480px) {
+        h1, h2 {
+            font-size: 2rem; /* Réduit encore la taille de la police sur les petits écrans */
+        }
     }
 }
 
-@media (max-width: 480px) {
-    .shop-title {
-        font-size: 1.5rem;
-    }
 
-    .shop-item-image {
-        max-width: 200px;
-    }
-
-    .shop-cart-button {
-        width: 40px;
-        height: 40px;
-    }
-}
 
 // POPUP
 
@@ -827,9 +1130,9 @@ body.shop-body {
     position: absolute;
     top: 20px; /* Position en haut de l'écran */
     right: 20px; /* Position à droite de l'écran */
-    color: white;
-    font-size: 38px;
-    font-weight: bold;
+    color: black;
+    font-size: 18px;
+    font-weight:100;
     z-index: 20000;
 
     &:hover,
@@ -877,7 +1180,7 @@ body.shop-body {
     height: 100%;
 }
 
-.swiper-slide img {
+.swiper-slide iframe {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -959,11 +1262,32 @@ body.shop-body {
 }
 
 // Style des images dans chaque section (prend toute la largeur et la hauteur)
+.manifesto-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 .manifesto-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
+    transition: opacity 1s ease;
+    z-index: 1;
+}
+
+.overlay {
+    opacity: 0;
+    z-index: 2;
+}
+
+.fade-in {
+    opacity: 1;
 }
 
 // Contenu des sections
@@ -1018,50 +1342,58 @@ body.shop-body {
 }
 
 // Media Queries pour tablettes
+// Responsive for tablets
 @media (max-width: 768px) {
+    .manifesto-sections-container {
+        flex-direction: column;
+    }
+
     .manifesto-section {
-        width: 100%; // Chaque section prend toute la largeur
-        height: 30vh; // Hauteur de 30vh sur les tablettes
+        width: 100%;
+        height: 35vh; // Increase height slightly for better visibility on smaller screens
         margin: 2px 0;
     }
 
     .manifesto-content img {
         max-width: 130%;
-        height: 30vh;
+        height: auto; // Maintain aspect ratio
     }
 }
 
-// Media Queries pour les petits écrans
+// Responsive for small screens (like mobile)
 @media (max-width: 480px) {
+
+
     .manifesto-section {
-        height: 30vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row ;
+        height: calc(100vh / 3);        
+        margin-bottom: 2px;
+
+        img{
+            background-size: cover;
+            background-position: center;
+        }
     }
 
-    .manifesto-content img {
-        max-width: 100%;
+    .manifesto-content {
+        height: 100%; // Allow content to take full height
+        width: 50%;
+        display: flex;
+
+        img{
+            transform: scale(0.8);
+        }
+
     }
 
-    .manifesto-image {
-        height: 30vh;
-    }
+   .manifesto-image-container{
+    width: 50%;
+   }
 }
-
 // Boutons pour les options (carte, réservation)
-.restaurant-button {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    // border-radius: 5px;
-    transition: background-color 0.3s;
-    margin: 0 10px;
-}
 
-.restaurant-button:hover {
-    background-color: white;
-    color: black;
-}
 
 
 
@@ -1400,68 +1732,45 @@ body.shop-body {
     margin: auto;
 }
 
-// Media Queries pour les petits écrans
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.3rem !important;
-    }
 
-    .manifesto-sections-container {
-        display: block;
-        flex-direction: column;
-        height: 100vh;
-        font-size: 50%;
-    }
+/* Popup Reservation Frame */
 
-    .manifesto-section {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        height: 33.33%;
-    }
-
-    .manifesto-content {
+#reservation-content {
+    display: flex; /* Show reservation by default */
+    width: 100%;
+    flex-direction: row !important;
+    .reservation-popup-left{
         width: 50%;
-        height: 33.33vh;
-
-        h1, h2 {
-            font-size: 220%;
-        }
     }
 
-    .manifesto-image {
+    .reservation-popup-right{
         width: 50%;
-        height: 33.33vh;
-    }
-
-    .manifesto-section-middle .manifesto-subtitle {
-        font-size: 1rem !important;
-        margin-top: -1px !important;
-    }
-
-    .restaurant-buttons button a {
-        font-size: 1rem;
-    }
-
-    .manifesto-text-big .manifesto-text-block .manifesto-text {
-        font-size: 6vw;
-    }
-
-    .manifesto-text-big .manifesto-text-block img {
-        width: 80%;
-        margin: 10px auto;
     }
 }
 
-// Popup Reservation 
+#privatisation-content {
+    display: none; /* Hide privatisation by default */
+    button{
+        margin:40px auto 60px;
+        
+    }
+}
+.popup-nav-item.active {
+    background-color: white;
+    color: #000;
+}
 
-/* Popup Reservation Frame */
+.popup-nav-item:not(.active) {
+    background-color: black;
+    color: white;
+}
 .popup-reservation-frame {
     position: fixed;
+    z-index: 999999990000000000000 !important; /* Utilisation d'un z-index élevé mais raisonnable */
     top: 10%;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 70% !important;
+    width: 60% !important;
     background-color: white;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -1511,17 +1820,126 @@ body.shop-body {
     padding: 10px;
 }
 
-/* Le contenu de la popup */
+.reservation-popup-frame {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .reservation-popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+
+        .reservation-popup-nav {
+            display: flex;
+            gap: 15px;
+
+            .reservation-popup-nav-item {
+                cursor: pointer;
+                padding: 10px;
+                font-weight: bold;
+
+                &.active {
+                    border-bottom: 2px solid black;
+                }
+            }
+        }
+
+        .reservation-popup-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+}
+
+.reservation-popup-content {
+    display: flex;
+    padding-top: 20px;
+
+    // Left section with the reservation form
+    .reservation-popup-left {
+        flex: 1;
+        width: 50%;
+        padding-right: 20px;
+        box-sizing: border-box;
+
+        .reservation-popup-form {
+            height: 30vh;
+            overflow: scroll;
+            iframe {
+                width: 100%;
+                min-height: 800px;
+                border: none;
+                overflow: scroll;
+            }
+        }
+
+
+        .reservation-popup-note {
+            font-size: 1.3em;
+            color: #666;
+            margin: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+    }
+
+    // Right section with the image and note
+    .reservation-popup-right {
+        flex: 1;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-left: 20px;
+        box-sizing: border-box;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+    }
+}
+
+/* Base Styling */
 .reservation-form-container {
+    font-family: Arial, sans-serif;
     width: 100%;
 }
 
-.reservation-form {
+.image-scroll-container {
+    height: 700px; /* Fixez la hauteur pour activer le défilement */
+    overflow-y: auto; /* Active le défilement vertical */
+    text-align: center; /* Centrage de l'image */
     width: 100%;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
+
+    button{
+        margin: 40px 0;
+    }
 }
+
+.image-scroll-container img {
+    width: 70%; /* L'image prend toute la largeur de son conteneur */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
 
 /* Quand l'onglet "Privatisation" est actif, toute la zone de l'en-tête est blanche */
 .popup-reservation-header.white-background {
@@ -1537,19 +1955,22 @@ body.shop-body {
     color: white; /* Texte de réservation reste blanc */
 }
 
+
+
 /* Responsivité pour mobiles */
 @media (max-width: 768px) {
     .popup-reservation-frame {
-        width: 95%;
+        width: 100% !important;
         height: 95vh;
         top: 2.5%;
         left: 2.5%;
+        margin: auto;
         transform: none;
         border-radius: 10px;
     }
     
     .popup-reservation-header {
-        height: 40px;
+        height: 60px;
         padding: 10px;
         background-color: #f7f7f7;
         border-bottom: 1px solid #ddd;
@@ -1563,6 +1984,49 @@ body.shop-body {
         font-size: 24px;
         cursor: pointer;
         color: #555;
+    }
+
+
+    .reservation-popup-content{
+        width: 100%;
+        flex-direction: column;
+        margin: auto;
+
+        .reservation-popup-left{
+            width: 100%;
+            flex-wrap: wrap-reverse;
+            order: 2;
+
+
+        }
+
+        .reservation-popup-right{
+            margin: auto;
+            order: 1;
+            width: 100%;
+
+            img{
+                width: 100%;
+            }
+
+        }
+    }
+
+
+    /* Center-align the note text */
+    .reservation-popup-note {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .reservation-form-container{
+        img{
+            width: 100%;
+        }
+
+        button{
+            margin: 20px auto;
+        }
     }
 }
 
@@ -1711,19 +2175,6 @@ body.shop-body {
 
 
 
-/* Animation des boutons "La carte" et "Réserver" */
-.restaurant-buttons.menu-active .restaurant-button a {
-    background-color: black; /* Fond noir */
-    color: white; /* Texte blanc */
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Boutons par défaut */
-.restaurant-button a {
-    background-color: initial; /* Couleur de fond initiale */
-    color: initial; /* Couleur de texte initiale */
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
 /* Styles pour le bouton Play/Pause dans la navigation */
 
 
@@ -2091,6 +2542,7 @@ body.radio-body .transition-content{
     border: none;
     font-size: 80px; /* Taille des icônes */
     color: white;
+    margin-top: 20vh;
     cursor: pointer;
     transition: color 0.3s;
 }
@@ -2145,7 +2597,7 @@ body.radio-body .transition-content{
 
     .radio-header{
         img{
-            transform: scale(0.6);
+            transform: scale(0.4);
         }
     }
 
@@ -2271,96 +2723,6 @@ body.radio-body .transition-content{
 
 .volume-control.volume-100 .bars .bar:nth-child(5) {
     background-color: white;
-}
-
-
-// Newsletter Body 
-.newsletter-body {
-    background: #FFF url('https://subtlepatterns.com/patterns/geometry.png') repeat;
-    font-family: 'JeanLuc Thin';
-    font-weight: 400;
-    overflow: hidden;
-
-    form {
-        position: relative;
-        margin: 50px auto 0;
-        width: 600px; 
-        padding: 50px;
-        z-index: 2; /* Pour s'assurer que le texte est au-dessus du ::before */
-
-
-        &:before {
-            content: "";
-            background: rgba(0, 0, 0, 1);
-            display: block;
-            width: 500px;
-            height: 2000px;
-            position: absolute;
-            z-index: -1;
-            transform: rotate(45deg);
-            top: -500px;
-            left: 380px;
-        }
-    }
-
-    label[for="email"] {
-        display: block;
-        padding: 20px 0;
-        font-size: 36px;
-        font-weight: 700;
-        letter-spacing: 10px;
-        text-transform: uppercase;
-        border-top: 5px solid #000;
-        border-bottom: 5px solid #000;
-        margin-bottom: 20px;
-        width: 30%;
-        transition: all 200ms ease;
-
-        &:hover {
-            width: 40%;
-        }
-    }
-
-    input:focus {
-        outline: 0;
-    }
-
-    input[type="email"] {
-        background: #FFF;
-        border: 0;
-        width: 320px;
-        padding: 30px;
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        float: left;
-        font-family: 'JeanLuc Thin';
-    }
-
-    input[type="submit"] {
-        color: #FFF;
-        background: linear-gradient(to right, #000 50%, white 50%);
-        background-size: 200% 100%;
-        background-position: left bottom;
-        border: 0;
-        width: 180px;
-        padding: 30px;
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 200ms ease;
-        border: 2px solid black;
-        font-family: 'JeanLuc Thin';
-
-
-        &:hover {
-            background-position: right bottom;
-            color: #000;
-        }
-    }
 }
 
 //INSTAGRAM
@@ -2504,54 +2866,41 @@ body.radio-body .transition-content{
  
     grid-row-end: 2;
     grid-column-end: 9;
-    
  }
 
- .manifesto-ig-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    transition: all 0.3s ease-in;
+ .manifesto-ig-logo{
+    padding: 50px;
+
+    .manifesto-ig-button-container{
+        margin: 10px auto;
+        height: 3vh;
+        background-color: black;
+        text-align: center;
+        display: flex; /* Utilisation de Flexbox pour le centrage */
+        align-items: center; /* Centre verticalement le contenu */
+        justify-content: center; /* Centre horizontalement le contenu */
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        transform: scale(1); /* État initial */
+
+
+        a{
+            color: white;
+            padding: 1px 10px;
+        }
+    }
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
 }
 
-.manifesto-ig-logo:hover{
-    transform: scale(1.04);
-}
 
-.manifesto-ig-instagram-logo {
-    width: 60%;
-    height: auto;
-    border-radius: 20%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-}
 
-.manifesto-ig-button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.manifesto-ig-button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-family: 'Apercu Mono', monospace;
-    font-size: 1.2rem;
-    text-decoration: none;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#item-11, #item-12, #item-13{
-    display: none;
-}
+// #item-11, #item-12, #item-13{
+//     display: none;
+// }
 @media (max-width: 768px) {
     .manifesto-ig-container {
         display: flex;
@@ -2583,16 +2932,7 @@ body.radio-body .transition-content{
         grid-column-end: 5;
         
      }
-     #item-1 {
-     
-        background-color: #58BDAD; 
-        grid-row-start: 5;
-        grid-column-start: 1;
-     
-        grid-row-end: 7;
-        grid-column-end: 3;
-        
-     }
+
      #item-2 {
      
         background-color: #BB9575; 
@@ -2609,80 +2949,40 @@ body.radio-body .transition-content{
         grid-row-start: 7;
         grid-column-start: 1;
      
-        grid-row-end: 8;
-        grid-column-end: 2;
+        grid-row-end: 9;
+        grid-column-end: 3;
         
      }
      #item-4 {
      
         background-color: #7DB57C; 
         grid-row-start: 7;
-        grid-column-start: 2;
-     
-        grid-row-end: 8;
-        grid-column-end: 3;
-        
-     }
-     #item-5 {
-     
-        background-color: #75BD79; 
-        grid-row-start: 7;
         grid-column-start: 3;
-     
-        grid-row-end: 8;
-        grid-column-end: 4;
-        
-     }
-     #item-6 {
-     
-        background-color: #DE9F79; 
-        grid-row-start: 7;
-        grid-column-start: 4;
-     
-        grid-row-end: 8;
-        grid-column-end: 5;
-        
-     }
-     #item-7 {
-     
-        background-color: #FB78B9; 
-        grid-row-start: 8;
-        grid-column-start: 1;
-     
-        grid-row-end: 9;
-        grid-column-end: 2;
-        
-     }
-     #item-8 {
-     
-        background-color: #5CEBBA; 
-        grid-row-start: 8;
-        grid-column-start: 2;
-     
-        grid-row-end: 9;
-        grid-column-end: 3;
-        
-     }
-     #item-9 {
-     
-        background-color: #59EFB7; 
-        grid-row-start: 8;
-        grid-column-start: 3;
-     
-        grid-row-end: 9;
-        grid-column-end: 4;
-        
-     }
-     #item-10 {
-     
-        background-color: #6D69DC; 
-        grid-row-start: 8;
-        grid-column-start: 4;
      
         grid-row-end: 9;
         grid-column-end: 5;
         
      }
+     #item-5,
+     #item-6,
+     #item-7,
+     #item-8,
+     #item-9,
+     #item-11,
+     #item-12,
+     #item-13 {
+         display: none;
+     }
+
+     #item-1 {
+        display: none;
+    }
+    
+    /* Afficher item-10 à la place de item-1 */
+    #item-10 {
+        grid-row: 5 / 7; /* Même position que item-1 */
+        grid-column: 1 / 3; /* Même position que item-1 */
+    }
 }
 
 
@@ -2763,7 +3063,6 @@ body.radio-body .transition-content{
     }
 }
 
-/* Style de base des boutons */
 .swiper-button-prev,
 .swiper-button-next {
     width: 40px;
@@ -2777,20 +3076,21 @@ body.radio-body .transition-content{
     font-size: 20px;
     color: white;
     cursor: pointer;
-    position: fixed; /* Positionnement fixe pour rester en place lors du défilement */
-    top: 5vh; /* 5vh du haut de la page */
-    z-index: 1000; /* Pour s'assurer qu'ils sont au-dessus du contenu */
+    position: fixed;
+    top: 50%; /* Positionnement vertical au milieu de la page */
+    transform: translateY(-50%); /* Ajuste le décalage vertical */
+    z-index: 1000;
 }
 
 /* Positionnement spécifique pour chaque bouton */
 .swiper-button-prev {
-    left: 50%; /* Position initiale au centre */
-    transform: translateX(-60px); /* Décale vers la gauche avec un espace de 20px */
+    left: 20px; /* Place le bouton prev à gauche, à 20px du bord */
+    transform: translateY(-50%); /* Garde l'alignement vertical */
 }
 
 .swiper-button-next {
-    left: 50%; /* Position initiale au centre */
-    transform: translateX(20px); /* Décale vers la droite avec un espace de 20px */
+    right: 20px; /* Place le bouton next à droite, à 20px du bord */
+    transform: translateY(-50%); /* Garde l'alignement vertical */
 }
 
 /* Supprime le contenu par défaut de Swiper */
@@ -2808,8 +3108,450 @@ body.radio-body .transition-content{
 }
 
 
+//Contact
+
+.body-contact{
+    overflow: hidden !important;
+}
+
+.contact-container {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    margin-top: 40px;
+    flex-direction: row; /* Par défaut en mode desktop */
+    font-family: 'Apercu Mono';
+}
+
+.contact-image {
+    width: 65%; /* Occupe 50% du conteneur parent */
+    height: auto;
+    object-fit: cover;
+    margin-left: -30px;
+
+
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 30px;
+
+    h2 {
+        font-family: 'JeanLuc Thin', sans-serif;
+        font-size: 4rem ;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        margin: auto;
+    }
+}
+
+.question-subject-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
 
 
 
+.subject-options, .question-options {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        background-color: #ffffff;
+        color: black;
+        border: 1px solid #d4d4d4;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Apercu Mono';
+
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+
+        &.active {
+            background-color: black;
+            color: white;        }
+    }
+}
 
 
+.form-row {
+    display: flex;
+    gap: 10px;
+    font-family: 'Apercu Mono';
+}
+
+.form-column {
+    flex: 1;
+}
+
+.form-row input,
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #e2e1e1;
+    margin: 10px 0;
+    border: 1px solid #d4d4d4;
+    font-family: 'Apercu Mono';
+}
+
+.form-row input,
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #e2e1e1;
+    margin: 10px 0;
+    border: 1px solid #d4d4d4;
+    font-family: 'Apercu Mono';
+}
+
+/* Style pour les titres de sections avec fond noir */
+.section-title {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Styles pour les blocs avec titre en fond noir */
+.form-section {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 380px; /* Augmente la hauteur du champ message */
+    resize: vertical;
+    font-family: 'Apercu Mono';
+
+}
+
+button[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: 10px 40px; /* Réduit la taille du bouton */
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Apercu Mono';
+    margin-top: 10px;
+    align-self: center; /* Centre le bouton dans le conteneur */
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        overflow: scroll; /* Passe en une seule colonne sur mobile */
+    }
+
+    .contact-image,
+    .contact-form {
+        width: 100%; /* L'image et le formulaire prennent toute la largeur */
+    }
+
+    .contact-form {
+        margin: 0;
+        
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+        }/* Supprime la marge pour un alignement complet sur mobile */
+    }
+
+
+}
+
+// CGV CGU
+
+/* Styles généraux pour la section CGV */
+#cgv-container {
+    background-color: #f2f2f2;
+    margin: 20px;
+    margin-top: 70px; // Couleur de fond gris clair pour tout le conteneur
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace;
+    color: #333; // Couleur de texte principale
+  }
+  
+  /* Styles pour le sommaire */
+  .cgv-summary {
+    margin-bottom: 20px;
+  
+    h1 {
+      font-family: 'JeanLuc Thin', sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        font-family: 'Apercu Mono', monospace;
+        font-size: 1rem;
+        margin-bottom: 5px;
+  
+        a {
+          color: #000;
+          text-decoration: underline;
+  
+          &:hover {
+            color: #d9534f; // Couleur de survol pour les liens
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-family: 'JeanLuc Thin', sans-serif;
+    font-size: 2rem;
+    color: #000;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles pour les sections principales comme CGU, CGV, Politique de Confidentialité */
+  .cgv-section {
+    margin: 10px;
+
+
+  
+
+  
+    h3 {
+      font-family: 'Apercu Mono';
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  
+    p, ul {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+  
+    /* Styles pour les paragraphes avec texte en couleur spécifique */
+    .cgv-important {
+      color: #d9534f; // Rouge pour les informations importantes
+      font-weight: bold;
+    }
+  }
+  
+  /* Liste avec points pour les sous-sections */
+  .cgv-list {
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      font-size: 1rem;
+      margin-bottom: 8px;
+  
+      a {
+        color: #000;
+        text-decoration: underline;
+  
+        &:hover {
+          color: #d9534f;
+        }
+      }
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    #cgv-container {
+      padding: 10px;
+    }
+  
+    .cgv-summary h1 {
+      font-size: 2rem;
+    }
+  
+    .cgv-section h2 {
+      font-size: 1.8rem;
+    }
+  
+    .cgv-section h3 {
+      font-size: 1rem;
+    }
+  
+    p, ul, li {
+      font-size: 0.9rem;
+    }
+  }
+
+
+//   NEWSLETTER
+
+/* Base styles for the body */
+.newsletter-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    overflow: hidden; /* Cache le débordement */
+}
+
+/* Main content styles */
+.newsletter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    max-width: 1200px; /* Limite la largeur du conteneur en mode desktop */
+}
+
+/* Main image section */
+.newsletter-image-section {
+    width: 100%; /* Prend 70% en mode desktop */
+    text-align: center;
+
+    .newsletter-main-image {
+        width: 50%;
+        height: auto;
+    }
+}
+
+/* Text section */
+.newsletter-text-section {
+    width: 100%; /* Prend 30% en mode desktop */
+    text-align: center;
+    padding: 0 20px;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: 'JeanLuc Thin', sans-serif;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-family: 'Aperçu Mono', monospace;
+        text-transform: lowercase;
+    }
+}
+
+/* Form styles */
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    input[type="email"],
+    button {
+        width: 50%;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    input[type="email"] {
+        padding: 0 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    button {
+        background-color: #000;
+        position: relative;
+        bottom: 0.5vh;
+        color: #fff;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #444;
+        }
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .newsletter-content {
+        flex-direction: column; /* Passe en colonne sur mobile */
+        padding: 10px;
+    }
+
+    .newsletter-image-section {
+        width: 100%; /* Prend 100% de la largeur en mode mobile */
+    }
+
+    .newsletter-text-section {
+        width: 100%; /* Prend 100% de la largeur en mode mobile */
+        padding: 20px 10px; /* Ajout d'un padding latéral pour l'aération */
+
+        h2 {
+            font-size: 2.4rem; /* Taille de texte réduite en mobile */
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .newsletter-form {
+        flex-direction: column; /* Pile verticalement en mode mobile */
+        
+        input[type="email"], button {
+            width: 100%; /* Prend toute la largeur */
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-bottom: 0; /* Supprime le margin en dessous du bouton */
+        }
+    }
+}
+
+.cgv-red{
+    color: red;
+}

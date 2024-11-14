@@ -20,25 +20,62 @@
     </div>
 
     <header>
+        <div class="burger-container">
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Navigation principale -->
         <nav class="restaurant-nav">
             <ul>
                 <li><a href="restaurant-2.html" class="active">Resto</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li>
-                    <a href="radio.html">Radio</a>
-                    <!-- Conteneur pour les boutons Play/Pause et Volume -->
-                    <div class="nav-radio-controls">
-                        <!-- Bouton Play/Pause -->
-                        <button class="nav-play-pause" id="nav-play-pause-button">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <!-- Bouton Volume -->
-                        <button class="nav-radio-button" id="nav-volume-button">
-                            <i class="fas fa-volume-off"></i>
-                        </button>
-                    </div>
-                </li>
+                <li><a href="radio.html">Radio</a></li>
             </ul>
+        </nav>
+        
+        <!-- Menu latéral qui s'affiche avec le burger -->
+<!-- Menu latéral -->
+<div class="side-menu">
+    <ul class="main-menu">
+        <li class="big-menu-item"><a href="./restaurant-2.html">RESTO</a></li>
+        <ul class="submenu">
+            <li><a href="#">La carte</a></li>
+            <li><a href="#">Réserver</a></li>
+            <li><a href="#">Privatiser</a></li>
+        </ul>
+        <li class="big-menu-item"><a href="./shop.html">SHOP</a></li>
+        <li class="big-menu-item"><a href="./radio.html">RADIO</a></li>
+    </ul>
+
+    <ul class="secondary-menu">
+        <li class="main-submenu"><a class="secondary-menu-a" href="./contact.html">Contact</a></li>
+        <li class="main-submenu"><a class="secondary-menu-a" href="./newsletter.html">Newsletter</a></li>
+    </ul>
+
+    <ul class="legal-menu">
+        <li class="legal-toggle main-submenu">
+            <a href="#" onclick="toggleLegalMenu(event)">Infos légales</a>
+        </li>
+        <ul class="legal-submenu">
+            <li><a href="./confidentialité.html">Mentions légales</a></li>
+            <li><a href="./confidentialité.html">CGV & CGU</a></li>
+            <li><a href="./confidentialité.html">Confidentialité</a></li>
+        </ul>
+    </ul>
+
+    <div class="social-section">
+        <p>Suivez-nous</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lesnicois/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/les-ni%C3%A7ois?originalSubdomain=fr"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>
+
         </nav>
     </header>
 
@@ -57,27 +94,41 @@
     </div>
 
     <section class="manifesto-sections-container">
+        <!-- Left Section -->
         <div class="manifesto-section manifesto-section-left">
-            <div class="manifesto-image" id="left-image" style="background-image: url('./assets/img/restaurant/photo-1.jpg');"></div>
-            <div class="manifesto-content">
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="left-image-current" style="background-image: url('./assets/img/restaurant/left/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="left-image-next"></div>
+            </div>
+            <div class="manifesto-content" id="left-text-manifesto">
                 <img src="./assets/img/square/resto-square.png" alt="Resto Bar Pétanque">
             </div>
         </div>
     
+        <!-- Middle Section -->
         <div class="manifesto-section manifesto-section-middle">
             <div class="manifesto-content" id="manifesto-main-content">
                 <img src="./assets/img/square/les-niçois-square.png" alt="Les Niçois">
             </div>
-            <div class="manifesto-image" id="middle-image" style="background-image: url('./assets/img/restaurant/photo-2.jpg');"></div>
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="middle-image-current" style="background-image: url('./assets/img/restaurant/center/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="middle-image-next"></div>
+            </div>
         </div>
     
+        <!-- Right Section -->
         <div class="manifesto-section manifesto-section-right">
-            <div class="manifesto-image" id="right-image" style="background-image: url('./assets/img/restaurant/photo-3.jpg');"></div>
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="right-image-current" style="background-image: url('./assets/img/restaurant/right/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="right-image-next"></div>
+            </div>
             <div class="manifesto-content">
-                <img src="./assets/img/square/date-squere.png" alt="Mardi au Samedi">
+                <img src="./assets/img/square/date-squere.png" id="right-text-manifesto" alt="Mardi au Samedi">
             </div>
         </div>
     </section>
+    
+    
     <section class="manifesto-ig-container">
         <div class="parent">
             <div class="angry-grid">
@@ -286,46 +337,57 @@
     
     <div id="carte-popup" class="popup">
         <div class="popup-content">
-            <span class="close-popup">&times;</span>
+            <span class="close-popup">X</span>
             <iframe src="carte.html" frameborder="0"></iframe>
         </div>
     </div>
 
     <div class="popup-reservation-frame" style="display: none;">
         <div class="popup-reservation-header">
-            <!-- Les deux onglets pour "Réservation" et "Privatisation" -->
             <div class="popup-nav">
                 <div class="popup-nav-item active" id="reservation-tab">Réservation</div>
                 <div class="popup-nav-item" id="privatisation-tab">Privatisation</div>
             </div>
             <span class="popup-reservation-close">&times;</span>
         </div>
-        
-        <!-- Contenu de la popup -->
+    
+        <!-- Content Sections -->
         <div class="popup-reservation-content">
-            <!-- Section Réservation -->
-            <div class="reservation-form-container" id="reservation-content">
-                <div class="reservation-form">
-                    <h2>Envoie-nous ta demande en cliquant sur le bouton réserver ! Si tu as des demandes particulières tu peux aussi nous envoyer un message sur insta, ou faire un mail à</h2>
-                    <p>jess@lesnicois.com</p>
-                    <iframe src="https://widget.thefork.com/7eb5a697-0080-442d-bb68-4ecfb64984c8" allow="payment *" style="width: 100%; min-height:800px; border:none; overflow:scroll;"></iframe>
+            <!-- Réservation Section -->
+            <div class="reservation-popup-content" id="reservation-content">
+                <div class="reservation-popup-left">
+                    <div class="reservation-popup-form">
+                        <iframe src="https://widget.thefork.com/7eb5a697-0080-442d-bb68-4ecfb64984c8" allow="payment *"
+                            style="width: 100%; min-height:800px; border:none; overflow:scroll;"></iframe>
+                    </div>
+                    <p class="reservation-popup-note">
+                        Psssst. Pour les demandes de privatisations groupes et entreprises, c'est l'onglet d'à côté !
+                    </p>
+                </div>
+                <div class="reservation-popup-right">
+                    <img src="./assets/img/contact/reserver.jpg" alt="Image de réservation">
+                </div>
+            </div>
+    
+            <!-- Privatisation Section -->
+            <div class="reservation-form-container" id="privatisation-content" style="display: none;">
+                <div class="image-scroll-container">
+                    <img src="./assets/img/contact/privatisation.jpg" alt="">
+                    <button class="restaurant-button"><a>Envoyer ma demande</a></button>
+
                 </div>
             </div>
             
-            <!-- Section Privatisation (vide pour le moment) -->
-            <div class="reservation-form-container" id="privatisation-content" style="display: none;">
-                <!-- Contenu de privatisation à ajouter ici ultérieurement -->
-            </div>
+            
         </div>
     </div>
     
+    
 
-    <!-- Cercle central avec le bouton "Infos" -->
-    <div id="info-button" class="circle">
-        <i class="fas fa-question"></i>
+    <!-- <div id="info-button" class="circle">
+        <i class="fas fa-question"></i>>
     </div>
 
-    <!-- Cercle autour contenant les liens avec des bordures internes pour séparer les quarts -->
     <div id="info-menu" class="outer-circle">
         <div class="quarter" id="quarter1">
             <a href="./cgv.html" class="circle-link">CGV&CGU</a>
@@ -339,7 +401,7 @@
         <div class="quarter" id="quarter4">
             <a href="./newsletter.html" class="circle-link">newsletter</a>
         </div>
-    </div>
+    </div> -->
 
     <div class="restaurant-buttons">
         <button class="restaurant-button open-popup"><a href="#" >La carte</a></button>
@@ -368,5 +430,22 @@
   // Exécute la fonction au chargement et à chaque redimensionnement de la fenêtre
   window.addEventListener('load', loadResponsiveHTML);
   window.addEventListener('resize', loadResponsiveHTML);
+  const burger = document.querySelector(".burger");
+  const sideMenu = document.querySelector(".side-menu");
+  
+  burger.addEventListener("click", function () {
+      burger.classList.toggle("open"); // Gère l'animation du burger
+      sideMenu.classList.toggle("open"); // Gère l'affichage du menu
+  });
+  
+  function toggleLegalMenu(event) {
+      event.preventDefault();
+      const toggleElement = document.querySelector('.legal-toggle');
+      const submenu = document.querySelector('.legal-submenu');
+  
+      // Bascule la classe open sur le toggle pour déplacer le soulignement
+      toggleElement.classList.toggle('open');
+  }
+  
 </script>
 </html>
