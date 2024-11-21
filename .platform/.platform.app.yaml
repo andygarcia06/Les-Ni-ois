@@ -10,13 +10,15 @@ disk: 1024
 # Commandes exécutées après le déploiement
 hooks:
   build: |
+    # Accéder au répertoire 'server' avant d'exécuter les commandes
     cd server
     npm install
+    npm run build
 
 # Configuration du service web
 web:
   commands:
-    start: npm start
+    start: cd server && npm start
   locations:
     "/":
       allow: true
