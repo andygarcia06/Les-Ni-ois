@@ -10,6 +10,7 @@ disk: 1024
 # Commandes exécutées après le déploiement
 hooks:
   build: |
+    # Exécuter npm install à la racine où se trouve package.json
     npm install
 
 # Commandes exécutées après le déploiement
