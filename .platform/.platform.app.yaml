@@ -1,17 +1,16 @@
-name: les-nicois
+# Nom de l'application
+name: 'les-nicois'
 
 # Définir l'environnement de déploiement (ici, Node.js)
-type: nodejs:16  # Version de Node.js à utiliser
+type: 'nodejs:16'  # Version de Node.js à utiliser
 
-# Définir la commande à utiliser pour démarrer le serveur
-hooks:
-  deploy: "npm install"  # Utilisation d'une chaîne de caractères simple pour npm install
-
+# Commandes exécutées après le déploiement
 web:
-  locations:
-    "/":
-      root: "les-Niçois"  # Répertoire contenant les fichiers statiques
-      # Ne pas utiliser la clé 'scripts' ou 'script' ici
-      # On configure juste les fichiers statiques à servir
   commands:
     start: cd server && npm start  # Démarrer le serveur depuis le dossier 'server'
+
+  locations:
+    '/':  # Dossier racine pour servir les fichiers statiques
+      passthru: true  # Permet de rediriger les fichiers non spécifiés
+      index: ["index.html"]  # Fichier index par défaut
+      allow: true
