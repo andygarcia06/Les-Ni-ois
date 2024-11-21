@@ -1,0 +1,25 @@
+# Nom de l'application
+name: 'app'
+
+# Type d'application avec version de Node.js
+type: 'nodejs:22'
+
+# Taille du disque allouée (en Mo)
+disk: 2048
+
+# Commandes exécutées après le déploiement
+hooks:
+  build: |
+    # Exécuter npm install à la racine
+    npm install
+
+# Commandes exécutées après le déploiement
+web:
+  commands:
+    start: cd server && npm start  # Démarrer le serveur depuis le dossier 'server'
+  locations:
+    '/':  # Dossier racine pour servir les fichiers statiques
+      root: '.'  # Utiliser la racine du projet pour servir les fichiers statiques
+      passthru: true  # Permet de rediriger les fichiers non spécifiés
+      index: ["index.html"]  # Fichier index par défaut
+      allow: true
