@@ -4,16 +4,18 @@ name: app
 # Type d'application
 type: nodejs:16
 
-# Taille du disque allouée
+# Taille du disque allouée (en Mo)
 disk: 1024
 
 # Commandes exécutées pendant le build
 build:
   flavor: "node"
+  source: server
 
 # Commandes exécutées après le déploiement
 hooks:
   build: |
+    cd server
     npm install
     npm run build
 
@@ -21,3 +23,6 @@ hooks:
 web:
   commands:
     start: npm start
+  locations:
+    "/":
+      allow: true
