@@ -2,7 +2,7 @@
 name: app
 
 # Type d'application
-type: nodejs:16
+type: nodejs
 
 # Taille du disque allouée (en Mo)
 disk: 1024
@@ -16,7 +16,6 @@ hooks:
   build: |
     cd server
     npm install
-    npm run build
 
 # Configuration du service web
 web:
