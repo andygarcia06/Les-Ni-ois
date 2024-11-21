@@ -1,5 +1,5 @@
 # Nom de l'application
-name: 'app'
+name: 'server'
 
 # Type d'application avec version de Node.js
 type: 'nodejs:22'
@@ -10,7 +10,7 @@ disk: 2048
 # Commandes exécutées après le déploiement
 hooks:
   build: |
-    # Exécuter npm install à la racine
+    # Exécuter npm install à la racine du projet
     npm install
 
 # Commandes exécutées après le déploiement
