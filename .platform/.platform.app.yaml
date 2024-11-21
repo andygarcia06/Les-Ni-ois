@@ -9,7 +9,7 @@ disk: 1024
 
 # Commandes exécutées pendant le build
 build:
-  flavor: nodejs
+  flavor: "nodejs"
 
 # Commandes exécutées après le déploiement
 hooks:
