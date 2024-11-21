@@ -9,8 +9,7 @@ disk: 1024
 
 # Commandes exécutées pendant le build
 build:
-  flavor: "node"
-  source: server
+  flavor: node
 
 # Commandes exécutées après le déploiement
 hooks:
