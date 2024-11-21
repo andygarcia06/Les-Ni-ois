@@ -1,5 +1,5 @@
 # Nom de l'application
-name: 'server'
+name: 'app'
 
 # Type d'application avec version de Node.js
 type: 'nodejs:22'
