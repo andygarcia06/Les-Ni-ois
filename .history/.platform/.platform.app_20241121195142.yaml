@@ -1,0 +1,23 @@
+# Nom de l'application
+name: app
+
+# Type d'application
+type: nodejs:16
+
+# Taille du disque allouée
+disk: 1024
+
+# Commandes exécutées pendant le build
+build:
+  flavor: "node"
+
+# Commandes exécutées après le déploiement
+hooks:
+  build: |
+    npm install
+    npm run build
+
+# Configuration du service web
+web:
+  commands:
+    start: npm start
