@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Les Niçois | La Radio qui sens le Sud depuis Paris</title>
+    <meta name="description" content="Découvrez Radio Les Niçois, votre station en ligne inspirée de Nice et du Sud. Écoutez les sons et vibes festives en direct depuis Paris." />
+    <meta name="keywords" content="Radio Les Niçois, Radio Nice, musique du Sud, vibes festives, radio en ligne, Nice, radio parisienne, musique live, ambiance niçoise" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Les Niçois" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+    <meta property="og:title" content="Radio Les Niçois | La Radio Méditerranéenne depuis Paris" />
+    <meta property="og:description" content="Plongez dans l'ambiance du Sud avec Radio Les Niçois, la station en ligne qui diffuse vibes festives et sons méditerranéens." />
+    <meta property="og:url" content="https://www.lesnicois.com/radio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.lesnicois.com/images/radio-les-nicois.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <meta name="view-transition" content="same-origin"/>
+</head>
+<body class="radio-body">
+    <nav class="restaurant-nav">
+        <ul>
+            <li><a href="restaurant.html">Resto</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="radio.html" class="active">Radio</a></li>
+        </ul>
+
+        <!-- Menu latéral -->
+<div class="side-menu">
+    <ul class="main-menu">
+        <li class="big-menu-item"><a href="./restaurant.html">RESTO</a></li>
+        <ul class="submenu">
+            <li><a href="#">La carte</a></li>
+            <li><a href="#">Réserver</a></li>
+            <li><a href="#">Privatiser</a></li>
+        </ul>
+        <li class="big-menu-item"><a href="./shop.html">SHOP</a></li>
+        <li class="big-menu-item"><a href="./radio.html">RADIO</a></li>
+    </ul>
+
+    <ul class="secondary-menu">
+        <li class="main-submenu"><a class="secondary-menu-a" href="./contact.html">Contact</a></li>
+        <li class="main-submenu"><a class="secondary-menu-a" href="./newsletter.html">Newsletter</a></li>
+    </ul>
+
+    <ul class="legal-menu">
+        <li class="legal-toggle main-submenu">
+            <a href="#" class="secondary-menu-a" onclick="toggleLegalMenu(event)">Infos légales</a>
+        </li>
+        <ul class="legal-submenu">
+            <li><a href="./confidentialité.html">Mentions légales</a></li>
+            <li><a href="./confidentialité.html">CGV & CGU</a></li>
+            <li><a href="./confidentialité.html">Confidentialité</a></li>
+        </ul>
+    </ul>
+
+    <div class="social-section">
+        <p>Suivez-nous</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lesnicois/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/les-ni%C3%A7ois?originalSubdomain=fr"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>
+    </nav>
+    <div id="content" class="transition-content">
+        <header>
+
+        </header>
+        <main>
+            <section class="radio-section">
+                <div class="radio-header">
+                    <img src="./assets/img/logo-les-nicois-white-transparent.png" alt="" srcset="">
+                    <div class="radio-buttons-container">
+                        <div class="radio-player-info">
+                            <button class="radio-button" id="play-pause-button"><i class="fas fa-play"></i></button>
+                            <button class="radio-button" id="volume-button"><i class="fas fa-volume-off"></i></button>
+                        </div>
+                        <div class="control-box volume-popup">
+                            <div class="volume-control">
+                                <div class="speker"><i class="fas fa-volume-off"></i></div>
+                                <div class="bars">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <input type="range" min="0" max="100" step="20" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <audio id="radio-player"  src="https://str0.creacast.com/purelectro2" preload="none"></audio>
+
+                    </div>
+                </div>
+            </section>
+            </section>
+
+        </main>
+        <!-- <div id="info-button" class="circle">
+            <p>Infos</p>
+        </div>
+
+
+
+        <div id="info-menu" class="outer-circle">
+            <div class="quarter" id="quarter1">
+                <a href="#" class="circle-link">CGV</a>
+            </div>
+            <div class="quarter" id="quarter2">
+                <a href="#" class="circle-link">CGU</a>
+            </div>
+            <div class="quarter" id="quarter3">
+                <a href="#" class="circle-link">Politique de confidentialité</a>
+            </div>
+            <div class="quarter" id="quarter4">
+                <a href="#" class="circle-link">Contact</a>
+            </div>
+        </div> -->
+    </div>
+    <script>
+        // Fonction pour vérifier la largeur de l'écran et afficher le bon HTML
+        function loadResponsiveHTML() {
+          const isMobile = window.innerWidth <= 768; // Vous pouvez ajuster la largeur ici
+          document.querySelector('.container.desktop').style.display = isMobile ? 'none' : 'grid';
+          document.querySelector('.container.mobile').style.display = isMobile ? 'grid' : 'none';
+        }
+      
+        // Exécute la fonction au chargement et à chaque redimensionnement de la fenêtre
+        window.addEventListener('load', loadResponsiveHTML);
+        window.addEventListener('resize', loadResponsiveHTML);
+        const burger = document.querySelector(".burger");
+        const sideMenu = document.querySelector(".side-menu");
+        
+        burger.addEventListener("click", function () {
+            burger.classList.toggle("open"); // Gère l'animation du burger
+            sideMenu.classList.toggle("open"); // Gère l'affichage du menu
+        });
+        
+        function toggleLegalMenu(event) {
+            event.preventDefault();
+            const toggleElement = document.querySelector('.legal-toggle');
+            const submenu = document.querySelector('.legal-submenu');
+        
+            // Bascule la classe open sur le toggle pour déplacer le soulignement
+            toggleElement.classList.toggle('open');
+        }
+        
+      </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="./assets//js/radio.js"></script>
+</body>
+</html>

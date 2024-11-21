@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Niçois - Manifesto</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</head>
+<body class="manifesto-body">
+    <div id="audio-container">
+        <audio id="radio-player" src="https://str0.creacast.com/purelectro2" preload="none"></audio>
+    </div>
+
+    <header>
+        <div class="burger-container">
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Navigation principale -->
+        <nav class="restaurant-nav">
+            <ul>
+                <li><a href="restaurant.html" class="active">Resto</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="radio.html">Radio</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Menu latéral qui s'affiche avec le burger -->
+<!-- Menu latéral -->
+<div class="side-menu">
+    <ul class="main-menu">
+        <li class="big-menu-item"><a href="./restaurant.html">RESTO</a></li>
+        <ul class="submenu">
+            <li><a href="#">La carte</a></li>
+            <li><a href="#">Réserver</a></li>
+            <li><a href="#">Privatiser</a></li>
+        </ul>
+        <li class="big-menu-item"><a href="./shop.html">SHOP</a></li>
+        <li class="big-menu-item"><a href="./radio.html">RADIO</a></li>
+    </ul>
+
+    <ul class="secondary-menu">
+        <li class="main-submenu"><a class="secondary-menu-a" href="./contact.html">Contact</a></li>
+        <li class="main-submenu"><a class="secondary-menu-a" href="./newsletter.html">Newsletter</a></li>
+    </ul>
+
+    <ul class="legal-menu">
+        <li class="legal-toggle main-submenu">
+            <a href="#" onclick="toggleLegalMenu(event)">Infos légales</a>
+        </li>
+        <ul class="legal-submenu">
+            <li><a href="./confidentialité.html">Mentions légales</a></li>
+            <li><a href="./confidentialité.html">CGV & CGU</a></li>
+            <li><a href="./confidentialité.html">Confidentialité</a></li>
+        </ul>
+    </ul>
+
+    <div class="social-section">
+        <p>Suivez-nous</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lesnicois/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/les-ni%C3%A7ois?originalSubdomain=fr"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </header>
+
+    <div class="nav-control-box nav-volume-popup">
+        <div class="nav-volume-control">
+            <div class="nav-speker"><i class="fas fa-volume-off"></i></div>
+            <div class="nav-bars">
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <span class="nav-bar"></span>
+                <input type="range" id="nav-volume-range" min="0" max="100" step="20" value="0">
+            </div>
+        </div>
+    </div>
+
+    <section class="manifesto-sections-container">
+        <!-- Left Section -->
+        <div class="manifesto-section manifesto-section-left">
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="left-image-current" style="background-image: url('./assets/img/restaurant/left/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="left-image-next"></div>
+            </div>
+            <div class="manifesto-content" id="left-text-manifesto">
+                <img src="./assets/img/square/resto-square.png" alt="Resto Bar Pétanque">
+            </div>
+        </div>
+    
+        <!-- Middle Section -->
+        <div class="manifesto-section manifesto-section-middle">
+            <div class="manifesto-content" id="manifesto-main-content">
+                <img src="./assets/img/square/les-niçois-square.png" alt="Les Niçois">
+            </div>
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="middle-image-current" style="background-image: url('./assets/img/restaurant/center/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="middle-image-next"></div>
+            </div>
+        </div>
+    
+        <!-- Right Section -->
+        <div class="manifesto-section manifesto-section-right">
+            <div class="manifesto-image-container">
+                <div class="manifesto-image" id="right-image-current" style="background-image: url('./assets/img/restaurant/right/9.jpg');"></div>
+                <div class="manifesto-image overlay" id="right-image-next"></div>
+            </div>
+            <div class="manifesto-content">
+                <img src="./assets/img/square/date-squere.png" id="right-text-manifesto" alt="Mardi au Samedi">
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="manifesto-ig-container">
+        <div class="parent">
+            <div class="angry-grid">
+                <div id="item-0">
+                    <img id="img-item-0" alt="">
+                </div>
+                <div id="item-1">
+                    <img id="img-item-1" alt="">
+                </div>
+                <div id="item-2">
+                    <img id="img-item-2" alt="">
+                </div>
+                <div id="item-3">
+                    <img id="img-item-3" alt="">
+                </div>
+                <div id="item-4">
+                    <img id="img-item-4" alt="">
+                </div>
+                <div id="item-5">
+                    <img id="img-item-5" alt="">
+                </div>
+                <div id="item-6">
+                    <img id="img-item-6" alt="">
+                </div>
+                <div id="item-7">
+                    <img id="img-item-7" alt="">
+                </div>
+                <div id="item-8">
+                    <img id="img-item-8" alt="">
+                </div>
+                <div id="item-9">
+                    <img id="img-item-9" alt="">
+                </div>
+                <div id="item-10">
+                    <div class="manifesto-ig-logo">
+                        <!-- Logo Instagram ici -->
+                        <img src="./assets/img/mnt/instagram-logo.jpeg" alt="Instagram logo" class="manifesto-ig-instagram-logo">
+                        <div class="manifesto-ig-button-container">
+                          <a href="https://www.instagram.com/lesnicois" class="manifesto-ig-button">@lesnicois</a>
+                        </div>
+                </div>
+                <div id="item-11">
+                    <img id="img-item-10" alt="">
+                </div>
+                <div id="item-12">
+                    <img id="img-item-11" alt="">
+                </div>
+                <div id="item-13">
+                    <img id="img-item-12" alt="">
+                </div>
+              </div>
+        </div>
+    </section>
+    
+    <section class="manifesto-swiper-container swiper">
+        <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-1">
+            <div class="swiper-manifesto-swiper-slide-container">
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/1.png" alt="Slide 1 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <div class="swiper-manifesto-line swiper-large-text">À TABLE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-2">
+            <div class="swiper-manifesto-swiper-slide-container">
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/2.png" alt="Slide 2 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <img src="./assets/img/manifesto/desktop/2.jpg" alt="Market Image" class="swiper-background-image">
+                    <div class="swiper-manifesto-content">
+                        <div class="swiper-manifesto-line" id="swiper-manifesto-line-1">ICI C'EST COMME ALLER AU <br> MARCHÉ COURS SALEYA</div>
+                        <div class="swiper-manifesto-line" id="swiper-manifesto-line-2">MAIS SANS ÊTRE OBLIGÉ DE PRENDRE UN AIRBNB GÉRÉ PAR UN PARISIEN ET DE SE LEVER <span class="swiper-little-manifesto">LE</span> DIMANCHE MATIN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-3">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/3.png" alt="Slide 3 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-html-content ">
+                        
+                        <!-- Texte principal en haut à gauche -->
+                        <div class="swiper-manifesto-content">
+                            <div class="swiper-manifesto-line">DE TOUTES FACONS, ON NE VA PAS SE MENTIR,<br> ON VOUS PRÉFÈRE CHEZ VOUS.</div>
+                        </div>
+
+                        <!-- Image centrale -->
+                        <div class="swiper-manifesto-image-container">
+                            <img src="./assets/img/manifesto/desktop/1.jpg" alt="French Riviera" class="swiper-manifesto-image">
+                        </div>
+
+                        <!-- Texte de crédit en bas à droite -->
+                        <div class="swiper-manifesto-line swiper-small-text">
+                            MERCI PARISCHICSTYLE.COM DE NOUS LAISSER <br>NOTRE CRÉDIT CAR C'EST PAS PARIS PLACE ICI
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-4">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/4.png" alt="Slide 4 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-html-content">
+                        <!-- Texte en haut -->
+                        <div class="swiper-manifesto-content swiper-text-top">
+                            <div class="swiper-manifesto-line">TU TROUVES QU'ON EXAGÈRE ?</div>
+                        </div>
+
+                        <!-- Image au centre avec texte autour -->
+                        <div class="swiper-manifesto-content swiper-text-center">
+                            <div class="swiper-manifesto-line swiper-right-aligned">NON, ON SAIT, C'EST TOUT.</div>
+                            <div class="swiper-image-text-container">
+                                <div class="swiper-manifesto-image-container">
+                                    <img src="./assets/img/manifesto/desktop/8.jpg" alt="Plate Image" class="swiper-manifesto-image">
+                                </div>
+                                <div class="swiper-manifesto-line swiper-text-right-of-image">ICI C'EST MIEUX</div>
+                            </div>
+                        </div>
+
+                        <!-- Texte en bas -->
+                        <div class="swiper-manifesto-content swiper-text-bottom">
+                            <div class="swiper-manifesto-line">D'AILLEURS IL Y A QUOI DANS TON ASSIETTE LÀ ?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-5">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/5.png" alt="Slide 5 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-html-content">
+                        <div class="swiper-manifesto-content">
+                            <div class="swiper-manifesto-line line-1">ATTENDS, LAISSE-MOI DEVINER :</div>
+                            <div class="swiper-manifesto-line line-2">
+                                <span class="highlight-red">TOMATES</span>, 
+                                <span class="highlight-yellow">CITRONS</span>, 
+                                <span class="highlight-green">OLIVES</span>
+                            </div>
+                            <div class="swiper-manifesto-line line-3">
+                                <span class="highlight-brown">POIVRONS</span>, 
+                                <span class="highlight-purple">AUBERGINES</span>, 
+                                <span class="highlight-purple-clear">FIGUES</span>...
+                            </div>
+                            <div class="swiper-manifesto-line line-4">JE PASSE SUR</div>
+                            <div class="swiper-manifesto-line line-5">
+                                <span class="small-text">LE</span> HOUMOUS DANS <span class="small-text">LE</span> FRIGO
+                            </div>
+                            <div class="swiper-manifesto-line line-6">
+                                ET <span class="small-text">LE</span> ROSÉ QUI PATIENTE
+                            </div>
+                            <div class="swiper-manifesto-line line-7">À COTÉ. VOILÀ.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWIPER 6 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-6">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/6.png" alt="Slide 6 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-html-content">
+                        <div class="swiper-manifesto-content">
+                            <!-- Première phrase en deux lignes avec "L'" en plus petit et positionné en bas -->
+                            <div class="swiper-manifesto-line line-1">
+                                EN FAIT TU NOUS RÊVES<br>
+                                TOUTE <span class="small-text">L'</span>ANNÉE COPAIN.
+                            </div>
+            
+                            <!-- Conteneur pour la ligne du bas et l'image à droite -->
+                            <div class="swiper-bottom-container">
+                                <div class="swiper-manifesto-line line-2">ALLEZ CA VA, VIENS.</div>
+                                <div class="swiper-manifesto-image-container">
+                                    <img src="./assets/img/manifesto/desktop/7.jpg" alt="Cafe Image" class="swiper-manifesto-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWIPER 7 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-7">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/7.png" alt="Slide 7 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <!-- Grand texte en haut, sur 5 lignes -->
+                        <div class="swiper-manifesto-line large-text">
+                            SI TU VEUX TE RAPPELER AU BON<br>
+                            SOUVENIR DE TON ÉTÉ TROP COURT,<br>
+                            DES APÉROS IMPROVISÉS ET DES<br>
+                            SOIRÉES ARROSÉES, TU SAIS À QUI<br>
+                            T'ADRESSER.
+                        </div>
+        
+                        <!-- Petit texte en bas avec image à droite -->
+                        <div class="swiper-bottom-container">
+                            <div class="small-text-container">
+                                <div class="swiper-manifesto-line small-text">CECI EST UN VRAI BATEAU,</div>
+                                <div class="swiper-manifesto-line small-text">AVEC LES VRAIS FONDATEURS,</div>
+                                <div class="swiper-manifesto-line small-text">DANS UNE VRAIE CRIQUE DE LA FRENCH RIVIERA,</div>
+                                <div class="swiper-manifesto-line small-text">COMME DISENT LES VRAIS AMÉRICAINS.</div>
+                            </div>
+                            <div class="swiper-manifesto-image-container">
+                                <img src="./assets/img/manifesto/desktop/5.jpg" alt="Boat Image" class="swiper-manifesto-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Swiper 8 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-8">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/8.png" alt="Slide 8 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <!-- Grand texte en haut avec "LES" en plus petit -->
+                        <div class="swiper-manifesto-line large-text">
+                            ON VOUS LAISSE <br><span class="small-text">LES</span> POLITESSES.
+                        </div>
+        
+                        <!-- Image centrale -->
+                        <div class="swiper-manifesto-image-container">
+                            <img src="./assets/img/manifesto/desktop/4.jpg" alt="Dinner Table Image" class="swiper-manifesto-image">
+                        </div>
+        
+                        <!-- Grand texte en bas avec "LA" en plus petit -->
+                        <div class="swiper-manifesto-line large-text">
+                            NOUS ON PRÉFÈRE<br> <span class="small-text">LA</span> GÉNÉROSITÉ.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  SWIPER 9 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-9">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/8.png" alt="Slide 9 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <!-- Texte sur 3 lignes avec l'image alignée à droite de la dernière ligne -->
+                        <div class="large-text">
+                            <span>D'AILLEURS ON N'OBLIGE</span><br>
+                            <span>PERSONNE À SE RESSERVIR</span><br>
+                            <span>UNE 3<span class="small-text">E</span> FOIS.</span>
+                        </div>
+                        
+                        <!-- Image placée à droite de la dernière ligne -->
+                        <div class="swiper-manifesto-image-container">
+                            <img src="./assets/img/manifesto/desktop/3.jpg" alt="Empty Plate Image" class="swiper-manifesto-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWIPER 10 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-10">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/8.png" alt="Slide 11 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        
+                        <!-- Texte en haut sur 2 lignes -->
+                        <div class="large-text top-text">
+                            ALORS SI TU VEUX <span class="small-text">LE</span> SOLEIL ET<br>
+                            <span class="small-text">LES</span> CIGALES
+                        </div>
+        
+                        <!-- Image au centre droite -->
+                        <div class="swiper-manifesto-image-container">
+                            <img src="./assets/img/manifesto/desktop/6.jpg" alt="Beach Image" class="swiper-manifesto-image">
+                        </div>
+        
+                        <!-- Texte en bas -->
+                        <div class="large-text bottom-text">
+                            PRENDS UN BILLET DE TRAIN.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWIPER 11 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-11">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/8.png" alt="Slide 11 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <div class="large-text centered-text">
+                            SINON IL Y A
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SWIPER 12 -->
+
+        <div class="manifesto-swiper-slide swiper-slide" id="swiper-manifesto-swiper-12">
+            <div class="swiper-manifesto-swiper-slide-container">
+                
+                <!-- Image pour mobile uniquement -->
+                <picture class="swiper-mobile-only">
+                    <img src="./assets/img/manifesto/mobile/8.png" alt="Slide 12 Mobile">
+                </picture>
+                
+                <!-- Contenu HTML pour desktop/tablette uniquement -->
+                <div class="swiper-desktop-only">
+                    <div class="swiper-manifesto-content">
+                        <div class="logo-container">
+                            <img src="./assets/img/logo-les-nicois.png" alt="Les Niçois Logo" class="logo-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        </div>
+    </section>
+    
+    
+    <div id="carte-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">X</span>
+            <iframe src="carte.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="popup-reservation-frame" style="display: none;">
+        <div class="popup-reservation-header">
+            <div class="popup-nav">
+                <div class="popup-nav-item active" id="reservation-tab">Réservation</div>
+                <div class="popup-nav-item" id="privatisation-tab">Privatisation</div>
+            </div>
+            <span class="popup-reservation-close">&times;</span>
+        </div>
+    
+        <!-- Content Sections -->
+        <div class="popup-reservation-content">
+            <!-- Réservation Section -->
+            <div class="reservation-popup-content" id="reservation-content">
+                <div class="reservation-popup-left">
+                    <div class="reservation-popup-form">
+                        <iframe src="https://widget.thefork.com/7eb5a697-0080-442d-bb68-4ecfb64984c8" allow="payment *"
+                            style="width: 100%; min-height:800px; border:none; overflow:scroll;"></iframe>
+                    </div>
+                    <p class="reservation-popup-note">
+                        Psssst. Pour les demandes de privatisations groupes et entreprises, c'est l'onglet d'à côté !
+                    </p>
+                </div>
+                <div class="reservation-popup-right">
+                    <img src="./assets/img/contact/reserver.jpg" alt="Image de réservation">
+                </div>
+            </div>
+    
+            <!-- Privatisation Section -->
+            <div class="reservation-form-container" id="privatisation-content" style="display: none;">
+                <div class="image-scroll-container">
+                    <img src="./assets/img/contact/privatisation.jpg" alt="">
+                    <button class="restaurant-button"><a>Envoyer ma demande</a></button>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    
+
+    <!-- <div id="info-button" class="circle">
+        <i class="fas fa-question"></i>>
+    </div>
+
+    <div id="info-menu" class="outer-circle">
+        <div class="quarter" id="quarter1">
+            <a href="./cgv.html" class="circle-link">CGV&CGU</a>
+        </div>
+        <div class="quarter" id="quarter2">
+            <a href="./confidentialité.html" class="circle-link">confidentialité</a>
+        </div>
+        <div class="quarter" id="quarter3">
+            <a href="./contact.html" class="circle-link">contact</a>
+        </div>
+        <div class="quarter" id="quarter4">
+            <a href="./newsletter.html" class="circle-link">newsletter</a>
+        </div>
+    </div> -->
+
+    <div class="restaurant-buttons">
+        <button class="restaurant-button open-popup"><a href="#" >La carte</a></button>
+        <button class="restaurant-button open-popup-res"><a>Réserver</a></button>
+    </div>
+    <script src="./assets/js/manifesto.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/player"></script>
+    <script src="./assets//js/animation.js"></script>
+
+
+
+</body>
+
+<script>
+  // Fonction pour vérifier la largeur de l'écran et afficher le bon HTML
+  function loadResponsiveHTML() {
+    const isMobile = window.innerWidth <= 768; // Vous pouvez ajuster la largeur ici
+    document.querySelector('.container.desktop').style.display = isMobile ? 'none' : 'grid';
+    document.querySelector('.container.mobile').style.display = isMobile ? 'grid' : 'none';
+  }
+
+  // Exécute la fonction au chargement et à chaque redimensionnement de la fenêtre
+  window.addEventListener('load', loadResponsiveHTML);
+  window.addEventListener('resize', loadResponsiveHTML);
+  const burger = document.querySelector(".burger");
+  const sideMenu = document.querySelector(".side-menu");
+  
+  burger.addEventListener("click", function () {
+      burger.classList.toggle("open"); // Gère l'animation du burger
+      sideMenu.classList.toggle("open"); // Gère l'affichage du menu
+  });
+  
+  function toggleLegalMenu(event) {
+      event.preventDefault();
+      const toggleElement = document.querySelector('.legal-toggle');
+      const submenu = document.querySelector('.legal-submenu');
+  
+      // Bascule la classe open sur le toggle pour déplacer le soulignement
+      toggleElement.classList.toggle('open');
+  }
+  
+</script>
+</html>

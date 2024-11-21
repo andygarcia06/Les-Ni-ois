@@ -1,0 +1,11 @@
+# Active la réécriture d'URL
+RewriteEngine On
+
+# Redirige les fichiers .html vers une version sans extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/?$ $1.html [L]
+
+# Permet de naviguer avec des URLs propres
+RewriteCond %{REQUEST_URI} ^(.*/)([^/]+)$
+RewriteRule ^ %2/ [L,R=301]

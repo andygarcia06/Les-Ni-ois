@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Les Niçois - Carte</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="carte-body">
+
+    <!-- Swiper pour mobile -->
+    <div class="swiper-container carte-swiper-mobile">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/mobile/carte-mobile-1.jpg" alt="Carte Mobile 1"></div>
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/mobile/carte-mobile-2.jpg" alt="Carte Mobile 2"></div>
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/mobile/carte-mobile-3.jpg" alt="Carte Mobile 3"></div>
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/mobile/carte-mobile-4.jpg" alt="Carte Mobile 4"></div>
+        </div>
+    </div>
+
+    <!-- Swiper pour desktop -->
+    <div class="swiper-container carte-swiper-desktop">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/desktop/carte-desktop-1.jpg" alt="Carte Desktop 1"></div>
+            <div class="swiper-slide"><img loading="lazy" src="./assets/img/carte/desktop/carte-desktop-2.jpg" alt="Carte Desktop 2"></div>
+            <div class="swiper-slide"><img  loading="lazy"src="./assets/img/carte/desktop/carte-desktop-3.jpg" alt="Carte Desktop 3"></div>
+        </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var carteSwiperMobile = new Swiper('.carte-swiper-mobile', {
+            loop: true,
+            effect: "fade",
+            grabCursor: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        var carteSwiperDesktop = new Swiper('.carte-swiper-desktop', {
+            loop: true,
+            effect: "fade",
+            grabCursor: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+
+</html>

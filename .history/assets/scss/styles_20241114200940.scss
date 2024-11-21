@@ -1,0 +1,3542 @@
+/* Styles globaux */
+:root {
+    view-transition-name: root;
+}
+
+@font-face {
+    font-family: 'Apercu Mono';
+    src: url('../fonts/Apercu-Mono.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JeanLuc Thin';
+    src: url('../fonts/jeanlucweb-thin.eot'); /* Fallback pour IE9- */
+    src: url('../fonts/jeanlucweb-thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/jeanlucweb-thin.woff') format('woff'), /* Navigateur modernes */
+         url('../fonts/jeanlucweb-thin.otf') format('opentype'), /* OpenType */
+         url('../fonts/jeanlucweb-thin.svg#JeanLucThin') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+
+
+$primary-color: #3498db;
+$primary-font: 'Apercu Mono', Arial, sans-serif;
+$title-font: 'JeanLuc Thin', Arial, sans-serif;
+$background-green: #23b388;
+$background-blue: #1531ec;
+$carte-yellow-background: #ffd700;
+$carte-blue-background: #87ceeb;
+$carte-pink-background: #ff69b4;
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    font-family: $primary-font;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; /* iOS overflow scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    overscroll-behavior: none; /* Désactiver le défilement élastique */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+// Prealoader
+.cedille {
+    position: relative; /* Nécessaire pour positionner le pseudo-élément relativement à l'élément .cedille */
+}
+
+.cedille::after {
+    content: '';
+    position: absolute;
+    bottom: 5px !important;
+    left: 52% !important;
+    transform: translateX(-50%); /* Centre le trait sous la lettre "C" */
+    width: 10.8px; /* Largeur du trait */
+    height:3.2px; /* Épaisseur du trait */
+    background-color: black; /* Couleur du trait */
+}
+/* Styles pour le preloader */
+/* Styles pour le preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 10000;
+    opacity: 1;
+}
+
+/* Styles pour le conteneur du logo */
+#preloader .title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1); /* Ajuste la taille de départ */
+}
+
+/* Style du logo */
+#preloader .logo {
+    max-width: 60%;
+    height: auto;
+    transform: scale(2);
+  
+    // Pour les petits écrans (tablettes)
+    @media (max-width: 768px) {
+      transform: scale(1); // Réduire légèrement le logo
+    }
+  
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+      transform: scale(0.2); // Réduire encore plus le logo
+    }
+  }
+
+
+
+/* Styles pour la page d'accueil */
+body.index-body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #161616;
+}
+
+/* Header de la page */
+.index-header {
+    text-align: center;
+    padding: 10px;
+    height: 6vh !important;
+    position: sticky;  /* Permet au header de rester collé en haut lors du défilement */
+    top: 0;
+    background-color: white;  /* Fond pour éviter le chevauchement avec le contenu */
+    z-index: 1000;  /* Assure que le header reste au-dessus des autres éléments lorsqu'il devient sticky */
+}
+
+.index-logo {
+    font-family: 'JeanLuc Thin', Arial, sans-serif;
+    font-size: 4rem;
+    position: relative;
+    top: -50px !important;
+    color: black;
+    transform: scale(0.3);
+}
+
+.index-logo .index-highlight {
+    font-weight: bold;
+    font-size: 10rem;
+    position: relative;
+    top: 40px !important;
+}
+
+.index-section {
+    position: relative;
+    margin: 0 2px;
+    width: 33%; /* Chaque section prend un tiers de la largeur de l'écran */
+    height: 100vh; /* La hauteur est égale à la hauteur de l'écran */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left; /* Les sections sont flottées pour être côte à côte horizontalement */
+    transition: background-color 0.5s ease;
+
+    .hover-background {
+        position: absolute;
+        top: 0;
+        left: -100%; /* Commence en dehors de la vue */
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        transition: left 0.3s ease; /* Vitesse de l'animation du hover */
+        z-index: 1;
+    }
+
+    .index-content {
+        position: relative;
+        z-index: 1;
+        color: black;
+        z-index: 2;
+
+        @media (max-width: 768px) {
+            font-size: 58px; // Augmenter légèrement la taille du texte pour les tablettes
+          }
+        
+          // Pour les très petits écrans (mobiles)
+          @media (max-width: 480px) {
+            font-size: 40px; // Augmenter davantage la taille du texte pour les mobiles
+          }
+    }
+}
+
+
+
+
+
+#index-section-1 {
+    background-image: url('../img/background/1.1.jpg'); /* Image pour la section 1 */
+    background-position: top left;
+}
+
+#index-section-2 {
+    background-image: url('../img/background/2.1.jpg');
+    background-position: 0px 10%;
+
+
+}
+
+#index-section-3 {
+    background-image: url('../img/background/3.1.jpg'); /* Image pour la section 3 */
+    background-size: 115% 100%;
+
+ 
+}
+
+/* Contenu des sections invisible par défaut */
+.index-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white; /* Texte blanc par défaut */
+    font-size: 10rem;
+    font-family: 'JeanLuc Thin', Arial, sans-serif;
+    opacity: 0; /* Contenu invisible par défaut */
+    transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out; /* Transition pour l'apparition du contenu et changement de couleur */
+}
+
+/* Apparition du contenu et changement de couleur au survol */
+.index-section:hover .index-content {
+    opacity: 1; /* Le contenu devient visible au survol */
+    color: black; /* Le texte devient noir quand le fond est blanc */
+}
+
+/* Responsive Media Query pour les tablettes */
+@media (max-width: 768px) {
+
+    .index-logo {
+        transform: scale(1.2) !important;
+    }
+
+    .title-container {
+        transform: scale(2.9) !important;
+    }
+
+    .index-section {
+        width: 100%; /* Chaque section prend toute la largeur de l'écran */
+        height: 33vh; /* La hauteur est un tiers de la hauteur de l'écran */
+        float: none; /* Retrait du flottement pour l'empilement vertical */
+        margin: 2px 0;
+    }
+
+    #index-section-1 {
+        background-image: url('../img/background/1.0.jpg'); /* Image pour la section 1 en mobile */
+    }
+
+    #index-section-2 {
+        background-image: url('../img/background/2.0.jpg'); /* Image pour la section 2 en mobile */
+        background-size: 120%;
+    }
+
+    #index-section-3 {
+        background-image: url('../img/background/3.0.jpg'); /* Image pour la section 3 en mobile */
+    }
+
+    .index-content {
+        font-size: 8rem; /* Ajuster la taille du texte pour les tablettes */
+    }
+}
+
+@media (max-width: 480px) {
+    .index-header {
+        padding: 10px;
+        height: 15vh;
+    }
+
+    .index-logo {
+        transform: scale(1.2);
+    }
+
+
+}
+
+
+
+/* Styles pour restaurant.html */
+body.restaurant-body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Menu latéral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initialement en dehors de l'écran */
+    width: 12%;
+    height: 100%;
+    background-color: #fff; /* Fond blanc */
+    color: black;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace; 
+    text-align: right !important;
+
+    @media (max-width: 768px){
+        width: 45%;
+    }
+
+    @media (max-width: 450px){
+        width: 45%;
+    }
+
+    &.open {
+        right: 0; /* Glisse le menu dans l'écran */
+    }
+
+    /* Menu principal */
+    .main-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        font-family: "JeanLuc Thin",;
+        text-transform: uppercase; 
+
+
+        .big-menu-item{
+            font-size: 400%;
+            text-align: right;
+        }
+
+
+        li {
+            margin: 15px 0;
+            font-size: 2.5rem; /* Taille plus grande pour les titres principaux */ /* Police JeanLuc Thin pour les titres */
+            font-weight: normal;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        /* Sous-menu */
+
+
+        
+    }
+
+    .submenu {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 20px 0;
+        font-family: 'Apercu Mono' !important; /* Police Apercu Mono pour le sous-menu */
+        font-weight: normal;
+        text-transform: lowercase ;
+        text-align: right;
+
+
+        li {
+            margin: 5px 0;
+            font-size: 1rem;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .main-submenu{
+        a{
+            color: black;
+            font-weight: normal;
+
+        }
+
+        .secondary-menu-a{
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%; 
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */
+                transition: all 0.3s ease;
+            }
+        }
+    }
+
+    .legal-menu,
+    .secondary-menu {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: right;
+        position: relative;
+    
+        /* Style pour les éléments principaux avec effet de soulignement */
+        .legal-toggle,
+        .secondary-menu li {
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Apercu Mono', monospace;
+            position: relative;
+            margin: 10px 0;
+            cursor: pointer;
+    
+            a {
+                color: black;
+                text-decoration: none; /* Pas de soulignement par défaut */
+            }
+    
+            /* Barre de soulignement dynamique */
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%;     
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */           
+                text-align: right;
+                transition: all 0.3s ease;
+
+
+
+            }
+        }
+    
+        /* Ajuste le soulignement lorsque le sous-menu est ouvert */
+        .legal-toggle.open::after {
+            bottom: -100px;
+
+            @media (max-width: 768px){
+                bottom: -120px;
+            }
+
+            @media (max-width: 450px){
+}
+        }
+    
+        /* Sous-menu avec transition pour affichage progressif */
+        .legal-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            font-family: 'Apercu Mono', monospace;
+            font-weight: normal;
+    
+            li {
+                margin: 8px 0;
+                font-size: 1rem;
+    
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    
+        /* Affiche le sous-menu en augmentant sa hauteur maximale */
+        .legal-toggle.open + .legal-submenu {
+            max-height: 100px; /* Ajustez cette valeur selon la hauteur nécessaire */
+        }
+    }
+    
+    
+    /* Section des réseaux sociaux */
+    .social-section {
+        margin-top: 20px;
+        text-align: right;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold; /* Apercu Bold pour "Suivez-nous" */
+            font-family: 'Apercu Mono', monospace;
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: right;
+            gap: 10px;
+
+            a {
+                color: black; /* Couleur de l'icône */
+                font-size: 1.5rem; /* Taille des icônes */
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #555; /* Couleur au survol */
+                }
+            }
+        }
+    }
+}
+
+
+
+/* Burger button  */
+.burger-container {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2000;
+    background-color: #000;
+    padding: 2px 5px;
+}
+
+.burger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+
+    span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 3px;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+
+   /* Ajustements pour le mode ouvert */
+   &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+
+&.open span:nth-child(2) {
+    opacity: 0;
+}
+
+&.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+}
+
+/* Navigation Styles */
+
+// Other nav
+.other-nav {
+    background: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 6vh; /* Hauteur fixe pour le menu de navigation */
+
+    ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%; /* Pour que les `li` prennent toute la hauteur */
+    }
+
+    .nav-logo {
+        flex: 0 0 20%; /* Logo occupe 10% de la largeur */
+        background-color: #000 !important;
+        
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-color: #000 !important;
+        }
+
+        img {
+            width: 40%; /* Ajuster la taille de l'image selon les besoins */
+            height: auto;
+        }
+    }
+
+    li {
+        flex: 1; /* Les autres éléments prennent une part égale des 90% restants */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Prend toute la hauteur du nav */
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #000; /* Texte noir pour les éléments non actifs */
+            background: #fff; /* Fond blanc pour les éléments non actifs */
+            text-decoration: none;
+
+            &.active {
+                background: #000; /* Fond noir pour l'élément actif */
+                color: #fff; /* Texte blanc pour l'élément actif */
+            }
+        }
+    }
+}
+
+
+.restaurant-nav {
+    background: #000;
+    position: fixed;
+    font-family: 'Apercu Mono';
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 6vh;
+    display: flex; 
+    
+
+    ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%; /* Assurez-vous que ul prend toute la hauteur de la nav */
+    }
+
+    li {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+
+        .nav-radio-controls {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            left: -35%;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .nav-play-pause, .nav-radio-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-play-pause i, .nav-radio-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Responsivité */
+        @media (max-width: 768px) {
+            .nav-radio-controls {
+                gap: 20px; 
+                left: -10%;
+            }
+        }
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        display: flex; /* Centrer le texte */
+        align-items: center; /* Centre verticalement */
+        justify-content: center; /* Centre horizontalement */
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+
+        &.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Quand l'icône change de play à pause, le texte "Radio" se décale légèrement vers la gauche */
+        .fa-pause {
+            transform: scale(1.2); /* Agrandir l'icône pause */
+            transition: transform 0.3s ease;
+        }
+
+        /* Déplacer le lien "Radio" quand l'icône change */
+        .nav-play-pause.fa-pause ~ a {
+            transform: translateX(-10px); /* Décale "Radio" vers la gauche */
+        }
+
+        /* Bouton Play/Pause au hover */
+        .nav-play-pause:hover {
+            color: yellow; /* Couleur au hover */
+        }
+    }
+}
+
+/* Popup de volume */
+.nav-volume-popup {
+    display: none; /* Masquer par défaut */
+    position: absolute;
+    top: 10%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 1);
+    padding: 0px 10px ;
+    z-index: 1000;
+
+    @media (max-width: 768px) {
+        top: 50%; /* Centré verticalement */
+        left: 50%; /* Centré horizontalement */
+        transform: translate(-50%, -50%); /* Centre la popup */
+        width: 80%; /* Largeur réduite pour petits écrans */
+        padding: 10px 20px;
+        border-radius: 8px; /* Arrondi léger */
+    }
+}
+
+.nav-volume-popup.nav-active {
+    display: block; /* Affiche la popup lorsqu'elle est active */
+}
+
+.nav-volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+}
+
+.nav-volume-control .nav-speker {
+    font-size: 40px;
+    color: black;
+    -webkit-text-stroke: 4px white;
+    padding: 10px;
+}
+
+.nav-control-box.nav-volume-on .nav-volume-control .nav-speker {
+    color: white;
+}
+
+.nav-volume-control .nav-bars {
+    display: flex;
+    align-items: flex-end;
+    width: 160px;
+    height: 40%;
+    margin-left: 20px;
+}
+
+.nav-volume-control .nav-bars .nav-bar {
+    width: 14%;
+    margin: 0 3%;
+    border: 4px solid white;
+    background-color: #000;
+    transition: .3s ease-in-out;
+}
+
+.nav-volume-control .nav-bars .nav-bar:nth-child(1) {
+    height: 20%;
+}
+
+.nav-volume-control .nav-bars .nav-bar:nth-child(2) {
+    height: 40%;
+}
+
+.nav-volume-control .nav-bars .nav-bar:nth-child(3) {
+    height: 60%;
+}
+
+.nav-volume-control .nav-bars .nav-bar:nth-child(4) {
+    height: 80%;
+}
+
+.nav-volume-control .nav-bars .nav-bar:nth-child(5) {
+    height: 100%;
+}
+
+.nav-volume-control .nav-bars input[type=range] {
+    position: absolute;
+    left: -10%;
+    width: 110%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Styles pour remplir les barres en fonction du volume */
+.nav-volume-control.nav-volume-20 .nav-bars .nav-bar:nth-child(1),
+.nav-volume-control.nav-volume-40 .nav-bars .nav-bar:nth-child(1),
+.nav-volume-control.nav-volume-60 .nav-bars .nav-bar:nth-child(1),
+.nav-volume-control.nav-volume-80 .nav-bars .nav-bar:nth-child(1),
+.nav-volume-control.nav-volume-100 .nav-bars .nav-bar:nth-child(1),
+
+.nav-volume-control.nav-volume-40 .nav-bars .nav-bar:nth-child(2),
+.nav-volume-control.nav-volume-60 .nav-bars .nav-bar:nth-child(2),
+.nav-volume-control.nav-volume-80 .nav-bars .nav-bar:nth-child(2),
+.nav-volume-control.nav-volume-100 .nav-bars .nav-bar:nth-child(2),
+
+.nav-volume-control.nav-volume-60 .nav-bars .nav-bar:nth-child(3),
+.nav-volume-control.nav-volume-80 .nav-bars .nav-bar:nth-child(3),
+.nav-volume-control.nav-volume-100 .nav-bars .nav-bar:nth-child(3),
+
+.nav-volume-control.nav-volume-80 .nav-bars .nav-bar:nth-child(4),
+.nav-volume-control.nav-volume-100 .nav-bars .nav-bar:nth-child(4),
+
+.nav-volume-control.nav-volume-100 .nav-bars .nav-bar:nth-child(5) {
+    background-color: white;
+}
+
+
+
+
+
+
+/* Carousel Section Styles */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Ajuster la hauteur selon vos besoins */
+}
+
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Section Styles */
+.restaurant-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.restaurant-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.restaurant-content {
+    z-index: 1;
+    text-align: center;
+    color: black;
+    padding: 10vh 40px;
+    background-color: #f5685d;
+    width: 100%;
+}
+
+.restaurant-title {
+    font-family: $title-font;
+    font-size: 9vw;
+    margin: 0;
+    margin-bottom: 0.5vw;
+}
+
+.restaurant-description {
+    font-family: $title-font;
+    font-size: 7vw;
+    margin: -10px;
+}
+
+.restaurant-image {
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.restaurant-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 60px !important; /* Ajuster l'espacement entre les boutons */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000; 
+    margin-bottom: 20px;
+}
+
+.restaurant-button {
+    padding: 10px 45px !important;
+    font-size: 1.5vw !important;
+    background-color: #000;
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Apercu Mono';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.restaurant-button a {
+    color: #fff; /* Couleur par défaut du lien */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease;
+}
+
+.restaurant-button:hover {
+    transform: scale(1.03);
+}
+
+
+
+.restaurant-button a{
+    color: white !important;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        }
+
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+        font-size: 1rem;    }
+}
+
+body.popup-active .restaurant-button {
+    display: none;
+}
+
+
+/* Style des boutons quand l'info est active */
+// .restaurant-button.info-active {
+//     background-color: white;
+//     a{
+//         color: black;
+//     }
+
+
+
+@media (max-width: 768px) {
+    .restaurant-button {
+        font-size: 3vw;
+        padding: 25px 50px !important;
+    }
+
+    .restaurant-buttons {
+        gap: 70px; /* Réduire l'espacement entre les boutons */
+        bottom: 3vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant-button {
+        font-size: 4vw;
+        padding: 20px 40px !important;
+    }
+
+    .restaurant-buttons {
+        gap: 50px; /* Réduire encore plus l'espacement entre les boutons */
+    }
+}
+
+
+
+
+@media (max-width: 480px) {
+    .restaurant-title {
+        font-size: 20vw;
+    }
+
+    .restaurant-description {
+        font-size: 10vw;
+    }
+
+    .restaurant-button {
+        font-size: 4vw;
+    }
+
+    .restaurant-initial-content h1 {
+        font-size: 20vw;
+    }
+
+    .restaurant-initial-content h2 {
+        font-size: 14vw;
+    }
+
+    .restaurant-initial-content p {
+        font-size: 4vw;
+    }
+
+    .instagram-title {
+        font-size: 6vw;
+    }
+
+    .instagram-post {
+        width: 100%;
+    }
+}
+
+
+// RESRERVATION.HTML
+
+// Variables globales
+$reservation-background: #bb59c4;
+$reservation-text-color: #fff;
+$reservation-button-color: #000;
+
+
+
+
+// shop.html
+
+.soon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments */
+    padding-top: 10vh;
+
+    h1, h2 {
+        font-size: 5rem;
+        width: 90vw; /* Limite la largeur du texte à celle de l'image */
+        max-width: 900px; /* Largeur maximale pour le texte et l'image en desktop */
+        text-align: center;
+        margin: 0;
+        margin-top: 3vh;
+    }
+
+    .soon-image-container {
+        width: 90vw; /* Limite la largeur de l'image */
+        max-width: 900px; /* Largeur maximale pour l'image en desktop */
+        margin: 0 auto;
+
+        .soon-main-image {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .soon-container {
+        padding-top: 3vh;
+
+        h1, h2 {
+            font-size: 3rem; /* Réduit la taille de la police en mobile */
+            width: 90vw; /* Maintient la même largeur que l'image */
+        }
+
+        .soon-image-container {
+            width: 90vw; /* Image maintient 90% de la largeur de l'écran */
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1, h2 {
+            font-size: 2rem; /* Réduit encore la taille de la police sur les petits écrans */
+        }
+    }
+}
+
+
+
+// POPUP
+
+/* Popup styles */
+
+.popup {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre plus visible */
+}
+
+.popup-content {
+    background-color: transparent; /* Rendre l'arrière-plan transparent */
+    margin: 0; /* Supprime toutes les marges */
+    padding: 0; /* Supprime tous les espacements internes */
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrer le swiper verticalement */
+    z-index: 2000;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+/* Positionner le bouton de fermeture en haut à droite */
+.close-popup {
+    position: absolute;
+    top: 20px; /* Position en haut de l'écran */
+    right: 20px; /* Position à droite de l'écran */
+    color: black;
+    font-size: 18px;
+    font-weight:100;
+    z-index: 20000;
+
+    &:hover,
+    &:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+/* Configuration du Swiper pour qu'il occupe toute la place */
+.swiper-container {
+    width: 100%;
+    height: 100%; /* Prend toute la hauteur */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que les images s'adaptent sans déformation */
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+// Carte.html
+/* Scope everything inside .body-cart */
+.carte-body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 90000000;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles pour mobile (4 slides) */
+.carte-swiper-mobile {
+    display: none;
+}
+
+/* Styles pour desktop (3 slides) */
+.carte-swiper-desktop {
+    display: none;
+}
+
+/* Media queries pour gérer les swipers */
+
+@media (max-width: 768px) {
+    .carte-swiper-mobile {
+        display: block;
+    }
+    .carte-swiper-desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .carte-swiper-mobile {
+        display: none;
+    }
+    .carte-swiper-desktop {
+        display: block;
+    }
+}
+
+
+// restaurant.html
+
+// Corps principal de la page Manifesto
+.manifesto-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    overflow-y: scroll; // Activer le scroll vertical
+    scroll-snap-type: y mandatory; // Défilement vertical obligatoire
+    scroll-behavior: smooth; // Transition douce lors du défilement}
+}
+
+// Section principale (chaque section occupe 100% de la hauteur de l'écran)
+.manifesto-body section {
+    height: 100vh !important;
+    scroll-snap-align: start; // Permet d'aligner chaque section en début de page
+    width: 100%;
+    overflow: hidden; // Empêcher le scroll interne
+}
+
+// Conteneur des sections
+.manifesto-sections-container {
+    display: flex;
+    margin-top: 6vh;
+    width: 100% !important;
+    height: 100vh;
+    font-family: $title-font;
+    margin-bottom: -3vh;
+    overflow: hidden; // Désactiver le scroll interne
+    border-bottom: 10px solid black;
+}
+
+// Chaque section occupe 100% de la hauteur et 33% de la largeur en écran large
+.manifesto-section {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin-bottom: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Style des images dans chaque section (prend toute la largeur et la hauteur)
+.manifesto-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.manifesto-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease;
+    z-index: 1;
+}
+
+.overlay {
+    opacity: 0;
+    z-index: 2;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+// Contenu des sections
+.manifesto-content {
+    height: 50%; // Prend la moitié de la section
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// Images dans le contenu des sections
+.manifesto-content img {
+    max-width: 100%; // Assurer que les images sont responsives
+    height: auto;
+    opacity: 1;
+}
+
+// Effet hover pour rendre le contenu plus visible
+.manifesto-section:hover .manifesto-content {
+    background-color: white; // Fond blanc au hover
+}
+
+// Chargement d'images spécifiques à chaque section
+#index-section-1 .manifesto-image {
+    background-image: url('../img/background/section-1.jpg');
+}
+
+#index-section-2 .manifesto-image {
+    background-image: url('../img/background/section-2.jpg');
+}
+
+#index-section-3 .manifesto-image {
+    background-image: url('../img/background/section-3.jpg');
+}
+
+// Remplacement des images par les carrés fournis
+#index-section-1 .manifesto-content img {
+    content: url('./assets/image/square/resto-square.png');
+}
+
+#index-section-2 .manifesto-content img {
+    content: url('./assets/image/square/les-nicois-square.png');
+}
+
+#index-section-3 .manifesto-content img {
+    content: url('./assets/image/square/date-square.png');
+}
+
+// Media Queries pour tablettes
+// Responsive for tablets
+@media (max-width: 768px) {
+    .manifesto-sections-container {
+        flex-direction: column;
+    }
+
+    .manifesto-section {
+        width: 100%;
+        height: 35vh; // Increase height slightly for better visibility on smaller screens
+        margin: 2px 0;
+    }
+
+    .manifesto-content img {
+        max-width: 130%;
+        height: auto; // Maintain aspect ratio
+    }
+}
+
+// Responsive for small screens (like mobile)
+@media (max-width: 480px) {
+
+
+    .manifesto-section {
+        width: 100%;
+        display: flex;
+        flex-direction: row ;
+        height: calc(100vh / 3);        
+        margin-bottom: 2px;
+
+        img{
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    .manifesto-content {
+        height: 100%; // Allow content to take full height
+        width: 50%;
+        display: flex;
+
+        img{
+            transform: scale(0.8);
+        }
+
+    }
+
+   .manifesto-image-container{
+    width: 50%;
+   }
+}
+// Boutons pour les options (carte, réservation)
+
+
+
+
+
+
+#logo-manifesto {
+    transform: scale(0.4);
+    margin: auto;
+}
+
+
+/* Popup Reservation Frame */
+
+#reservation-content {
+    display: flex; /* Show reservation by default */
+    width: 100%;
+    flex-direction: row !important;
+    .reservation-popup-left{
+        width: 50%;
+    }
+
+    .reservation-popup-right{
+        width: 50%;
+    }
+}
+
+#privatisation-content {
+    display: none; /* Hide privatisation by default */
+    button{
+        margin:40px auto 60px;
+        
+    }
+}
+.popup-nav-item.active {
+    background-color: white;
+    color: #000;
+}
+
+.popup-nav-item:not(.active) {
+    background-color: black;
+    color: white;
+}
+.popup-reservation-frame {
+    position: fixed;
+    z-index: 999999990000000000000 !important; /* Utilisation d'un z-index élevé mais raisonnable */
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 60% !important;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;
+    overflow: scroll;
+}
+
+/* En-tête avec deux onglets (50% chacun) */
+.popup-reservation-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-nav {
+    display: flex;
+    width: 100%;
+}
+
+.popup-nav-item {
+    flex: 1; /* Chaque élément prend 50% */
+    text-align: center;
+    font-family: 'Apercu Mono';
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.popup-nav-item:last-child {
+    border-right: none; /* Pas de bordure à droite pour le dernier onglet */
+}
+
+.popup-nav-item.active {
+    background-color: white;
+    color: #000;
+}
+
+.popup-reservation-close {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+}
+
+.reservation-popup-frame {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .reservation-popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+
+        .reservation-popup-nav {
+            display: flex;
+            gap: 15px;
+
+            .reservation-popup-nav-item {
+                cursor: pointer;
+                padding: 10px;
+                font-weight: bold;
+
+                &.active {
+                    border-bottom: 2px solid black;
+                }
+            }
+        }
+
+        .reservation-popup-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+}
+
+.reservation-popup-content {
+    display: flex;
+    padding-top: 20px;
+
+    // Left section with the reservation form
+    .reservation-popup-left {
+        flex: 1;
+        width: 50%;
+        padding-right: 20px;
+        box-sizing: border-box;
+
+        .reservation-popup-form {
+            height: 30vh;
+            overflow: scroll;
+            iframe {
+                width: 100%;
+                min-height: 800px;
+                border: none;
+                overflow: scroll;
+            }
+        }
+
+
+        .reservation-popup-note {
+            font-size: 1.3em;
+            color: #666;
+            margin: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+    }
+
+    // Right section with the image and note
+    .reservation-popup-right {
+        flex: 1;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-left: 20px;
+        box-sizing: border-box;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+    }
+}
+
+/* Base Styling */
+.reservation-form-container {
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.image-scroll-container {
+    height: 700px; /* Fixez la hauteur pour activer le défilement */
+    overflow-y: auto; /* Active le défilement vertical */
+    text-align: center; /* Centrage de l'image */
+    width: 100%;
+
+    button{
+        margin: 40px 0;
+    }
+}
+
+.image-scroll-container img {
+    width: 70%; /* L'image prend toute la largeur de son conteneur */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+
+/* Quand l'onglet "Privatisation" est actif, toute la zone de l'en-tête est blanche */
+.popup-reservation-header.white-background {
+    background-color: white; /* Le fond entier de l'en-tête devient blanc */
+}
+
+.popup-reservation-header.white-background .popup-reservation-close {
+    color: black; /* Le bouton de fermeture devient noir */
+}
+
+.popup-reservation-header.white-background #reservation-tab {
+    background-color: black; /* Réservation reste noir */
+    color: white; /* Texte de réservation reste blanc */
+}
+
+
+
+/* Responsivité pour mobiles */
+@media (max-width: 768px) {
+    .popup-reservation-frame {
+        width: 100% !important;
+        height: 95vh;
+        top: 2.5%;
+        left: 2.5%;
+        margin: auto;
+        transform: none;
+        border-radius: 10px;
+    }
+    
+    .popup-reservation-header {
+        height: 60px;
+        padding: 10px;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .popup-nav-item {
+        font-size: 14px;
+    }
+    
+    .popup-reservation-close {
+        font-size: 24px;
+        cursor: pointer;
+        color: #555;
+    }
+
+
+    .reservation-popup-content{
+        width: 100%;
+        flex-direction: column;
+        margin: auto;
+
+        .reservation-popup-left{
+            width: 100%;
+            flex-wrap: wrap-reverse;
+            order: 2;
+
+
+        }
+
+        .reservation-popup-right{
+            margin: auto;
+            order: 1;
+            width: 100%;
+
+            img{
+                width: 100%;
+            }
+
+        }
+    }
+
+
+    /* Center-align the note text */
+    .reservation-popup-note {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .reservation-form-container{
+        img{
+            width: 100%;
+        }
+
+        button{
+            margin: 20px auto;
+        }
+    }
+}
+
+
+//  Swxiper Slides 
+
+.manifesto-slide {
+    font-family: 'JeanLuc Thin', sans-serif;
+    color: #000;
+    background-color: red; /* Couleur de fond temporaire pour visualiser */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.manifesto-slide h1, .manifesto-slide h2, .manifesto-slide p {
+    margin: 1rem 0;
+}
+
+.manifesto-slide h1 {
+    font-size: 4vw;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.manifesto-slide h2 {
+    font-size: 3vw;
+    margin-top: 0.5rem;
+}
+
+.manifesto-slide p {
+    font-size: 2.5vw;
+    margin-bottom: 1rem;
+}
+
+.manifesto-slide img {
+    max-width: 50%;
+    height: auto;
+    margin-top: 1.5rem;
+}
+
+// WIP POPUP
+
+/* Styles pour la popup */
+.wip-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 700px;
+    height: 90vh;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'JeanLuc Thin';
+}
+
+/* Header de la popup */
+.wip-popup-header {
+    padding: 15px;
+    background-color: black;
+    color: white;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wip-popup-title {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.wip-popup-close {
+    font-size: 2rem;
+    cursor: pointer;
+    position: relative;
+    left: 96%;
+}
+
+/* Corps de la popup */
+.wip-popup-body {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Texte au-dessus et en dessous de l'image */
+.wip-popup-text {
+    font-size: 4rem;
+    margin-top: -30px;
+    text-transform: uppercase;
+}
+
+.wip-popup-image {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .wip-popup {
+        width: 95%;
+        height: 100vh;
+    }
+
+    .wip-popup-header {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .wip-popup-close {
+        font-size: 1.5rem;
+    }
+
+    .wip-popup-body {
+        padding: 15px;
+    }
+
+    .wip-popup-text {
+        font-size: 1.2rem;
+    }
+
+    .wip-popup-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.grab {
+    cursor: pointer;  /* Curseur main ouverte */
+}
+
+/* Icône de main fermée quand l'utilisateur "grab" */
+.grabbing {
+    cursor: grabbing;  /* Curseur main fermée */
+}
+
+
+
+/* Styles pour le bouton Play/Pause dans la navigation */
+
+
+// info et encart. 
+
+/* Cercle central avec le bouton "Infos" */
+#info-button {
+    position: fixed; /* Fixed pour le positionner en bas à droite de l'écran */
+    bottom: -70px;
+    z-index: 1999999;
+
+    right: -70px;
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    font-family: 'Apercu Mono';
+    
+    i{
+        position: relative;
+        bottom: 25px;
+        right: 25px;
+        font-size: 2rem;
+    }
+
+    p:hover{
+        transform:scale(1.1);
+        transform: rotate(-45deg);
+        position: relative;
+        margin: auto;
+        left: -30px;
+        top: -30px;
+    }
+}
+
+/* Pour les écrans de taille entre 1280px et 1920px (écrans moyens à grands) */
+@media (min-width: 1280px) and (max-width: 1920px) {
+    #info-button {
+        bottom: -70px;
+        right: -70px;
+        width: 150px;
+        height: 150px;
+
+        i{
+            position: relative;
+            bottom: 25px;
+            right: 25px;
+            font-size: 2rem;
+        }
+    }
+
+    #info-menu {
+        bottom: -400px;
+        right: -400px;
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* Pour les écrans de taille entre 768px et 1280px (tablettes et petits écrans) */
+@media (min-width: 768px) and (max-width: 1280px) {
+    #info-button {
+        bottom: -50px;
+        right: -50px;
+        width: 120px;
+        height: 120px;
+
+    }
+
+    #info-menu {
+        bottom: -320px;
+        right: -320px;
+        width: 320px;
+        height: 320px;
+    }
+}
+
+/* Pour les petits écrans (mobile, max-width 768px) */
+@media (max-width: 768px) {
+    #info-button {
+        bottom: -40px;
+        right: -40px;
+        width: 100px;
+        height: 100px;
+
+        i{
+            position: relative;
+            bottom: 15px;
+            right: 15px;
+            font-size: 2rem;
+        }
+    }
+
+    #info-menu {
+        bottom: -250px;
+        right: -250px;
+        width: 250px;
+        height: 250px;
+    }
+
+    .quarter {
+        font-size: 0.8rem; /* Ajustement de la taille du texte sur mobile */
+    }
+}
+
+/* Cercle extérieur contenant les liens */
+#info-menu {
+    position: fixed; /* Fixed pour le garder lié à l'écran, même comportement que le bouton */
+    bottom: -300px; /* Le décale pour qu'il soit centré derrière le bouton */
+    right: -300px;
+      /* Même chose, centré derrière le bouton */
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    z-index: 999999;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 999999;
+    background-color: white;
+    transform: scale(0); /* Initialement invisible avec scale(0) */
+    transition: transform 0.5s ease-in-out; /* Animation d'agrandissement */
+    font-family: 'JeanLuc Thin';
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Curseur de main ouverte */
+#info-menu.grab {
+    cursor: grab;
+}
+
+/* Curseur de main fermée */
+#info-menu.grabbing {
+    cursor: grabbing;
+}
+
+
+/* Chaque quart avec une bordure */
+.quarter {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Supprimer les bordures inutiles pour les quarts spécifiques */
+#quarter2, #quarter4 {
+    border-right: none;
+}
+#quarter3, #quarter4 {
+    border-bottom: none;
+}
+
+/* Lien textuel dans chaque quart */
+.circle-link {
+    color: black;
+    text-decoration: none;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+/* Ajuste chaque lien en fonction de son emplacement dans le cercle */
+#quarter1 .circle-link {
+    transform: rotate(-45deg);
+}
+#quarter2 .circle-link {
+    transform: rotate(45deg);
+}
+#quarter3 .circle-link {
+    transform: rotate(215deg);
+}
+#quarter4 .circle-link {
+    transform: rotate(135deg);
+}
+
+// SOON.HTML
+
+.soon-body {
+    overflow: hidden;
+}
+
+.soon-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10vh auto;
+    font-family: 'JeanLuc Thin';
+    font-size: 2.5rem;
+    overflow: hidden;
+    text-align: center;
+    height: 96vh;
+    margin-top: -10px;
+}
+
+.soon-small-text {
+    font-size: 2.7rem;
+    position: relative;
+    bottom: 25px;
+}
+
+/* Style pour le conteneur d'image */
+.soon-image-container {
+    margin: -60px 0;
+}
+
+/* Image au centre */
+.soon-main-image {
+    width: 60%;
+    max-width: 700px;
+    height: auto;
+}
+
+/* Texte en bas */
+.soon-bottom-text {
+    margin-top: -40px;
+}
+
+/* Media Queries */
+
+/* Pour les écrans de bureau larges */
+@media (min-width: 1200px) {
+    .soon-container {
+        font-size: 3rem;
+    }
+
+    .soon-small-text {
+        font-size: 3rem;
+    }
+
+    .soon-bottom-text {
+        font-size: 4rem;
+    }
+
+    .soon-main-image {
+        width: 50%;
+    }
+}
+
+/* Pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 992px) {
+    .soon-container {
+        font-size: 2rem;
+    }
+
+    .soon-small-text {
+        font-size: 2.5rem;
+    }
+
+    .soon-bottom-text {
+        font-size: 3rem;
+        margin-top: -30px;
+    }
+
+    .soon-main-image {
+        width: 70%;
+        max-width: 600px;
+    }
+}
+
+/* Pour les petits écrans (mobiles) */
+@media (max-width: 768px) {
+    .soon-container {
+        font-size: 1.5rem;
+    }
+
+    .soon-small-text {
+        font-size: 2rem;
+    }
+
+    .soon-bottom-text {
+        font-size: 2.5rem;
+        margin-top: -20px;
+    }
+
+    .soon-main-image {
+        width: 80%;
+        max-width: 400px;
+    }
+}
+
+/* Pour les très petits écrans (mobiles compacts) */
+@media (max-width: 480px) {
+    .soon-container {
+        font-size: 1.2rem;
+        margin: 5vh auto;
+    }
+
+    .soon-small-text {
+        font-size: 1.7rem;
+    }
+
+    .soon-bottom-text {
+        font-size: 2rem;
+        margin-top: -15px;
+    }
+
+    .soon-main-image {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+// RADIO.HTML
+
+/* Styles pour radio.html */
+body.radio-body .transition-content{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000;
+    font-family: 'YourPrimaryFont'; /* Assure-toi que cette police est bien importée */
+    overflow-y: hidden; /* Désactiver le scroll pour que tout soit centré verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hauteur de 100% pour centrer verticalement */
+
+    .radio-player-info{
+        width: 100%;
+        margin-top: -150px;
+        text-align: center;
+    }
+}
+
+/* Section centrale pour le logo et le player */
+.radio-section {
+    width: 100%;
+    text-align: center;
+}
+
+.radio-title {
+    font-size: 15rem; /* Taille plus grande du titre */
+    color: white;
+    font-family: 'JeanLuc Thin'; /* Police spécifique */
+    letter-spacing: 5px;
+
+    span {
+        font-size: 6rem; /* Taille réduite pour le sous-titre */
+        display: block;
+    }
+}
+
+
+
+/* Styles pour le bouton play/pause */
+.radio-player-info {
+    display: flex;
+    align-items: center;
+    gap: 55px; /* Espacement entre les boutons */
+    justify-content: center;
+}
+
+.radio-button {
+    background-color: transparent;
+    border: none;
+    font-size: 80px; /* Taille des icônes */
+    color: white;
+    margin-top: 20vh;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.radio-button:hover {
+   -webkit-text-stroke: 4px white;
+   color: black; /* Couleur au survol */
+}
+
+/* Style pour la popup du contrôle du volume */
+.volume-popup {
+    display: none; /* Masquée par défaut */
+    position: absolute;
+    top: 80%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 1);
+    padding: 20px 10px 30px 10px;
+    z-index: 100;
+    border: 4px solid white;
+
+}
+
+.volume-popup.active {
+    display: block; /* Afficher la popup quand active */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .radio-title {
+        font-size: 3rem; // Réduction du titre pour tablette
+    }
+
+    .radio-buttons-container {
+        flex-direction: column; // Boutons sous le player
+        align-items: center;
+        gap: 10px;
+        
+        .radio-player-info {
+            margin-top: 15px;
+        }
+    }
+
+    .volume-popup {
+        width: 150px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .radio-header{
+        img{
+            transform: scale(0.4);
+        }
+    }
+
+    .volume-popup {
+        width: 120px;
+        padding: 6px;
+    }
+
+    .radio-player-info{
+        position: relative;
+        top: 20vh;
+    }
+
+    #info-button {
+        width: 60px;
+        height: 60px;
+        font-size: 0.7rem;
+    }
+
+    .outer-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .outer-circle .circle-link {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+// Gestionnaire de volume 
+
+
+
+.control-box .icon {
+	font-size: 24px;
+	color: white;
+	transition: .3s ease-in-out;
+
+}
+
+
+.volume-control {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: baseline;
+    justify-content: center;
+}
+.volume-control .speker {
+	font-size: 90px;
+	font-weight: 600;
+	line-height: 1;
+	color: black;
+	transition: .3s ease-in-out;	
+	/* Contour blanc autour du texte (icône) */
+	-webkit-text-stroke: 4px white;
+
+	/* Fond noir pour l'icône */
+	display: inline-block;
+	padding: 10px;
+}
+
+.control-box.volume-on .volume-control .speker {
+	color: white;
+}
+.volume-control .bars {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	margin-left: 20px;
+	width: 160px;
+	height: 80%;
+}
+.volume-control .bars .bar {
+	width: 14%;
+	margin: 0 3%;
+	border: 4px solid white;
+    background-color: #000;	transition: .3s ease-in-out;
+}
+.volume-control .bars .bar:nth-child(1) {
+	height: 20%;
+}
+.volume-control .bars .bar:nth-child(2) {
+	height: 40%;
+}
+.volume-control .bars .bar:nth-child(3) {
+	height: 60%;
+}
+.volume-control .bars .bar:nth-child(4) {
+	height: 80%;
+}
+.volume-control .bars .bar:nth-child(5) {
+	height: 100%;
+}
+.volume-control .bars input[type=range] {
+	position: absolute;
+	left: -10%;
+	width: 110%;
+	height: 100%;
+	cursor: pointer;
+	opacity: 0;
+}
+.volume-control.volume-20 .bars .bar:nth-child(1),
+.volume-control.volume-40 .bars .bar:nth-child(1),
+.volume-control.volume-60 .bars .bar:nth-child(1),
+.volume-control.volume-80 .bars .bar:nth-child(1),
+.volume-control.volume-100 .bars .bar:nth-child(1),
+
+.volume-control.volume-40 .bars .bar:nth-child(2),
+.volume-control.volume-60 .bars .bar:nth-child(2),
+.volume-control.volume-80 .bars .bar:nth-child(2),
+.volume-control.volume-100 .bars .bar:nth-child(2),
+
+.volume-control.volume-60 .bars .bar:nth-child(3),
+.volume-control.volume-80 .bars .bar:nth-child(3),
+.volume-control.volume-100 .bars .bar:nth-child(3),
+
+.volume-control.volume-80 .bars .bar:nth-child(4),
+.volume-control.volume-100 .bars .bar:nth-child(4),
+
+.volume-control.volume-100 .bars .bar:nth-child(5) {
+    background-color: white;
+}
+
+//INSTAGRAM
+
+/* La section prend toute la hauteur de l'écran */
+.manifesto-ig-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    margin-top: 90px !important;
+    padding: 50px !important /* Ajustez la valeur selon l'espacement souhaité */
+
+}
+
+.angry-grid div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit le conteneur sans déformation */
+    display: block;
+    box-sizing: border-box;
+}
+
+.angry-grid {
+    display: grid; 
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    gap: 10px;
+    height: 100%;  
+    
+    div {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1; /* Rend chaque conteneur d'image carré */
+    }
+ }
+   
+ #item-0 {
+ 
+    background-color: #7D6567; 
+    grid-row-start: 1;
+    grid-column-start: 5;
+ 
+    grid-row-end: 3;
+    grid-column-end: 7;
+
+    
+ }
+ #item-1 {
+ 
+    grid-row-start: 2;
+    grid-column-start: 7;
+ 
+    grid-row-end: 3;
+    grid-column-end: 8;
+
+    
+ }
+ #item-2 {
+ 
+    grid-row-start: 2;
+    grid-column-start: 8;
+ 
+    grid-row-end: 3;
+    grid-column-end: 9;
+
+    
+ }
+ #item-3 {
+ 
+    grid-row-start: 3;
+    grid-column-start: 5;
+ 
+    grid-row-end: 5;
+    grid-column-end: 7;
+    
+ }
+ #item-4 {
+ 
+    grid-row-start: 1;
+    grid-column-start: 1;
+ 
+    grid-row-end: 5;
+    grid-column-end: 5;
+    
+ }
+ #item-5 {
+ 
+    grid-row-start: 1;
+    grid-column-start: 7;
+ 
+    grid-row-end: 2;
+    grid-column-end: 8;
+    
+ }
+ #item-6 {
+ 
+    background-color: #7B7966; 
+    grid-row-start: 3;
+    grid-column-start: 7;
+ 
+    grid-row-end: 4;
+    grid-column-end: 8;
+    
+ }
+ #item-7 {
+ 
+    grid-row-start: 4;
+    grid-column-start: 7;
+ 
+    grid-row-end: 5;
+    grid-column-end: 8;
+    
+ }
+ #item-8 {
+    background-color:white; 
+    grid-row-start: 4;
+    grid-column-start: 8;
+ 
+    grid-row-end: 5;
+    grid-column-end: 9;
+    padding-top: -20px;
+    
+ }
+ #item-9 {
+ 
+    background-color: #E8ACA8; 
+    grid-row-start: 3;
+    grid-column-start: 8;
+ 
+    grid-row-end: 4;
+    grid-column-end: 9;
+    
+ }
+ #item-10 {
+     grid-row-start: 1;
+    grid-column-start: 8;
+ 
+    grid-row-end: 2;
+    grid-column-end: 9;
+ }
+
+ .manifesto-ig-logo{
+    padding: 50px;
+
+    .manifesto-ig-button-container{
+        margin: 10px auto;
+        height: 3vh;
+        background-color: black;
+        text-align: center;
+        display: flex; /* Utilisation de Flexbox pour le centrage */
+        align-items: center; /* Centre verticalement le contenu */
+        justify-content: center; /* Centre horizontalement le contenu */
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        transform: scale(1); /* État initial */
+
+
+        a{
+            color: white;
+            padding: 1px 10px;
+        }
+    }
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+}
+
+
+
+// #item-11, #item-12, #item-13{
+//     display: none;
+// }
+@media (max-width: 768px) {
+    .manifesto-ig-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+        margin-top: 10px !important;
+        padding: 10px !important /* Ajustez la valeur selon l'espacement souhaité */
+    
+    }
+    .angry-grid {
+        display: grid; 
+     
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+        gap: 10px;
+        height: 100%;
+        
+     }
+       
+     #item-0 {
+     
+        background-color: #BAD666; 
+        grid-row-start: 1;
+        grid-column-start: 1;
+     
+        grid-row-end: 5;
+        grid-column-end: 5;
+        
+     }
+
+     #item-2 {
+     
+        background-color: #BB9575; 
+        grid-row-start: 5;
+        grid-column-start: 3;
+     
+        grid-row-end: 7;
+        grid-column-end: 5;
+        
+     }
+     #item-3 {
+     
+        background-color: #989EA8; 
+        grid-row-start: 7;
+        grid-column-start: 1;
+     
+        grid-row-end: 9;
+        grid-column-end: 3;
+        
+     }
+     #item-4 {
+     
+        background-color: #7DB57C; 
+        grid-row-start: 7;
+        grid-column-start: 3;
+     
+        grid-row-end: 9;
+        grid-column-end: 5;
+        
+     }
+     #item-5,
+     #item-6,
+     #item-7,
+     #item-8,
+     #item-9,
+     #item-11,
+     #item-12,
+     #item-13 {
+         display: none;
+     }
+
+     #item-1 {
+        display: none;
+    }
+    
+    /* Afficher item-10 à la place de item-1 */
+    #item-10 {
+        grid-row: 5 / 7; /* Même position que item-1 */
+        grid-column: 1 / 3; /* Même position que item-1 */
+    }
+}
+
+
+
+// SHOP  HTML
+@media (max-width: 768px) {
+    /* Conteneur principal */
+    .soon-container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Texte en haut */
+    .soon-top-text h1 {
+        font-size: 6.8rem !important; /* Réduire la taille pour l'adapter */
+        line-height: 0.8;
+    }
+
+    .soon-small-text {
+        font-size: 3rem;
+        bottom: 40px;
+        left: 20px;
+    }
+
+    /* Image principale */
+    .soon-image-container {
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .soon-main-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: -70px;
+    }
+
+    /* Texte en bas */
+    .soon-bottom-text h2 {
+        font-size: 6.8rem;
+        line-height: 0.8;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .soon-container {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Texte en haut */
+    .soon-top-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .soon-small-text {
+        font-size: 1.1rem;
+    }
+
+    /* Image principale */
+    .soon-image-container {
+        margin: 30px auto;
+        width: 80%;
+    }
+
+    .soon-main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Texte en bas */
+    .soon-bottom-text h2 {
+        font-size: 1.7rem;
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JeanLuc Thin', sans-serif;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    top: 50%; /* Positionnement vertical au milieu de la page */
+    transform: translateY(-50%); /* Ajuste le décalage vertical */
+    z-index: 1000;
+}
+
+/* Positionnement spécifique pour chaque bouton */
+.swiper-button-prev {
+    left: 20px; /* Place le bouton prev à gauche, à 20px du bord */
+    transform: translateY(-50%); /* Garde l'alignement vertical */
+}
+
+.swiper-button-next {
+    right: 20px; /* Place le bouton next à droite, à 20px du bord */
+    transform: translateY(-50%); /* Garde l'alignement vertical */
+}
+
+/* Supprime le contenu par défaut de Swiper */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: '';
+}
+
+.swiper-button-prev::before {
+    content: '<';
+}
+
+.swiper-button-next::before {
+    content: '>';
+}
+
+
+//Contact
+
+.body-contact{
+    overflow: hidden !important;
+}
+
+.contact-container {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    margin-top: 40px;
+    flex-direction: row; /* Par défaut en mode desktop */
+    font-family: 'Apercu Mono';
+}
+
+.contact-image {
+    width: 65%; /* Occupe 50% du conteneur parent */
+    height: auto;
+    object-fit: cover;
+    margin-left: -30px;
+
+
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 30px;
+
+    h2 {
+        font-family: 'JeanLuc Thin', sans-serif;
+        font-size: 4rem ;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        margin: auto;
+    }
+}
+
+.question-subject-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+
+
+.subject-options, .question-options {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        background-color: #ffffff;
+        color: black;
+        border: 1px solid #d4d4d4;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Apercu Mono';
+
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+
+        &.active {
+            background-color: black;
+            color: white;        }
+    }
+}
+
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    font-family: 'Apercu Mono';
+}
+
+.form-column {
+    flex: 1;
+}
+
+.form-row input,
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #e2e1e1;
+    margin: 10px 0;
+    border: 1px solid #d4d4d4;
+    font-family: 'Apercu Mono';
+}
+
+.form-row input,
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #e2e1e1;
+    margin: 10px 0;
+    border: 1px solid #d4d4d4;
+    font-family: 'Apercu Mono';
+}
+
+/* Style pour les titres de sections avec fond noir */
+.section-title {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Styles pour les blocs avec titre en fond noir */
+.form-section {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 380px; /* Augmente la hauteur du champ message */
+    resize: vertical;
+    font-family: 'Apercu Mono';
+
+}
+
+button[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: 10px 40px; /* Réduit la taille du bouton */
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Apercu Mono';
+    margin-top: 10px;
+    align-self: center; /* Centre le bouton dans le conteneur */
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        overflow: scroll; /* Passe en une seule colonne sur mobile */
+    }
+
+    .contact-image,
+    .contact-form {
+        width: 100%; /* L'image et le formulaire prennent toute la largeur */
+    }
+
+    .contact-form {
+        margin: 0;
+        
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+        }/* Supprime la marge pour un alignement complet sur mobile */
+    }
+
+
+}
+
+// CGV CGU
+
+/* Styles généraux pour la section CGV */
+#cgv-container {
+    background-color: #f2f2f2;
+    margin: 20px;
+    margin-top: 70px; // Couleur de fond gris clair pour tout le conteneur
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace;
+    color: #333; // Couleur de texte principale
+  }
+  
+  /* Styles pour le sommaire */
+  .cgv-summary {
+    margin-bottom: 20px;
+  
+    h1 {
+      font-family: 'JeanLuc Thin', sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        font-family: 'Apercu Mono', monospace;
+        font-size: 1rem;
+        margin-bottom: 5px;
+  
+        a {
+          color: #000;
+          text-decoration: underline;
+  
+          &:hover {
+            color: #d9534f; // Couleur de survol pour les liens
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-family: 'JeanLuc Thin', sans-serif;
+    font-size: 2rem;
+    color: #000;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles pour les sections principales comme CGU, CGV, Politique de Confidentialité */
+  .cgv-section {
+    margin: 10px;
+
+
+  
+
+  
+    h3 {
+      font-family: 'Apercu Mono';
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  
+    p, ul {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+  
+    /* Styles pour les paragraphes avec texte en couleur spécifique */
+    .cgv-important {
+      color: #d9534f; // Rouge pour les informations importantes
+      font-weight: bold;
+    }
+  }
+  
+  /* Liste avec points pour les sous-sections */
+  .cgv-list {
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      font-size: 1rem;
+      margin-bottom: 8px;
+  
+      a {
+        color: #000;
+        text-decoration: underline;
+  
+        &:hover {
+          color: #d9534f;
+        }
+      }
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    #cgv-container {
+      padding: 10px;
+    }
+  
+    .cgv-summary h1 {
+      font-size: 2rem;
+    }
+  
+    .cgv-section h2 {
+      font-size: 1.8rem;
+    }
+  
+    .cgv-section h3 {
+      font-size: 1rem;
+    }
+  
+    p, ul, li {
+      font-size: 0.9rem;
+    }
+  }
+
+
+//   NEWSLETTER
+
+/* Base styles for the body */
+.newsletter-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    overflow: hidden; /* Cache le débordement */
+}
+
+/* Main content styles */
+.newsletter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    max-width: 1200px; /* Limite la largeur du conteneur en mode desktop */
+}
+
+/* Main image section */
+.newsletter-image-section {
+    width: 100%; /* Prend 70% en mode desktop */
+    text-align: center;
+
+    .newsletter-main-image {
+        width: 50%;
+        height: auto;
+    }
+}
+
+/* Text section */
+.newsletter-text-section {
+    width: 100%; /* Prend 30% en mode desktop */
+    text-align: center;
+    padding: 0 20px;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: 'JeanLuc Thin', sans-serif;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-family: 'Aperçu Mono', monospace;
+        text-transform: lowercase;
+    }
+}
+
+/* Form styles */
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    input[type="email"],
+    button {
+        width: 50%;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    input[type="email"] {
+        padding: 0 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    button {
+        background-color: #000;
+        position: relative;
+        bottom: 0.5vh;
+        color: #fff;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #444;
+        }
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .newsletter-content {
+        flex-direction: column; /* Passe en colonne sur mobile */
+        padding: 10px;
+    }
+
+    .newsletter-image-section {
+        width: 100%; /* Prend 100% de la largeur en mode mobile */
+    }
+
+    .newsletter-text-section {
+        width: 100%; /* Prend 100% de la largeur en mode mobile */
+        padding: 20px 10px; /* Ajout d'un padding latéral pour l'aération */
+
+        h2 {
+            font-size: 2.4rem; /* Taille de texte réduite en mobile */
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .newsletter-form {
+        flex-direction: column; /* Pile verticalement en mode mobile */
+        
+        input[type="email"], button {
+            width: 100%; /* Prend toute la largeur */
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-bottom: 0; /* Supprime le margin en dessous du bouton */
+        }
+    }
+}
+
+.cgv-red{
+    color: red;
+}
+
+// SWIPER MANIFESTO
+
+
+
+.manifesto-swiper-container  {
+    font-family: 'JeanLuc Thin';
+    height: 100vh;
+
+
+    // Masquer le contenu HTML pour mobile par défaut
+    .swiper-desktop-only {
+        display: none; // Masquer le contenu HTML par défaut en mobile
+    }
+
+    // Afficher l'image pour mobile par défaut
+    .swiper-mobile-only {
+        display: block; // Afficher l'image pour mobile par défaut
+    }
+
+    // En version desktop (769px et plus), on inverse la visibilité
+    @media (min-width: 769px) {
+        .swiper-desktop-only {
+            display: block; // Affiche le contenu HTML pour desktop
+        }
+
+        .swiper-mobile-only {
+            display: none; // Masque l’image pour desktop
+        }
+    }
+
+    // Styles pour le texte avec des tailles proportionnelles à l’écran
+    .swiper-large-text {
+        font-size: 10vh;
+        text-transform: uppercase;
+    }
+
+    .swiper-small-text {
+        font-size: 3.33vh;
+        text-transform: uppercase;
+    }
+}
+
+// SWIPER SLIDE 1
+#swiper-manifesto-swiper-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .swiper-manifesto-content {
+            text-align: center;
+
+            .swiper-manifesto-line {
+                &.swiper-large-text {
+                    font-size: 10vh;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+// SWIPER SLIDE 2
+#swiper-manifesto-swiper-2 {
+    display: flex;
+    justify-content: center;
+    padding-top: 14vh;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        max-width: 90vw;
+        text-align: center;
+        overflow: hidden;
+
+        .swiper-background-image {
+            position: absolute;
+            top: 32%; 
+            left: 67%;
+            transform: translate(-50%, -50%); 
+            width: 18vw; 
+            height: auto; 
+            max-height: 50vh; 
+        }
+        
+
+        .swiper-manifesto-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #swiper-manifesto-line-1 {
+                width: 100%;              // Utilise toute la largeur du conteneur
+                text-align: justify;      // Justifie le texte pour occuper toute la largeur
+                font-size: 6vw;           // Taille proportionnelle à la largeur de l’écran
+                text-transform: uppercase;
+                line-height: 1.2;         // Ajuste l'espacement vertical entre les lignes
+                word-spacing: 3.8vw !important;      // Espacement entre les mots
+                letter-spacing: 0.7vw !important; 
+            
+                // Forcer la justification de la dernière ligne
+                &::after {
+                    content: '';          // Crée un espace vide pour forcer la justification
+                    display: inline-block;
+                    width: 100%;          // Prend toute la largeur du conteneur
+                }
+            }
+            
+            
+            #swiper-manifesto-line-2 {
+                width: 100%;              // Utilise toute la largeur du conteneur
+                text-align: justify;      // Justifie le texte pour occuper toute la largeur
+                font-size: 6vw;         // Taille plus petite pour la seconde ligne
+                text-transform: uppercase;
+                line-height: 1.2;
+                word-spacing: 0.4vw;      // Espacement entre les mots, ajusté pour correspondre à l'espacement désiré
+                letter-spacing: 0.08vw;   // Espacement entre les lettres
+            
+                // Forcer la justification de la dernière ligne
+                &::after {
+                    content: '';          // Crée un espace vide pour forcer la justification
+                    display: inline-block;
+                    width: 100%;
+                }
+            
+                // Style pour le mot "LE" en plus petit et aligné en haut
+                .swiper-little-manifesto {
+                    font-size: 3vw;       // Taille plus petite pour "LE"
+                    vertical-align: top;   // Aligne "LE" en haut par rapport au texte suivant
+                    margin-right: 0.3vw;   // Espace entre "LE" et "DIMANCHE"
+                }
+            }
+            
+        }
+    }
+}
+
+#swiper-manifesto-swiper-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 90vw;
+        max-width: 90vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .swiper-manifesto-content {
+                position: absolute;
+                top: 5vh;
+                left: 5vw;
+                width: 50%;
+
+                .swiper-manifesto-line {
+                    font-size: 5vw;
+                    text-transform: uppercase;
+                    margin: 0.5vh 0;
+                    line-height: 1.1;
+                    text-align: justify;
+                }
+            }
+
+            .swiper-manifesto-image-container {
+                position: absolute;
+                top: 69vh;                // Position verticale fixe pour éviter que l'image ne bouge
+                left: 28%;                // Centrage horizontal de l'image
+                transform: translate(-50%, -50%); // Centre l'image par rapport à son point central
+            
+                .swiper-manifesto-image {
+                    width: 15vw;          // Largeur proportionnelle, peut être ajustée si nécessaire
+                    height: auto;
+                    max-height: 60vh;     // Limite la hauteur pour préserver les proportions sans déborder
+                }
+            }
+            
+
+            .swiper-small-text {
+                position: absolute;
+                bottom: 5vh;
+                right: 5vw;
+                width: 40vw;             // Définit une largeur fixe pour que les lignes s'alignent
+                font-size: 2vw;
+                text-transform: uppercase;
+                line-height: 1.2;
+                text-align: justify;      // Justifie le texte pour qu'il occupe toute la largeur
+                display: flex;
+                flex-direction: column;   // Force chaque ligne dans une nouvelle ligne en tant que texte justifié
+            
+                // Utiliser ::after pour forcer la justification de la dernière ligne
+                &::after {
+                    content: '';           // Crée un espace vide pour forcer la justification de la dernière ligne
+                    display: inline-block;
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+}
+
+// SWIPER SLIDE 4
+
+#swiper-manifesto-swiper-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 90vw;
+        max-width: 90vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .swiper-text-top {
+                position: absolute;
+                top: 5vh;
+                left: 5vw;
+                width: 40%;
+
+                .swiper-manifesto-line {
+                    font-size: 5vw;
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+
+            .swiper-text-center {
+                position: absolute;
+                top: 50%;
+                left: 40%;
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+            
+                .swiper-right-aligned {
+                    font-size: 4.5vw;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    text-align: right;
+                    margin-right: 2vw;
+                }
+            
+                .swiper-manifesto-image-container {
+                    position: relative;
+                    width: 15vw;
+                    height: 15vw;
+                    margin-right: 2vw;
+            
+                    .swiper-manifesto-image {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            
+                .swiper-text-right-of-image {
+                    font-size: 4.5vw;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+            
+
+            .swiper-text-bottom {
+                position: absolute;
+                bottom: 5vh;
+                left: 5vw;
+                width: 50%;
+
+                .swiper-manifesto-line {
+                    font-size: 4.5vw;
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+
