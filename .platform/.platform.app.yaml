@@ -2,7 +2,7 @@
 name: app
 
 # Type d'application
-type: nodejs
+type: nodejs:16
 
 # Taille du disque allouée (en Mo)
 disk: 1024
