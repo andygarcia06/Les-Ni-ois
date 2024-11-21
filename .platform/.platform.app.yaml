@@ -1,0 +1,22 @@
+# Nom de l'application
+name: app
+
+# Type d'application
+type: nodejs:16
+
+# Commandes de construction et démarrage
+disk: 1024
+
+build:
+  flavor: nodejs
+
+# Commandes exécutées pendant le déploiement
+hooks:
+  build: |
+    npm install
+    npm run build
+
+# Configuration du service web
+web:
+  commands:
+    start: npm start
