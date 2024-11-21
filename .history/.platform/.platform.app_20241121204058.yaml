@@ -5,12 +5,12 @@ type: nodejs:16  # Version de Node.js à utiliser
 
 # Définir la commande à utiliser pour démarrer le serveur
 hooks:
-  deploy: "npm install"  # Utilisation d'une chaîne de caractères simple
+  deploy: "npm install"
+
 
 web:
   locations:
     "/":
       root: "les-Niçois"  # Répertoire contenant les fichiers statiques
-      index: "index.html"  # Fichier index à servir par défaut
       scripts:
         start: "server/server.js"
