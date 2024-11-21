@@ -1,0 +1,29 @@
+name: Deploy to OVH Web PaaS
+
+on:
+  push:
+    branches:
+      - master  # Remplacez "main" si votre branche principale a un autre nom.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Étape 2 : Configurer SSH
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.WEBPAAS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H git.ovhcloud-fr-1.webpaas.ovh.net >> ~/.ssh/known_hosts
+
+      # Étape 3 : Déployer vers OVH Web PaaS
+      - name: Deploy to OVH Web PaaS
+        run: |
+          git remote add webpaas 2jkzkewdrmoh2@git.ovhcloud-fr-1.webpaas.ovh.net:2jkzkewdrmoh2.git
+          git push webpaas main
