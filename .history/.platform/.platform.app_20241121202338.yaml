@@ -10,13 +10,13 @@ disk: 2048
 # Commandes exécutées après le déploiement
 hooks:
   build: |
-    # Installer les dépendances dans le répertoire racine
+    # Exécuter npm install à la racine du projet
     npm install
 
 # Commandes exécutées après le déploiement
 web:
   commands:
-    start: cd server && npm start  # Démarre le serveur depuis le dossier 'server'
+    start: cd server && npm start  # Démarrer le serveur depuis le dossier 'server'
   locations:
     '/':  # Dossier racine pour servir les fichiers statiques
       passthru: true  # Permet de rediriger les fichiers non spécifiés
