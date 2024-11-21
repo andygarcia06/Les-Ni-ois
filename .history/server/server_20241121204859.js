@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 // Serve index.html as the default file
 app.get('/', (req, res) => {
-    res.sendFile('../index.html', { root: __dirname });
+    res.sendFile('index.html', { root: __dirname });
   });
 
 
