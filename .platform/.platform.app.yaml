@@ -10,15 +10,15 @@ disk: 1024
 # Commandes exécutées après le déploiement
 hooks:
   build: |
-    # Assurez-vous que nous passons dans le dossier 'Les-Niçois/server' avant d'exécuter npm
-    cd Les-Niçois/server
+    # Accéder au répertoire 'server' situé à la racine du projet
+    cd server
     npm install
     npm run build
 
 # Configuration du service web
 web:
   commands:
-    start: cd Les-Niçois/server && npm start
+    start: cd server && npm start
   locations:
     "/":
       allow: true
