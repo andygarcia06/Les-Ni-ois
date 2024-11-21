@@ -7,17 +7,17 @@ type: nodejs:16
 # Taille du disque allouée (en Mo)
 disk: 1024
 
-# Commandes exécutées pendant le build
+# Commandes exécutées après le déploiement
 hooks:
   build: |
-    # Accéder au répertoire 'server' à la racine de votre projet
-    cd Les-Niçois/server
+    # Accéder directement au répertoire 'server' situé à la racine du projet
+    cd server
     npm install
 
 # Commandes exécutées après le déploiement
 web:
   commands:
-    start: cd Les-Niçois/server && npm start
+    start: cd server && npm start
   locations:
     "/":
       allow: true
