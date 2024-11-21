@@ -1,15 +1,11 @@
 # Nom de l'application
 name: app
 
-# Type d'application
+# Type d'application avec version de Node.js
 type: nodejs:16
 
 # Taille du disque allouée (en Mo)
 disk: 1024
-
-# Commandes exécutées pendant le build
-build:
-  flavor: "nodejs"
 
 # Commandes exécutées après le déploiement
 hooks:
