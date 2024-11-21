@@ -10,14 +10,12 @@ disk: 1024
 # Commandes exécutées après le déploiement
 hooks:
   build: |
-    # Accéder directement au répertoire 'server' situé à la racine du projet
-    cd server
     npm install
 
 # Commandes exécutées après le déploiement
 web:
   commands:
-    start: cd server && npm start
+    start: npm start
   locations:
     "/":
       allow: true
