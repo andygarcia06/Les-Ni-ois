@@ -7,10 +7,11 @@ type: 'nodejs:16'  # Version de Node.js à utiliser
 # Commandes exécutées après le déploiement
 web:
   commands:
-    start: cd server && npm start  # Démarrer le serveur depuis le dossier 'server'
+    start: cd server && node server.js  # Démarrer le serveur depuis le dossier 'server'
 
   locations:
-    '/':  # Dossier racine pour servir les fichiers statiques
-      passthru: true  # Permet de rediriger les fichiers non spécifiés
-      index: ["index.html"]  # Fichier index par défaut
+    '/':  # Serve les fichiers statiques depuis la racine du projet
+      root: '.'  # Dossier racine pour les fichiers statiques (HTML, CSS, JS)
+      passthru: true  # Permet de rediriger les fichiers non spécifiés (comme les images, etc.)
+      index: ["index.html"]  # Fichier d'index par défaut
       allow: true
