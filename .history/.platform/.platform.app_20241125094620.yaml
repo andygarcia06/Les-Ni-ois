@@ -1,0 +1,17 @@
+# Nom de l'application
+name: 'les-nicois'
+
+# Définir l'environnement de déploiement (ici, Node.js)
+type: 'nodejs:16'  # Version de Node.js à utiliser
+
+# Commandes exécutées après le déploiement
+web:
+  commands:
+    start: cd server && node server.js  # Démarrer le serveur depuis le dossier 'server'
+
+  locations:
+    '/':  # Serve les fichiers statiques depuis la racine du projet
+      root: '.'  # Dossier racine pour les fichiers statiques (HTML, CSS, JS)
+      passthru: true  # Permet de rediriger les fichiers non spécifiés (comme les images, etc.)
+      index: ["index.html"]  # Fichier d'index par défaut
+      allow: true
