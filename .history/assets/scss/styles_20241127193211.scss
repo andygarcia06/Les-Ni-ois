@@ -109,7 +109,7 @@ a{
   
     // Pour les très petits écrans (mobiles)
     @media (max-width: 480px) {
-      transform: scale(1) !important; // Réduire encore plus le logo
+      transform: scale(0.2); // Réduire encore plus le logo
     }
   }
 
@@ -203,13 +203,6 @@ body.index-body {
 #index-section-3 {
     background-image: url('../img/background/3.1.jpg'); /* Image pour la section 3 */
     background-size: 115% 100%;
-
-    @media (max-width: 768px) {
-        background-image: url('../img/background/background-mobile-3.png');
-        background-size:100%;
-        /* Image pour la section 3 */
-
-    }
 
  
 }
@@ -665,6 +658,7 @@ nav{
     }
 }
 
+
 .restaurant-nav {
     position: fixed; // Rend la navigation fixe
     top: 0; // Place la navigation en haut de la page
@@ -704,8 +698,76 @@ nav{
         }
       }
     }
-  }
-  
+
+
+        .nav-radio-controls {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            left: -35%;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .nav-play-pause, .nav-radio-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-play-pause i, .nav-radio-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Responsivité */
+        @media (max-width: 768px) {
+            .nav-radio-controls {
+                gap: 20px; 
+                left: -10%;
+            }
+
+
+        }
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        display: flex; /* Centrer le texte */
+        align-items: center; /* Centre verticalement */
+        justify-content: center; /* Centre horizontalement */
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+
+        &.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Quand l'icône change de play à pause, le texte "Radio" se décale légèrement vers la gauche */
+        .fa-pause {
+            transform: scale(1.2); /* Agrandir l'icône pause */
+            transition: transform 0.3s ease;
+        }
+
+        /* Déplacer le lien "Radio" quand l'icône change */
+        .nav-play-pause.fa-pause ~ a {
+            transform: translateX(-10px); /* Décale "Radio" vers la gauche */
+        }
+
+        /* Bouton Play/Pause au hover */
+        .nav-play-pause:hover {
+            color: yellow; /* Couleur au hover */
+        }
+    }
+}
 
 /* Popup de volume */
 .nav-volume-popup {

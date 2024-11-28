@@ -1,0 +1,1527 @@
+:root {
+    view-transition-name: root;
+}
+
+@font-face {
+    font-family: 'Apercu Mono';
+    src: url('../fonts/Apercu-Mono.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JeanLuc Thin';
+    src: url('../fonts/jeanlucweb-thin.eot'); /* Fallback pour IE9- */
+    src: url('../fonts/jeanlucweb-thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/jeanlucweb-thin.woff') format('woff'), /* Navigateur modernes */
+         url('../fonts/jeanlucweb-thin.otf') format('opentype'), /* OpenType */
+         url('../fonts/jeanlucweb-thin.svg#JeanLucThin') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+// NAV
+.restaurant-nav {
+    position: fixed; // Rend la navigation fixe
+    top: 0; // Place la navigation en haut de la page
+    left: 0; // Aligne la navigation sur le bord gauche
+    width: 100%; // La navigation occupe toute la largeur
+    z-index: 10; // Assure que la navigation reste au-dessus des autres éléments
+    display: flex; // Disposition en ligne
+    justify-content: space-evenly; // Espacement égal entre les éléments
+    align-items: center; // Centre les éléments verticalement
+    font-family: 'Apercu Mono', monospace; // Police Apercu Mono
+    background-color: #000; // Fond noir pour la navigation
+  
+    ul {
+      display: flex; // Les items sont en ligne
+      width: 100%; // La liste occupe toute la largeur
+      margin: 0;
+      padding: 0;
+      list-style: none; // Supprime les puces
+  
+      li {
+        flex: 0 0 33.33%; // Chaque élément prend 33% de la largeur
+        text-align: center; // Centre le texte
+        font-size: 2vw; // Taille de la police responsive
+        background-color: #000; // Fond noir par défaut
+  
+        a {
+          display: block; // Lien en mode bloc
+          color: #fff; // Texte blanc par défaut
+          text-decoration: none; // Supprime le soulignement
+          padding: 10px 0; // Espacement vertical
+          transition: all 0.3s ease; // Transition pour les interactions
+  
+          &.active {
+            background-color: #fff; // Fond blanc pour l'actif
+            color: #000; // Texte noir pour l'actif
+          }
+        }
+      }
+    }
+  }
+  
+
+  
+
+// BURGER & Buttons
+
+/* Burger button  */
+.burger-container {
+    position: fixed;
+    bottom: 20px;
+    right: 0px;
+    z-index: 2000;
+    background-color: #000;
+    padding: 2px 5px !important;
+    margin-right: 60px;
+
+    @media (max-width: 480px) {
+        bottom: 5.4vh;
+        margin-right: 20px;
+    }
+
+
+}
+
+.burger {
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px !important;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+
+    @media (max-width: 480px) {
+        padding: 11px 10px !important;
+    }
+    
+
+
+    span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 3px;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: 480px) {
+            width: 15px;
+            height: 2px;
+        }
+        
+    }
+
+   /* Ajustements pour le mode ouvert */
+   &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+
+&.open span:nth-child(2) {
+    opacity: 0;
+}
+
+&.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+}
+
+.restaurant-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 60px !important; /* Ajuster l'espacement entre les boutons */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    margin-bottom: 20px;
+}
+
+.restaurant-button {
+    padding: 10px 45px !important;
+    font-size: 1.5vw !important;
+    background-color: #000;
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Apercu Mono';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.restaurant-button a {
+    color: #fff; /* Couleur par défaut du lien */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease;
+}
+
+.restaurant-button:hover {
+    transform: scale(1.03);
+}
+
+
+
+.restaurant-button a{
+    color: white !important;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        }
+
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+        font-size: 1rem;    }
+}
+
+body.popup-active .restaurant-button {
+    display: none;
+}
+
+
+/* Style des boutons quand l'info est active */
+// .restaurant-button.info-active {
+//     background-color: white;
+//     a{
+//         color: black;
+//     }
+
+
+
+@media (max-width: 768px) {
+    .restaurant-button {
+        font-size: 3vw;
+        padding: 20px 20px !important;
+    }
+
+    .restaurant-buttons {
+        gap: 10px; /* Réduire l'espacement entre les boutons */
+        bottom: 3vh;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .restaurant-button {
+        font-size: 4vw;
+        padding: 10px 10px !important;    }
+
+    .restaurant-buttons {
+        gap: 10px !important; /* Réduire encore plus l'espacement entre les boutons */
+    }
+
+
+}
+
+
+
+// SIDE NEVIGATION
+
+/* Menu latéral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initialement en dehors de l'écran */
+    width: 12%;
+    height: 100%;
+    background-color: #fff; /* Fond blanc */
+    color: black;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace; 
+    text-align: right !important;
+
+    @media (max-width: 1200px){
+        width: 35%;
+    }
+
+    @media (max-width: 768px){
+        width: 45%;
+    }
+
+    @media (max-width: 450px){
+        width: 55%;
+    }
+
+    &.open {
+        right: 0; /* Glisse le menu dans l'écran */
+    }
+
+    /* Menu principal */
+    .main-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 10px 0;
+        font-family: "JeanLuc Thin",;
+        text-transform: uppercase; 
+
+
+        .big-menu-item{
+            font-size: 400%;
+            text-align: right;
+
+            @media (max-width: 450px) {
+                margin-top: -10px;
+            }
+        }
+
+
+        li {
+            margin: 10px 0;
+            font-size: 2.5rem; /* Taille plus grande pour les titres principaux */ /* Police JeanLuc Thin pour les titres */
+            font-weight: normal;
+
+            @media (max-width: 450px) {
+                margin: 0px 0;
+            }
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        /* Sous-menu */
+
+
+        
+    }
+
+    .submenu {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 20px 0;
+        font-family: 'Apercu Mono' !important; /* Police Apercu Mono pour le sous-menu */
+        font-weight: normal;
+        text-transform: lowercase ;
+        text-align: right;
+
+
+        li {
+            margin: 5px 0;
+            font-size: 1rem;
+
+            @media (max-width: 450px) {
+                margin: 0px 0;
+            }
+
+            
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .main-submenu{
+        a{
+            color: black;
+            font-weight: normal;
+
+        }
+
+        .secondary-menu a{
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%; 
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */
+                transition: all 0.3s ease;
+            }
+
+            @media (max-width: 450px) {
+                font-size: 3vw !important;
+            }
+        }
+    }
+
+    .legal-menu,
+    .secondary-menu {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: right;
+        position: relative;
+    
+
+        /* Style pour les éléments principaux avec effet de soulignement */
+        .legal-toggle,
+        .secondary-menu li {
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Apercu Mono', monospace;
+            position: relative;
+            margin: 10px 0;
+            cursor: pointer;
+            @media (max-width: 450px) {
+                margin: 2px 0;
+
+            }
+    
+            a {
+                color: black;
+                text-decoration: none; /* Pas de soulignement par défaut */
+
+                @media (max-width: 450px) {
+                    font-size: 3.5vw !important;
+                }
+            }
+    
+            /* Barre de soulignement dynamique */
+            &::after {
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%;     
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */           
+                text-align: right;
+                transition: all 0.3s ease;
+
+
+
+            }
+        }
+
+        .secondary-menu-a {
+            &::after{
+                content: "";
+                display: block;
+                width: 60%;
+                left: 40%;     
+                height: 1px;
+                background-color: black;
+                position: absolute;
+                bottom: -5px; /* Légèrement en dessous de l'élément */           
+                text-align: right;
+                transition: all 0.3s ease;
+    
+            } 
+        }
+    
+        /* Ajuste le soulignement lorsque le sous-menu est ouvert */
+        .legal-toggle.open::after {
+            bottom: -100px;
+
+            @media (max-width: 768px){
+                bottom: -80px;
+            }
+
+            @media (max-width: 450px){
+}
+        }
+    
+        /* Sous-menu avec transition pour affichage progressif */
+        .legal-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            font-family: 'Apercu Mono', monospace;
+            font-weight: normal;
+    
+            li {
+                margin: 8px 0;
+                font-size: 1rem;
+
+                @media (max-width: 450px) {
+                    margin: 2px 0;
+
+                }
+    
+                a {
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    
+        /* Affiche le sous-menu en augmentant sa hauteur maximale */
+        .legal-toggle.open + .legal-submenu {
+            max-height: 100px; /* Ajustez cette valeur selon la hauteur nécessaire */
+        }
+    }
+    
+    
+    /* Section des réseaux sociaux */
+    .social-section {
+        margin-top: 20px;
+        text-align: right;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold; /* Apercu Bold pour "Suivez-nous" */
+            font-family: 'Apercu Mono', monospace;
+            margin-bottom: 10px;
+
+            @media (max-width: 450px) {
+                font-size: 3.5vw !important; /* Taille des icônes */
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: right;
+            gap: 10px;
+
+            a {
+                color: black; /* Couleur de l'icône */
+                font-size: 1.5rem; /* Taille des icônes */
+                transition: color 0.3s ease;
+
+
+
+                &:hover {
+                    color: #555; /* Couleur au survol */
+                }
+            }
+        }
+    }
+}
+
+// Variables pour gérer les points de rupture
+$mobile-breakpoint: 768px;
+
+// Mixin pour appliquer 100dvh à chaque section
+@mixin full-device-height() {
+  height: 100dvh; // Toujours prendre en compte la hauteur visible du viewport
+  overflow: hidden; // Évite les débordements
+}
+
+// Application des styles
+.manifesto-sections-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .manifesto-section {
+    @include full-device-height(); // Chaque section occupe 100dvh
+    flex: 1; // Chaque section occupe un espace égal
+
+    &-left,
+    &-middle,
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; // Centrage vertical
+      align-items: center; // Centrage horizontal
+      position: relative; // Nécessaire pour les superpositions ou contenus positionnés
+      background-size: cover;
+      background-position: center;
+
+      .manifesto-content {
+        max-width: 90%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Gestion pour Swiper ou d'autres sections similaires
+.manifesto-swiper-container {
+  .swiper-slide {
+    @include full-device-height(); // Chaque slide occupe 100dvh
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// MANIFESTO SECTION 1
+
+.manifesto-sections-container {
+    display: flex;
+    flex-wrap: nowrap; // Aligne les sections horizontalement sur desktop
+    width: 100%; // Largeur totale
+    height: 100vh; // Chaque section prend 100% de la hauteur de la fenêtre
+  
+    .manifesto-section {
+      flex: 0 0 33.33%; // Chaque section occupe 33% de la largeur
+      display: flex;
+      flex-direction: column; // Empile le contenu verticalement
+      align-items: center;
+      justify-content: center;
+  
+      // Conteneur de l'image
+      .manifesto-image-container {
+        width: 100%; // Largeur pleine
+        height: 50%; // Prend 50% de la hauteur de la section
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      // Conteneur du texte
+      .manifesto-content {
+        width: 100%; // Largeur pleine
+        height: 50%; // Prend 50% de la hauteur de la section
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+  
+      &.manifesto-section-left,
+      &.manifesto-section-right {
+        // Image en haut, texte en bas
+        .manifesto-image-container {
+          order: 0; // Image en haut
+        }
+        .manifesto-content {
+          order: 1; // Contenu en bas
+        }
+      }
+  
+      &.manifesto-section-middle {
+        // Texte en haut, image en bas
+        .manifesto-image-container {
+          order: 1; // Image en bas
+        }
+        .manifesto-content {
+          order: 0; // Contenu en haut
+        }
+      }
+    }
+  }
+
+  // Style des images dans chaque section (prend toute la largeur et la hauteur)
+.manifesto-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.manifesto-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 90%;
+    transition: opacity 1s ease;
+    z-index: 1;
+}
+
+.overlay {
+    opacity: 0;
+    z-index: 2;
+}
+
+.fade-in {
+    opacity: 1;
+}
+  
+  // Responsive design pour les petits écrans
+  @media (max-width: 768px) {
+    .manifesto-sections-container {
+      flex-wrap: wrap; // Les sections passent à la ligne
+      height: auto; // Hauteur dynamique
+  
+      .manifesto-section {
+        flex: 0 0 100%; // Chaque section occupe 100% de la largeur en mobile
+        height: 100vh; // Chaque section prend toute la hauteur de l’écran
+  
+        .manifesto-image-container,
+        .manifesto-content {
+          height: 50%; // Chaque élément occupe 50% de la hauteur
+        }
+      }
+    }
+  }
+  
+
+// HTML et Body doivent s'adapter au flux général
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // Empêche le défilement horizontal
+}
+
+// SWIPER MANIFESTO SLIDE
+
+
+.manifesto-swiper-container  {
+    font-family: 'JeanLuc Thin';
+    height: 100vh;
+
+
+
+
+
+
+    // Masquer le contenu HTML pour mobile par défaut
+    .swiper-desktop-only {
+        display: none; // Masquer le contenu HTML par défaut en mobile
+    }
+
+    // Afficher l'image pour mobile par défaut
+
+
+    // En version desktop (769px et plus), on inverse la visibilité
+    @media (min-width: 769px) {
+        .swiper-desktop-only {
+            display: block; // Affiche le contenu HTML pour desktop
+        }
+
+        .swiper-mobile-only {
+            display: none; // Masque l’image pour desktop
+        }
+    }
+
+}
+
+.manifesto-swiper-slide{
+    width: 100%;
+}
+
+
+.swiper {
+    width: 100vw; /* La largeur du conteneur Swiper */
+    overflow: hidden; /* Empêche les débordements */
+}
+.swiper-wrapper {
+    display: flex; /* Les diapositives doivent être alignées en ligne */
+    width: 100%; /* Assurez que le wrapper prend toute la largeur */
+}
+
+.manifesto-swiper-slide {
+    box-sizing: border-box; /* Assure que le padding et les bordures sont inclus dans la largeur totale */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Empêche les débordements de contenu */
+}
+
+// SWIPER SLIDE 1
+#swiper-manifesto-swiper-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .swiper-manifesto-content {
+            text-align: center;
+
+            .swiper-manifesto-line {
+                &.swiper-large-text {
+                    font-size: 10vh;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+// SWIPER SLIDE 2
+#swiper-manifesto-swiper-2 {
+    display: flex;
+    justify-content: center;
+    padding-top: 14vh;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        max-width: 90vw;
+        text-align: center;
+        overflow: hidden;
+
+        .swiper-background-image {
+            position: absolute;
+            top: 32%; 
+            left: 67%;
+            transform: translate(-50%, -50%); 
+            width: 18vw; 
+            height: auto; 
+            max-height: 50vh; 
+        }
+        
+
+        .swiper-manifesto-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #swiper-manifesto-line-1 {
+                width: 100%;              // Utilise toute la largeur du conteneur
+                text-align: justify;      // Justifie le texte pour occuper toute la largeur
+                font-size: 6vw;           // Taille proportionnelle à la largeur de l’écran
+                text-transform: uppercase;
+                line-height: 1.2;         // Ajuste l'espacement vertical entre les lignes
+                word-spacing: 3.8vw !important;      // Espacement entre les mots
+                letter-spacing: 0.7vw !important; 
+            
+                // Forcer la justification de la dernière ligne
+                &::after {
+                    content: '';          // Crée un espace vide pour forcer la justification
+                    display: inline-block;
+                    width: 100%;          // Prend toute la largeur du conteneur
+                }
+            }
+            
+            
+            #swiper-manifesto-line-2 {
+                width: 100%;              // Utilise toute la largeur du conteneur
+                text-align: justify;      // Justifie le texte pour occuper toute la largeur
+                font-size: 6vw;         // Taille plus petite pour la seconde ligne
+                text-transform: uppercase;
+                line-height: 1.2;
+                word-spacing: 0.4vw;      // Espacement entre les mots, ajusté pour correspondre à l'espacement désiré
+                letter-spacing: 0.08vw;   // Espacement entre les lettres
+            
+                // Forcer la justification de la dernière ligne
+                &::after {
+                    content: '';          // Crée un espace vide pour forcer la justification
+                    display: inline-block;
+                    width: 100%;
+                }
+            
+                // Style pour le mot "LE" en plus petit et aligné en haut
+                .swiper-little-manifesto {
+                    font-size: 3vw;       // Taille plus petite pour "LE"
+                    vertical-align: top;   // Aligne "LE" en haut par rapport au texte suivant
+                    margin-right: 0.3vw;   // Espace entre "LE" et "DIMANCHE"
+                }
+            }
+            
+        }
+    }
+}
+
+#swiper-manifesto-swiper-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 90vw;
+        max-width: 90vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .swiper-manifesto-content {
+                position: absolute;
+                top: 10vh;
+                left: 5vw;
+                width: 50%;
+
+                .swiper-manifesto-line {
+                    font-size: 5vw;
+                    text-transform: uppercase;
+                    margin: 0.5vh 0;
+                    line-height: 1.1;
+                    text-align: justify;
+                }
+            }
+
+            .swiper-manifesto-image-container {
+                position: absolute;
+                top: 69vh;                // Position verticale fixe pour éviter que l'image ne bouge
+                left: 28%;                // Centrage horizontal de l'image
+                transform: translate(-50%, -50%); // Centre l'image par rapport à son point central
+            
+                .swiper-manifesto-image {
+                    width: 15vw;          // Largeur proportionnelle, peut être ajustée si nécessaire
+                    height: auto;
+                    max-height: 60vh;     // Limite la hauteur pour préserver les proportions sans déborder
+                }
+            }
+            
+
+            .swiper-small-text {
+                position: absolute;
+                bottom: 5vh;
+                right: 5vw;
+                width: 40vw;             // Définit une largeur fixe pour que les lignes s'alignent
+                font-size: 2vw;
+                text-transform: uppercase;
+                line-height: 1.2;
+                text-align: justify;      // Justifie le texte pour qu'il occupe toute la largeur
+                display: flex;
+                flex-direction: column;   // Force chaque ligne dans une nouvelle ligne en tant que texte justifié
+            
+                // Utiliser ::after pour forcer la justification de la dernière ligne
+                &::after {
+                    content: '';           // Crée un espace vide pour forcer la justification de la dernière ligne
+                    display: inline-block;
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+}
+
+// SWIPER SLIDE 4
+
+#swiper-manifesto-swiper-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-size: 5.2vw;
+
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 90vw;
+        max-width: 90vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .swiper-text-top {
+                position: absolute;
+                top: 5vh;
+                left: 5vw;
+                width: 40%;
+
+                .swiper-manifesto-line {
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+
+            .swiper-text-center {
+                position: absolute;
+                top: 50vh;
+                left: 45vw;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 90%;
+            
+                .swiper-right-aligned {
+                    text-transform: uppercase;
+                    text-align: left;
+                    margin-bottom: 2vh;
+                }
+            
+                .swiper-image-text-container {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+            
+                    .swiper-manifesto-image-container {
+                        width: 7vw;
+                        height: 7vw;
+                        margin-right: 2vw;
+            
+                        .swiper-manifesto-image {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+            
+                    .swiper-text-right-of-image {
+                        text-transform: uppercase;
+                        line-height: 1.1;
+                        text-align: left;
+                    }
+                }
+            }
+            
+            
+            
+
+            .swiper-text-bottom {
+                position: absolute;
+                bottom: 5vh;
+                left: 5vw;
+                width: 80%;
+
+                .swiper-manifesto-line {
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+// Swiper slide 5
+
+#swiper-manifesto-swiper-5 {
+    display: flex;
+    padding: 5vh 3vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        height: 90vh;
+        overflow: hidden;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+
+            .swiper-manifesto-content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+
+                .swiper-manifesto-line {
+                    text-transform: uppercase;
+                    font-size: 5.5vw;
+                    line-height: 0.9;
+                    font-weight: normal;
+                    letter-spacing: 0.4vw;
+
+                    &.line-1 { width: 100%; }
+                    &.line-2 { width: 85%; }
+                    &.line-3 { width: 75%; }
+                    &.line-4 { width: 69%; }
+                    &.line-5 { width: 85%; }
+                    &.line-6 { width: 75%; }
+                    &.line-7 { width: 47%; }
+                }
+
+                .highlight-red { color: #ff0000; }
+                .highlight-yellow { color: yellow; }
+                .highlight-green { color: #388e3c; }
+                .highlight-brown { color: #b36b51; }
+                .highlight-purple { color: #6a1b9a; }
+                .highlight-purple-clear{ color: #8f34c7; }
+
+                .small-text {
+                    font-size: 2vw;
+                    position: relative;
+                    bottom: 5vh;
+                    left: 1vw;
+                }
+            }
+        }
+    }
+}
+
+// Swiper slide 6
+
+#swiper-manifesto-swiper-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-size: 7vw;
+
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        padding: 4vh 4vw;
+
+        .swiper-manifesto-html-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .swiper-manifesto-content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5vh;
+
+                .swiper-manifesto-line {
+                    text-transform: uppercase;
+                    line-height: 1.2;
+                    font-weight: normal;
+
+                    &.line-1 {
+                        width: 70vw;
+                        position: relative;
+                    }
+
+                    .small-text {
+                        font-size: 2vw;
+                        position: relative;
+                        bottom: 4vh;
+                    }
+                }
+
+                .swiper-bottom-container {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    padding-bottom: 6vh;
+
+                    .line-2 {
+                        width: 60vw;
+                        text-align: left;
+                        position: relative;
+                    }
+
+                    .swiper-manifesto-image-container {
+                        width: 30vw;
+                        margin-right: 18vw;
+
+                        .swiper-manifesto-image {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//  SWIPER 7
+
+#swiper-manifesto-swiper-7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 3vh 2vw;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        font-size: 6vw;
+
+
+        .swiper-desktop-only {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100vw;
+            height: 100%;
+
+            .swiper-manifesto-content {
+                display: flex;
+                flex-direction: column;
+                padding-top: 13vh;
+
+                .large-text {
+                    line-height: 1;
+                    width: 100%;
+                    text-transform: uppercase;
+                }
+
+                .swiper-bottom-container {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 5vh;
+
+                    .small-text-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1vh;
+                        width: 60vw;
+                        text-align: right;
+                        margin-right: 2vw;
+
+                        .small-text {
+                            font-size: 2vw;
+                            line-height: 1.2;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .swiper-manifesto-image-container {
+                        width: 30vw;
+                        margin-left: auto;
+
+                        .swiper-manifesto-image {
+                            width: 100%;
+                            height: auto;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Swiper 8
+
+#swiper-manifesto-swiper-8 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-desktop-only {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100%;
+            text-align: center;
+
+            .swiper-manifesto-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 4vh 5vw;
+
+
+                .large-text {
+                    font-size: 4vw;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    text-align: center;
+
+                    .small-text {
+                        font-size: 2.5vw;
+                        position: relative;
+                        bottom: 3vh;
+                    }
+                }
+
+                .swiper-manifesto-image-container {
+                    width: 40vw;
+                    height: auto;
+                    display: flex;
+                    justify-content: center;
+
+                    .swiper-manifesto-image {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//  SWIPER 9
+
+
+#swiper-manifesto-swiper-9 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-content {
+            position: relative;
+            width: 100vw;
+            margin-top: 20vh;
+
+            .large-text {
+                font-size: 7vw;
+                text-transform: uppercase;
+                text-align: left;
+                width: 100vw; // Le texte prend 55% de la largeur
+                display: flex;
+                flex-direction: column;
+                span{
+                    margin-top:-15vh
+                }
+            }
+
+            .small-text {
+                font-size: 4vw;
+                vertical-align: top;
+            }
+
+            .swiper-manifesto-image-container {
+                width: 40vw;
+                right: 30vw;
+                height: auto;
+                margin-left: auto;
+                position: relative;
+                bottom: 12vh;
+
+                .swiper-manifesto-image {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+// SWIPER 10
+
+#swiper-manifesto-swiper-10 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-content {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+
+            .large-text {
+                font-size: 6vw;
+                line-height: 1.2;
+                text-transform: uppercase;
+                text-align: left;
+                width: 100vw;
+                padding: 0 5vw;
+            }
+
+            .top-text {
+                position: absolute;
+                top: 5vh;
+                left: 0;
+            }
+
+            .small-text {
+                font-size: 2vw;
+                position: relative;
+                bottom: 5vh;
+            }
+
+            .swiper-manifesto-image-container {
+                position: absolute;
+                top: 20vh;
+                left: 50vw;
+                width: 30vw;
+                height: auto;
+
+                .swiper-manifesto-image {
+                    width: 80%;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+
+            .bottom-text {
+                position: absolute;
+                bottom: 5vh;
+                left: 0;
+                text-align: center;
+                width: 100vw;
+            }
+        }
+    }
+}
+
+#swiper-manifesto-swiper-11,
+#swiper-manifesto-swiper-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    .swiper-manifesto-swiper-slide-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .swiper-manifesto-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+
+            .large-text {
+                font-size: 7vw;
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            .centered-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+            }
+
+            .highlighted-text {
+                font-weight: bold;
+            }
+
+            .logo-container {
+                margin-top: 5vh;
+                width: 40vw;
+                height: auto;
+                display: flex;
+                justify-content: center;
+
+                .logo-image {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+// CARTE POPUP
+
+// POPUP
+
+/* Popup styles */
+
+
+
+
+.popup {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre plus visible */
+}
+
+.popup-content {
+    background-color: transparent; /* Rendre l'arrière-plan transparent */
+    margin: 0; /* Supprime toutes les marges */
+    padding: 0; /* Supprime tous les espacements internes */
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrer le swiper verticalement */
+    z-index: 2000;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+/* Positionner le bouton de fermeture en haut à droite */
+.close-popup {
+    position: absolute;
+    top: 20px; /* Position en haut de l'écran */
+    right: 20px; /* Position à droite de l'écran */
+    color: black;
+    font-size: 18px;
+    font-weight:100;
+    z-index: 20000;
+    font-family: 'Apercu mono';
+
+    &:hover,
+    &:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

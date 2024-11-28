@@ -93,7 +93,7 @@ a {
       transform: scale(1); } }
   @media (max-width: 480px) {
     #preloader .logo {
-      transform: scale(1) !important; } }
+      transform: scale(0.2); } }
 
 /* Styles pour la page d'accueil */
 body.index-body {
@@ -134,7 +134,7 @@ body.index-body {
   margin: 0 2px;
   width: 33%;
   /* Chaque section prend un tiers de la largeur de l'écran */
-  height: 100dvh;
+  height: 100vh;
   /* La hauteur est égale à la hauteur de l'écran */
   background-size: cover;
   background-repeat: no-repeat;
@@ -176,11 +176,6 @@ body.index-body {
   background-image: url("../img/background/3.1.jpg");
   /* Image pour la section 3 */
   background-size: 115% 100%; }
-  @media (max-width: 768px) {
-    #index-section-3 {
-      background-image: url("../img/background/background-mobile-3.png");
-      background-size: 100%;
-      /* Image pour la section 3 */ } }
 
 /* Contenu des sections invisible par défaut */
 .index-content {
@@ -540,36 +535,81 @@ body.restaurant-body {
           width: 60%; } }
 
 .restaurant-nav {
+  background: #000;
   position: fixed;
+  font-family: 'Apercu Mono';
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 10;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: 'Apercu Mono', monospace;
-  background-color: #000; }
+  z-index: 1000;
+  height: 6vh;
+  display: flex; }
   .restaurant-nav ul {
+    list-style: none;
     display: flex;
-    width: 100%;
     margin: 0;
     padding: 0;
-    list-style: none; }
-    .restaurant-nav ul li {
-      flex: 0 0 33.33%;
-      text-align: center;
-      font-size: 2vw;
-      background-color: #000; }
-      .restaurant-nav ul li a {
-        display: block;
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 0;
-        transition: all 0.3s ease; }
-        .restaurant-nav ul li a.active {
-          background-color: #fff;
-          color: #000; }
+    height: 100%;
+    width: 100%;
+    /* Assurez-vous que ul prend toute la hauteur de la nav */ }
+  .restaurant-nav li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /* Responsivité */ }
+    .restaurant-nav li .nav-radio-controls {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      left: -35%;
+      gap: 10px;
+      margin-left: 10px; }
+    .restaurant-nav li .nav-play-pause, .restaurant-nav li .nav-radio-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      padding: 0; }
+    .restaurant-nav li .nav-play-pause i, .restaurant-nav li .nav-radio-button i {
+      font-size: 1.2rem; }
+    @media (max-width: 768px) {
+      .restaurant-nav li .nav-radio-controls {
+        gap: 20px;
+        left: -10%;
+        margin-bottom: -100px; } }
+  .restaurant-nav a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    /* Centrer le texte */
+    align-items: center;
+    /* Centre verticalement */
+    justify-content: center;
+    /* Centre horizontalement */
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    /* Quand l'icône change de play à pause, le texte "Radio" se décale légèrement vers la gauche */
+    /* Déplacer le lien "Radio" quand l'icône change */
+    /* Bouton Play/Pause au hover */ }
+    .restaurant-nav a.active {
+      background: #fff;
+      color: #000; }
+    .restaurant-nav a .fa-pause {
+      transform: scale(1.2);
+      /* Agrandir l'icône pause */
+      transition: transform 0.3s ease; }
+    .restaurant-nav a .nav-play-pause.fa-pause ~ a {
+      transform: translateX(-10px);
+      /* Décale "Radio" vers la gauche */ }
+    .restaurant-nav a .nav-play-pause:hover {
+      color: yellow;
+      /* Couleur au hover */ }
 
 /* Popup de volume */
 .nav-volume-popup {
@@ -1009,7 +1049,7 @@ body.popup-active .restaurant-button {
       position: relative; } }
 
 .manifesto-body section {
-  height: 100dvh !important;
+  height: 100vh !important;
   scroll-snap-align: start;
   width: 100%;
   overflow: hidden; }
@@ -1017,7 +1057,7 @@ body.popup-active .restaurant-button {
 .manifesto-sections-container {
   display: flex;
   width: 100% !important;
-  height: 100dvh !important;
+  height: 100vh !important;
   margin-top: 9vh !important;
   font-family: "JeanLuc Thin", Arial, sans-serif;
   overflow: hidden;
@@ -1161,7 +1201,7 @@ body.popup-active .restaurant-button {
     width: 100%;
     display: flex;
     flex-direction: row;
-    height: calc(100dvh / 3);
+    height: calc(100vh / 3);
     margin-bottom: 2px; }
     .manifesto-section img {
       background-size: cover;
@@ -1379,7 +1419,7 @@ body.popup-active .restaurant-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   padding: 2rem;
   text-align: center; }
 
@@ -1461,7 +1501,7 @@ body.popup-active .restaurant-button {
 @media (max-width: 768px) {
   .wip-popup {
     width: 95%;
-    height: 100dvh; }
+    height: 100vh; }
 
   .wip-popup-header {
     font-size: 1.2rem;
@@ -1714,7 +1754,6 @@ body.radio-body .transition-content {
   width: 100%;
   margin: 0;
   padding: 0;
-  height: 100dvh;
   box-sizing: border-box;
   background-color: #000;
   font-family: 'YourPrimaryFont';
@@ -1724,7 +1763,7 @@ body.radio-body .transition-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   /* Hauteur de 100% pour centrer verticalement */ }
   body.radio-body .transition-content .radio-player-info {
     width: 100%;
@@ -1796,8 +1835,7 @@ body.radio-body .transition-content {
   .radio-buttons-container {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 30vh !important; }
+    gap: 10px; }
     .radio-buttons-container .radio-player-info {
       margin-top: 15px; }
 
@@ -2610,7 +2648,7 @@ h2 {
 
 .manifesto-swiper-container {
   font-family: 'JeanLuc Thin';
-  height: 100dvh; }
+  height: 100vh; }
   .manifesto-swiper-container .swiper-desktop-only {
     display: none; }
   @media (min-width: 769px) {
@@ -2623,7 +2661,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-1 .swiper-manifesto-swiper-slide-container {
     display: flex;
@@ -2640,7 +2678,7 @@ h2 {
   justify-content: center;
   padding-top: 14vh;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container {
     position: relative;
@@ -2700,7 +2738,7 @@ h2 {
     position: relative;
     width: 90vw;
     max-width: 90vw;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
       display: flex;
@@ -2747,14 +2785,14 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff;
   font-size: 5.2vw; }
   #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 90vw;
     max-width: 90vw;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
       display: flex;
@@ -2814,7 +2852,7 @@ h2 {
   padding: 5vh 3vw;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container {
     position: relative;
@@ -2874,13 +2912,13 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff;
   font-size: 7vw; }
   #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden;
     padding: 4vh 4vw; }
     #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
@@ -2928,12 +2966,12 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   padding: 3vh 2vw; }
   #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden;
     font-size: 6vw; }
     #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only {
@@ -2980,12 +3018,12 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only {
       display: flex;
@@ -3023,12 +3061,12 @@ h2 {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
       position: relative;
@@ -3062,17 +3100,17 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
       position: relative;
       width: 100vw;
-      height: 100dvh; }
+      height: 100vh; }
       #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text {
         font-size: 6vw;
         line-height: 1.2;
@@ -3110,13 +3148,13 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  height: 100vh;
   background-color: #ffffff; }
   #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container,
   #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container {
     position: relative;
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden; }
     #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content,
     #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
@@ -3125,7 +3163,7 @@ h2 {
       justify-content: center;
       align-items: center;
       width: 100vw;
-      height: 100dvh; }
+      height: 100vh; }
       #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text,
       #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text {
         font-size: 7vw;
@@ -3136,7 +3174,7 @@ h2 {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100dvh;
+        height: 100vh;
         width: 100vw; }
       #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .highlighted-text,
       #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .highlighted-text {

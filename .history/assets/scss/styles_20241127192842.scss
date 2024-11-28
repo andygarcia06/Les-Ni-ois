@@ -109,7 +109,7 @@ a{
   
     // Pour les très petits écrans (mobiles)
     @media (max-width: 480px) {
-      transform: scale(1) !important; // Réduire encore plus le logo
+      transform: scale(0.2); // Réduire encore plus le logo
     }
   }
 
@@ -203,13 +203,6 @@ body.index-body {
 #index-section-3 {
     background-image: url('../img/background/3.1.jpg'); /* Image pour la section 3 */
     background-size: 115% 100%;
-
-    @media (max-width: 768px) {
-        background-image: url('../img/background/background-mobile-3.png');
-        background-size:100%;
-        /* Image pour la section 3 */
-
-    }
 
  
 }
@@ -665,47 +658,103 @@ nav{
     }
 }
 
+
 .restaurant-nav {
-    position: fixed; // Rend la navigation fixe
-    top: 0; // Place la navigation en haut de la page
-    left: 0; // Aligne la navigation sur le bord gauche
-    width: 100%; // La navigation occupe toute la largeur
-    z-index: 10; // Assure que la navigation reste au-dessus des autres éléments
-    display: flex; // Disposition en ligne
-    justify-content: space-evenly; // Espacement égal entre les éléments
-    align-items: center; // Centre les éléments verticalement
-    font-family: 'Apercu Mono', monospace; // Police Apercu Mono
-    background-color: #000; // Fond noir pour la navigation
-  
+    background: #000;
+    position: fixed;
+    font-family: 'Apercu Mono';
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 6vh;
+    display: flex; 
+    
+
     ul {
-      display: flex; // Les items sont en ligne
-      width: 100%; // La liste occupe toute la largeur
-      margin: 0;
-      padding: 0;
-      list-style: none; // Supprime les puces
-  
-      li {
-        flex: 0 0 33.33%; // Chaque élément prend 33% de la largeur
-        text-align: center; // Centre le texte
-        font-size: 2vw; // Taille de la police responsive
-        background-color: #000; // Fond noir par défaut
-  
-        a {
-          display: block; // Lien en mode bloc
-          color: #fff; // Texte blanc par défaut
-          text-decoration: none; // Supprime le soulignement
-          padding: 10px 0; // Espacement vertical
-          transition: all 0.3s ease; // Transition pour les interactions
-  
-          &.active {
-            background-color: #fff; // Fond blanc pour l'actif
-            color: #000; // Texte noir pour l'actif
-          }
-        }
-      }
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%; /* Assurez-vous que ul prend toute la hauteur de la nav */
     }
-  }
-  
+
+    li {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+
+        .nav-radio-controls {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            left: -35%;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .nav-play-pause, .nav-radio-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-play-pause i, .nav-radio-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Responsivité */
+        @media (max-width: 768px) {
+            .nav-radio-controls {
+                gap: 20px; 
+                left: -10%;
+            }
+
+
+        }
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        display: flex; /* Centrer le texte */
+        align-items: center; /* Centre verticalement */
+        justify-content: center; /* Centre horizontalement */
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+
+        &.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Quand l'icône change de play à pause, le texte "Radio" se décale légèrement vers la gauche */
+        .fa-pause {
+            transform: scale(1.2); /* Agrandir l'icône pause */
+            transition: transform 0.3s ease;
+        }
+
+        /* Déplacer le lien "Radio" quand l'icône change */
+        .nav-play-pause.fa-pause ~ a {
+            transform: translateX(-10px); /* Décale "Radio" vers la gauche */
+        }
+
+        /* Bouton Play/Pause au hover */
+        .nav-play-pause:hover {
+            color: yellow; /* Couleur au hover */
+        }
+    }
+}
 
 /* Popup de volume */
 .nav-volume-popup {
@@ -2293,7 +2342,7 @@ body.radio-body .transition-content{
         flex-direction: column; // Boutons sous le player
         align-items: center;
         gap: 10px;
-        margin-bottom: 30vh !important;
+        margin-bottom: -10vh;
 
         
         .radio-player-info {

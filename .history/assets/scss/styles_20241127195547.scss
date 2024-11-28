@@ -109,7 +109,7 @@ a{
   
     // Pour les très petits écrans (mobiles)
     @media (max-width: 480px) {
-      transform: scale(1) !important; // Réduire encore plus le logo
+      transform: scale(0.1) !important; // Réduire encore plus le logo
     }
   }
 

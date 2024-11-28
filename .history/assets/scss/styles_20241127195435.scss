@@ -109,7 +109,7 @@ a{
   
     // Pour les très petits écrans (mobiles)
     @media (max-width: 480px) {
-      transform: scale(1) !important; // Réduire encore plus le logo
+      transform: scale(0.2); // Réduire encore plus le logo
     }
   }
 
@@ -205,9 +205,7 @@ body.index-body {
     background-size: 115% 100%;
 
     @media (max-width: 768px) {
-        background-image: url('../img/background/background-mobile-3.png');
-        background-size:100%;
-        /* Image pour la section 3 */
+        background-image: url('../img/background/background-mobile-3.png'); /* Image pour la section 3 */
 
     }
 
