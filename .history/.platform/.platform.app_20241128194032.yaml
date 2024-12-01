@@ -1,0 +1,18 @@
+name: app
+
+type: "nodejs:16"
+
+web:
+  locations:
+    "/":
+      allow: true
+      index: ["index.html"]
+    "/assets":
+      root: "assets"
+      allow: true
+
+  commands:
+    start: "server/node server.js"
+
+disk: 1024
+
