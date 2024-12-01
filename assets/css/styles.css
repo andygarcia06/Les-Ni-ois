@@ -1661,10 +1661,6 @@ body.popup-active .restaurant-button {
     margin-bottom: -1vh; }
   .soon-container h2 {
     margin-top: -1vh; }
-  .soon-container .soon-small-text {
-    font-size: 2vw;
-    position: relative;
-    bottom: 4vh; }
   .soon-container .soon-btn-container {
     margin: auto; }
 
@@ -2408,6 +2404,7 @@ button[type="submit"] {
 
   .contact-image {
     width: 100vw;
+    height: 40vh;
     margin: auto; }
 
   .contact-form {

@@ -1,0 +1,10 @@
+
+name: 'app'
+
+type: 'nodejs:16'
+
+disk: 1024  # Capacité du disque (en Mo)
+
+web:
+  commands:
+    start: 'node server/server.js'  # Remplacez par le chemin vers votre script Node.js
