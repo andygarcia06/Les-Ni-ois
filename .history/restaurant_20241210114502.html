@@ -296,7 +296,7 @@
     <div id="carte-popup" class="popup">
         <div class="popup-content">
             <span class="close-popup">x</span>
-            <iframe src="/carte.html" frameborder="0"></iframe>
+            <iframe src="/carte" frameborder="0"></iframe>
         </div>
     </div>
 
@@ -362,33 +362,6 @@
     <script src="./assets//js/animation.js"></script>
     <script src="./assets/js/radio.js"></script>
     <script src="./assets/js/manifesto-functions.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sélectionne le lien "La carte" et la popup
-            const openCartePopup = document.getElementById('open-carte-popup');
-            const cartePopup = document.getElementById('carte-popup');
-            const closePopup = document.querySelector('.close-popup');
-        
-            // Ouvre la popup lors du clic sur "La carte"
-            openCartePopup.addEventListener('click', function(event) {
-                event.preventDefault(); // Empêche le comportement par défaut du lien
-                cartePopup.style.display = 'flex'; // Affiche la popup en utilisant flexbox
-            });
-        
-            // Ferme la popup lors du clic sur le bouton de fermeture
-            closePopup.addEventListener('click', function() {
-                cartePopup.style.display = 'none';
-            });
-        
-            // Ferme la popup si l'utilisateur clique en dehors du contenu
-            window.addEventListener('click', function(event) {
-                if (event.target === cartePopup) {
-                    cartePopup.style.display = 'none';
-                }
-            });
-        });
-        
-    </script>
 
 
 

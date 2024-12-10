@@ -543,7 +543,8 @@ body.popup-active .restaurant-button {
         right: 25%; } }
     @media (max-width: 768px) {
       .submenu-nav.active {
-        right: 45%; } }
+        right: 45%;
+        width: 30%; } }
     @media (max-width: 450px) {
       .submenu-nav.active {
         right: 42%; } }

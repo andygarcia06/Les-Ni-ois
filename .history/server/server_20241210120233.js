@@ -42,6 +42,9 @@ app.get('/shop', (req, res) => {
     res.sendFile(path.join(__dirname, '../shop.html'));
 });
 
+app.get('/carte', (req, res) => {
+    res.sendFile(path.join(__dirname, '../carte.html'));
+});
 
 app.get('/cgv', (req, res) => {
     res.sendFile(path.join(__dirname, '../cgv.html'));
