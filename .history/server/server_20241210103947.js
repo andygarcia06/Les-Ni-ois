@@ -19,33 +19,33 @@ const app = express();
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 // Route par défaut pour servir index.html
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.get('/restaurant', (req, res) => {
-    res.sendFile(path.join(__dirname, '../restaurant.html'));
+    res.sendFile(path.join(__dirname, './restaurant.html'));
 });
 
 app.get('/shop', (req, res) => {
-    res.sendFile(path.join(__dirname, '../shop.html'));
+    res.sendFile(path.join(__dirname, './shop.html'));
 });
 
 app.get('/cgv', (req, res) => {
-    res.sendFile(path.join(__dirname, '../cgv.html'));
+    res.sendFile(path.join(__dirname, '/cgv.html'));
 });
 
 app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, '../contact.html'));
+    res.sendFile(path.join(__dirname, './contact.html'));
 });
 
 
 app.get('/radio', (req, res) => {
-    res.sendFile(path.join(__dirname, '../radio.html'));
+    res.sendFile(path.join(__dirname, './radio.html'));
 });
 
 app.get('/newsletter', (req, res) => {
-    res.sendFile(path.join(__dirname, '../newsletter.html'));
+    res.sendFile(path.join(__dirname, './newsletter.html'));
 });
 
 
