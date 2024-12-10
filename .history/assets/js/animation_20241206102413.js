@@ -312,9 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="#" class="secondary-menu-a">Infos légales</a>
         </li>
         <ul class="legal-submenu">
-            <li><a href="./cgv.html">Mentions légales</a></li>
-            <li><a href="./cgv.html#cgv">CGV & CGU</a></li>
-            <li><a href="./cgv.html#confidentialite">Confidentialité</a></li>
+            <li><a href="/cgv.html">Mentions légales</a></li>
+            <li><a href="/cgv.html#cgv">CGV & CGU</a></li>
+            <li><a href="/cgv.html#confidentialite">Confidentialité</a></li>
         </ul>
     `;
 

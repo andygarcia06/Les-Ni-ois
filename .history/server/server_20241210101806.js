@@ -24,11 +24,11 @@ app.get('*', (req, res) => {
 });
 
 app.get('/restaurant', (req, res) => {
-    res.sendFile(path.join(__dirname, '../restaurant.html'));
+    res.sendFile(path.join(__dirname, './restaurant.html'));
 });
 
 app.get('/shop', (req, res) => {
-    res.sendFile(path.join(__dirname, '../shop.html'));
+    res.sendFile(path.join(__dirname, './shop.html'));
 });
 
 

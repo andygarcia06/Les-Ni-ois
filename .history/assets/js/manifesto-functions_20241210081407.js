@@ -148,7 +148,7 @@ window.addEventListener('touchstart', handleTouchStart);
 window.addEventListener('touchmove', handleTouchMove);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const restoMenuItem = document.querySelector('.big-menu-item a[href="./restaurant.html"]'); // Lien "RESTO"
+    const restoMenuItem = document.querySelector('.big-menu-item a[href="/restaurant.html"]'); // Lien "RESTO"
     const submenu = document.querySelector('.submenu'); // Sous-menu associé
 
     // Ajout d'un événement de clic sur "RESTO"
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     // Récupérer les éléments nécessaires
-    const restoLink = document.querySelector(".big-menu-item a[href='./restaurant.html']");
+    const restoLink = document.querySelector(".big-menu-item a[href='/restaurant.html']");
     const submenuResto = document.querySelector(".submenu-resto");
 
     // Ajout d'un événement sur le clic du lien

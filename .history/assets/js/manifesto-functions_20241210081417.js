@@ -148,7 +148,7 @@ window.addEventListener('touchstart', handleTouchStart);
 window.addEventListener('touchmove', handleTouchMove);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const restoMenuItem = document.querySelector('.big-menu-item a[href="./restaurant.html"]'); // Lien "RESTO"
+    const restoMenuItem = document.querySelector('.big-menu-item a[href="/restaurant.html"]'); // Lien "RESTO"
     const submenu = document.querySelector('.submenu'); // Sous-menu associé
 
     // Ajout d'un événement de clic sur "RESTO"
