@@ -7,14 +7,14 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 
 // Charger les variables d'environnement depuis un fichier .env
 dotenv.config();
 
 const app = express();
 
+app.use(bodyParser.json());
 // Servir les fichiers statiques
 app.use(express.static(path.join(__dirname, '../assets')));
 
@@ -172,7 +172,7 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Serveur démarré sur le port ${port}`);
 });
