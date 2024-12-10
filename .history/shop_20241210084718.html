@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Niçois - Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <meta name="view-transition" content="same-origin"/>
+
+    <!-- Favicon en format .ico -->
+<link rel="icon" href="./assets/img/favicon/favicon_generated.ico" type="image/x-icon">
+
+<!-- Favicon en format .png pour différentes tailles -->
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon_16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon_32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./assets/img/favicon/favicon_48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="./assets/img/favicon/favicon_64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="./assets/img/favicon/favicon_128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="./assets/img/favicon/favicon_256x256.png">
+
+<!-- Apple Touch Icon pour iOS -->
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/favicon_256x256.png">
+</head>
+<body class="soon-body">
+    <div id="audio-container">
+        <audio id="radio-player" src="https://str0.creacast.com/purelectro2" preload="none"></audio>
+    </div>
+    <header>
+        <div class="burger-container">
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Navigation principale -->
+        <nav class="restaurant-nav">
+            <ul>
+                <li><a href="restaurant.html" >Resto</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="radio.html">Radio</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Menu latéral qui s'affiche avec le burger -->
+<!-- Menu latéral -->
+<!-- Menu latéral -->
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initialement en dehors de l'écran */
+    width: 17%;
+    z-index: 30;
+    height: 100%;
+    background-color: #fff; /* Fond blanc */
+    color: black;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace;
+    text-align: right !important;
+
+    @media (max-width: 1200px) {
+        width: 25%;
+    }
+
+    @media (max-width: 768px) {
+        width: 45%;
+    }
+
+    @media (max-width: 450px) {
+        width: 42%;
+    }
+
+    &.open {
+        right: 0; /* Glisse le menu dans l'écran */
+    }
+
+    ul {
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+
+    .main-menu {
+        margin-top: 5vh;
+    }
+
+    .secondary-menu {
+        margin-top: 30vh;
+    }
+
+    .big-menu-item {
+        font-family: 'Jeanluc thin';
+        font-size: 3.8rem;
+    }
+
+    .horizontal-bar {
+        width: 100px !important;
+        height: 2px;
+        background-color: black;
+        margin-top: 5px;
+        margin-left: auto; /* Pousse la barre vers la droite */
+    }
+
+    .main-submenu,
+    p {
+        margin: 1vh 0;
+
+        a {
+            font-weight: 600;
+            font-size: 1rem; /* Assurez-vous que 'font-weight' est correct */
+        }
+    }
+
+    .main-submenu-legal {
+        position: relative;
+
+        .secondary-menu-a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .legal-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            max-height: 0; /* Masquer le sous-menu */
+            opacity: 0; /* Rendre invisible */
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+
+            li a {
+                font-family: 'Apercu Mono' !important;
+                font-weight: normal; /* ou bold selon le besoin */
+                font-style: normal;
+            }
+        }
+
+        &.open .legal-submenu {
+            max-height: 300px; /* Ajustez selon la hauteur totale du sous-menu */
+            opacity: 1; /* Rendre visible */
+            margin-top: 1vh;
+        }
+    }
+
+    /* Section des réseaux sociaux */
+    .social-section {
+        margin-top: 20px;
+        text-align: right;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold; /* Apercu Bold pour "Suivez-nous" */
+            font-family: 'Apercu Mono', monospace;
+            margin-bottom: 10px;
+
+            @media (max-width: 450px) {
+                font-size: 3.5vw !important; /* Taille des icônes */
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+
+            a {
+                color: black; /* Couleur de l'icône */
+                font-size: 2rem; /* Taille des icônes */
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #555; /* Couleur au survol */
+                }
+            }
+        }
+
+        .fa-linkedin-in {
+            background-color: black;
+            color: white;
+            padding: 3px;
+        }
+    }
+}
+
+.submenu-nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Caché en dehors de l'écran */
+    z-index: 29;
+    height: 100%;
+    width: 20%; /* Largeur du sous-menu */
+    background-color: black; /* Fond noir */
+    color: white;
+    transition: right 0.3s ease-in-out; /* Animation fluide */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+
+    ul {
+        margin: 0;
+        margin-top: 7vh;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 1rem;
+
+            a {
+                text-decoration: none;
+                color: white;
+                font-size: 3vw;
+                font-family: 'JeanLuc Thin', monospace;
+
+                &:hover {
+                    color: #555;
+                }
+            }
+        }
+    }
+
+    &.active {
+        right: 17%; /* Fait glisser le sous-menu dans l'écran */
+
+        @media (max-width: 1200px) {
+            right: 25%;
+        }
+    
+        @media (max-width: 768px) {
+            right: 45%;
+        }
+    
+        @media (max-width: 450px) {
+            right: 42%;
+        }
+    }
+}
+
+        </nav>
+    </header>
+    <div class="soon-container">
+        <img class="shop-img" src="./assets/img/contact/shop.png" alt="Shop image ">
+
+        <div class="soon-btn-container">
+            <button class="restaurant-button"><a href="https://shop.lesnicois.com/">Shopez la bouteille Rosé GARCIA</a></button>
+        </div>
+    </div>
+    <script>
+        // Fonction pour vérifier la largeur de l'écran et afficher le bon HTML
+        function loadResponsiveHTML() {
+          const isMobile = window.innerWidth <= 768; // Vous pouvez ajuster la largeur ici
+          document.querySelector('.container.desktop').style.display = isMobile ? 'none' : 'grid';
+          document.querySelector('.container.mobile').style.display = isMobile ? 'grid' : 'none';
+        }
+      
+        // Exécute la fonction au chargement et à chaque redimensionnement de la fenêtre
+        window.addEventListener('load', loadResponsiveHTML);
+        window.addEventListener('resize', loadResponsiveHTML);
+        const burger = document.querySelector(".burger");
+        const sideMenu = document.querySelector(".side-menu");
+        
+        burger.addEventListener("click", function () {
+            burger.classList.toggle("open"); // Gère l'animation du burger
+            sideMenu.classList.toggle("open"); // Gère l'affichage du menu
+        });
+        
+        function toggleLegalMenu(event) {
+            event.preventDefault();
+            const toggleElement = document.querySelector('.legal-toggle');
+            const submenu = document.querySelector('.legal-submenu');
+        
+            // Bascule la classe open sur le toggle pour déplacer le soulignement
+            toggleElement.classList.toggle('open');
+        }
+        
+      </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="./assets/js/transition.js"></script>
+    <script src="./assets/js/animation.js"></script>
+    <script src="./assets/js/transition.js"></script>
+    <script src="./assets/js/animation.js"></script>
+    <script src="./assets/js/popup.js"></script>
+    <script src="./assets/js/radio.js"></script>
+
+</body>
+</html>

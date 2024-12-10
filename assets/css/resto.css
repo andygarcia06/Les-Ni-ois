@@ -54,7 +54,7 @@ body, html {
     .restaurant-nav ul li {
       flex: 0 0 33.33%;
       text-align: center;
-      font-size: 2vw;
+      font-size: 1.3vw;
       background-color: #000; }
       @media (max-width: 768px) {
         .restaurant-nav ul li {
@@ -69,6 +69,22 @@ body, html {
           background-color: #fff;
           color: #000; }
 
+.nav-hidden {
+  transform: translateY(-100%);
+  /* Déplace le menu vers le haut hors de la vue */
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  /* Transition fluide */
+  opacity: 0;
+  /* Rend le menu invisible */ }
+
+.nav-visible {
+  transform: translateY(0);
+  /* Retourne le menu à sa position d'origine */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  /* Transition fluide */
+  opacity: 1;
+  /* Rend le menu visible */ }
+
 /* Burger button  */
 .burger-container {
   position: fixed;
@@ -80,7 +96,7 @@ body, html {
   margin-right: 60px; }
   @media (max-width: 480px) {
     .burger-container {
-      bottom: 5.4vh;
+      bottom: 5.3vh;
       margin-right: 20px; } }
 
 .burger {
@@ -377,7 +393,7 @@ body.popup-active .restaurant-button {
   top: 0;
   right: -100%;
   /* Initialement en dehors de l'écran */
-  width: 12%;
+  width: 17%;
   z-index: 30;
   height: 100%;
   background-color: #fff;
@@ -393,13 +409,13 @@ body.popup-active .restaurant-button {
   /* Section des réseaux sociaux */ }
   @media (max-width: 1200px) {
     .side-menu {
-      width: 35%; } }
+      width: 25%; } }
   @media (max-width: 768px) {
     .side-menu {
       width: 45%; } }
   @media (max-width: 450px) {
     .side-menu {
-      width: 55%; } }
+      width: 42%; } }
   .side-menu.open {
     right: 0;
     /* Glisse le menu dans l'écran */ }
@@ -408,9 +424,13 @@ body.popup-active .restaurant-button {
     .side-menu ul li a {
       text-decoration: none;
       color: black; }
+  .side-menu .main-menu {
+    margin-top: 5vh; }
+  .side-menu .secondary-menu {
+    margin-top: 30vh; }
   .side-menu .big-menu-item {
     font-family: 'Jeanluc thin';
-    font-size: 4rem; }
+    font-size: 3.8rem; }
   .side-menu .horizontal-bar {
     width: 100px !important;
     height: 2px;
@@ -418,35 +438,40 @@ body.popup-active .restaurant-button {
     margin-top: 5px;
     margin-left: auto;
     /* Pousse la barre vers la droite */ }
-  .side-menu .main-submenu, .side-menu p {
+  .side-menu .main-submenu,
+  .side-menu p {
     margin: 1vh 0; }
-    .side-menu .main-submenu a, .side-menu p a {
-      font-weight: 600; }
-  .side-menu .legal-submenu {
-    display: flex;
-    flex-wrap: nowrap;
-    /* Empêche les éléments de passer à la ligne */
-    gap: 10px;
-    /* Ajoute de l'espace entre les éléments */
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-    right: 2vw; }
-    .side-menu .legal-submenu li {
-      list-style: none; }
-      .side-menu .legal-submenu li a {
-        text-decoration: none;
-        color: black; }
-    @media (max-width: 768px) {
-      .side-menu .legal-submenu {
-        /* Tablettes et plus petits */
-        right: 5vw;
-        /* Décale davantage vers la gauche */ } }
-    @media (max-width: 450px) {
-      .side-menu .legal-submenu {
-        /* Mobiles */
-        right: 10vw;
-        /* Décale encore plus vers la gauche */ } }
+    .side-menu .main-submenu a,
+    .side-menu p a {
+      font-weight: 600;
+      font-size: 1rem;
+      /* Assurez-vous que 'font-weight' est correct */ }
+  .side-menu .main-submenu-legal {
+    position: relative; }
+    .side-menu .main-submenu-legal .secondary-menu-a {
+      cursor: pointer;
+      text-decoration: none; }
+    .side-menu .main-submenu-legal .legal-submenu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      max-height: 0;
+      /* Masquer le sous-menu */
+      opacity: 0;
+      /* Rendre invisible */
+      transition: max-height 0.3s ease, opacity 0.3s ease; }
+      .side-menu .main-submenu-legal .legal-submenu li a {
+        font-family: 'Apercu Mono' !important;
+        font-weight: normal;
+        /* ou bold selon le besoin */
+        font-style: normal; }
+    .side-menu .main-submenu-legal.open .legal-submenu {
+      max-height: 300px;
+      /* Ajustez selon la hauteur totale du sous-menu */
+      opacity: 1;
+      /* Rendre visible */
+      margin-top: 1vh; }
   .side-menu .social-section {
     margin-top: 20px;
     text-align: right; }
@@ -463,11 +488,11 @@ body.popup-active .restaurant-button {
     .side-menu .social-section .social-icons {
       display: flex;
       justify-content: right;
-      gap: 10px; }
+      gap: 20px; }
       .side-menu .social-section .social-icons a {
         color: black;
         /* Couleur de l'icône */
-        font-size: 1.5rem;
+        font-size: 2rem;
         /* Taille des icônes */
         transition: color 0.3s ease; }
         .side-menu .social-section .social-icons a:hover {
@@ -477,6 +502,51 @@ body.popup-active .restaurant-button {
       background-color: black;
       color: white;
       padding: 3px; }
+
+.submenu-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* Caché en dehors de l'écran */
+  z-index: 29;
+  height: 100%;
+  width: 15%;
+  /* Largeur du sous-menu */
+  background-color: black;
+  /* Fond noir */
+  color: white;
+  transition: right 0.3s ease-in-out;
+  /* Animation fluide */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto; }
+  .submenu-nav ul {
+    margin: 0;
+    margin-top: 7vh;
+    padding: 0;
+    list-style: none; }
+    .submenu-nav ul li {
+      margin-bottom: 1rem; }
+      .submenu-nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 3vw;
+        font-family: 'JeanLuc Thin', monospace; }
+        .submenu-nav ul li a:hover {
+          color: #555; }
+  .submenu-nav.active {
+    right: 17%;
+    /* Fait glisser le sous-menu dans l'écran */ }
+    @media (max-width: 1200px) {
+      .submenu-nav.active {
+        right: 25%; } }
+    @media (max-width: 768px) {
+      .submenu-nav.active {
+        right: 45%; } }
+    @media (max-width: 450px) {
+      .submenu-nav.active {
+        right: 42%; } }
 
 .manifesto-sections-container {
   display: flex;
@@ -495,8 +565,10 @@ body.popup-active .restaurant-button {
       background-size: cover;
       background-position: center; }
       .manifesto-sections-container .manifesto-section-left .manifesto-content, .manifesto-sections-container .manifesto-section-middle .manifesto-content, .manifesto-sections-container .manifesto-section-right .manifesto-content {
-        max-width: 90%;
+        max-width: 100%;
         text-align: center; }
+        .manifesto-sections-container .manifesto-section-left .manifesto-content img, .manifesto-sections-container .manifesto-section-middle .manifesto-content img, .manifesto-sections-container .manifesto-section-right .manifesto-content img {
+          max-width: 100%; }
 
 .manifesto-swiper-container .swiper-slide {
   height: 100dvh;
@@ -550,11 +622,11 @@ body.popup-active .restaurant-button {
 .manifesto-image {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0%;
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: 90%;
+  background-position: 40% center;
   transition: opacity 1s ease;
   z-index: 1; }
 
@@ -590,586 +662,38 @@ body.popup-active .restaurant-button {
         background-position: center; }
       .manifesto-sections-container .manifesto-section .manifesto-content {
         text-align: center; } }
+/* Masquer les swipers par défaut */
 .manifesto-swiper-container {
-  font-family: 'JeanLuc Thin';
-  height: 100vh; }
-  @media (min-width: 769px) {
-    .manifesto-swiper-container .swiper-desktop-only {
-      display: block; }
-    .manifesto-swiper-container .swiper-mobile-only {
-      display: none; } }
-
-.manifesto-swiper-slide {
-  width: 100%; }
-
-@media (max-width: 1024px) {
-  .swiper-desktop-only {
-    display: none !important; }
-
-  .swiper-mobile-only {
-    display: block !important;
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px; }
-    .swiper-mobile-only img {
-      display: block;
-      max-width: 90%;
-      height: auto;
-      margin: 0 auto; } }
-.swiper {
-  width: 100vw;
-  /* La largeur du conteneur Swiper */
-  overflow: hidden;
-  /* Empêche les débordements */ }
-
-.swiper-wrapper {
-  display: flex;
-  /* Les diapositives doivent être alignées en ligne */
   width: 100%;
-  /* Assurez que le wrapper prend toute la largeur */ }
-
-.manifesto-swiper-slide {
-  box-sizing: border-box;
-  /* Assure que le padding et les bordures sont inclus dans la largeur totale */
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  /* Empêche les débordements de contenu */ }
-
-#swiper-manifesto-swiper-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-1 .swiper-manifesto-swiper-slide-container {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    #swiper-manifesto-swiper-1 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
-      text-align: center; }
-      #swiper-manifesto-swiper-1 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .swiper-manifesto-line.swiper-large-text {
-        font-size: 10vh;
-        text-transform: uppercase; }
-
-#swiper-manifesto-swiper-2 {
-  display: flex;
-  justify-content: center;
-  padding-top: 14vh;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container {
-    position: relative;
+  height: 100vh; }
+  .manifesto-swiper-container .swiper-wrapper {
     width: 100%;
-    max-width: 90vw;
-    text-align: center;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-background-image {
-      position: absolute;
-      top: 32%;
-      left: 67%;
-      transform: translate(-50%, -50%);
-      width: 18vw;
-      height: auto;
-      max-height: 50vh; }
-    #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
+    height: 100vh; }
+    .manifesto-swiper-container .swiper-wrapper .swiper-slide {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; }
-      #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content #swiper-manifesto-line-1 {
-        width: 100%;
-        text-align: justify;
-        font-size: 6vw;
-        text-transform: uppercase;
-        line-height: 1.2;
-        word-spacing: 3.8vw !important;
-        letter-spacing: 0.7vw !important; }
-        #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content #swiper-manifesto-line-1::after {
-          content: '';
-          display: inline-block;
-          width: 100%; }
-      #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content #swiper-manifesto-line-2 {
-        width: 100%;
-        text-align: justify;
-        font-size: 6vw;
-        text-transform: uppercase;
-        line-height: 1.2;
-        word-spacing: 0.4vw;
-        letter-spacing: 0.08vw; }
-        #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content #swiper-manifesto-line-2::after {
-          content: '';
-          display: inline-block;
-          width: 100%; }
-        #swiper-manifesto-swiper-2 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content #swiper-manifesto-line-2 .swiper-little-manifesto {
-          font-size: 3vw;
-          vertical-align: top;
-          margin-right: 0.3vw; }
-
-#swiper-manifesto-swiper-3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 90vw;
-    max-width: 90vw;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%; }
-      #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content {
-        position: absolute;
-        top: 10vh;
-        left: 5vw;
-        width: 50%; }
-        #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line {
-          font-size: 5vw;
-          text-transform: uppercase;
-          margin: 0.5vh 0;
-          line-height: 1.1;
-          text-align: justify; }
-      #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-image-container {
-        position: absolute;
-        top: 69vh;
-        left: 28%;
-        transform: translate(-50%, -50%); }
-        #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-image-container .swiper-manifesto-image {
-          width: 15vw;
-          height: auto;
-          max-height: 60vh; }
-      #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-small-text {
-        position: absolute;
-        bottom: 5vh;
-        right: 5vw;
-        width: 40vw;
-        font-size: 2vw;
-        text-transform: uppercase;
-        line-height: 1.2;
-        text-align: justify;
-        display: flex;
-        flex-direction: column; }
-        #swiper-manifesto-swiper-3 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-small-text::after {
-          content: '';
-          display: inline-block;
-          width: 100%; }
-
-#swiper-manifesto-swiper-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff;
-  font-size: 5.2vw; }
-  #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 90vw;
-    max-width: 90vw;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%; }
-      #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-top {
-        position: absolute;
-        top: 5vh;
-        left: 5vw;
-        width: 40%; }
-        #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-top .swiper-manifesto-line {
-          text-transform: uppercase;
-          line-height: 1.1;
-          text-align: left; }
-      #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center {
-        position: absolute;
-        top: 50vh;
-        left: 45vw;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 90%; }
-        #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center .swiper-right-aligned {
-          text-transform: uppercase;
-          text-align: left;
-          margin-bottom: 2vh; }
-        #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center .swiper-image-text-container {
-          display: flex;
-          align-items: center;
-          width: 100%; }
-          #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center .swiper-image-text-container .swiper-manifesto-image-container {
-            width: 7vw;
-            height: 7vw;
-            margin-right: 2vw; }
-            #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center .swiper-image-text-container .swiper-manifesto-image-container .swiper-manifesto-image {
-              width: 100%;
-              height: 100%;
-              object-fit: cover; }
-          #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-center .swiper-image-text-container .swiper-text-right-of-image {
-            text-transform: uppercase;
-            line-height: 1.1;
-            text-align: left; }
-      #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-bottom {
-        position: absolute;
-        bottom: 5vh;
-        left: 5vw;
-        width: 80%; }
-        #swiper-manifesto-swiper-4 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-text-bottom .swiper-manifesto-line {
-          text-transform: uppercase;
-          line-height: 1.1;
-          text-align: left; }
-
-#swiper-manifesto-swiper-5 {
-  display: flex;
-  padding: 5vh 3vw;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100%;
-    height: 90vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      height: 100%; }
-      #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 1vh; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line {
-          text-transform: uppercase;
-          font-size: 5.5vw;
-          line-height: 0.9;
-          font-weight: normal;
-          letter-spacing: 0.4vw; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-1 {
-            width: 100%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-2 {
-            width: 85%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-3 {
-            width: 75%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-4 {
-            width: 69%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-5 {
-            width: 85%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-6 {
-            width: 75%; }
-          #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-7 {
-            width: 47%; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-red {
-          color: #ff0000; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-yellow {
-          color: yellow; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-green {
-          color: #388e3c; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-brown {
-          color: #b36b51; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-purple {
-          color: #6a1b9a; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .highlight-purple-clear {
-          color: #8f34c7; }
-        #swiper-manifesto-swiper-5 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .small-text {
-          font-size: 2vw;
-          position: relative;
-          bottom: 5vh;
-          left: 1vw; }
-
-#swiper-manifesto-swiper-6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff;
-  font-size: 7vw; }
-  #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    padding: 4vh 4vw; }
-    #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%; }
-      #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5vh; }
-        #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line {
-          text-transform: uppercase;
-          line-height: 1.2;
-          font-weight: normal; }
-          #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line.line-1 {
-            width: 70vw;
-            position: relative; }
-          #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-manifesto-line .small-text {
-            font-size: 2vw;
-            position: relative;
-            bottom: 4vh; }
-        #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-bottom-container {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          width: 100%;
-          position: absolute;
-          bottom: 0;
-          padding-bottom: 6vh; }
-          #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-bottom-container .line-2 {
-            width: 60vw;
-            text-align: left;
-            position: relative; }
-          #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-bottom-container .swiper-manifesto-image-container {
-            width: 30vw;
-            margin-right: 18vw; }
-            #swiper-manifesto-swiper-6 .swiper-manifesto-swiper-slide-container .swiper-manifesto-html-content .swiper-manifesto-content .swiper-bottom-container .swiper-manifesto-image-container .swiper-manifesto-image {
-              width: 100%;
-              height: auto; }
-
-#swiper-manifesto-swiper-7 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 3vh 2vw; }
-  #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    font-size: 6vw; }
-    #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      width: 100vw;
-      height: 100%; }
-      #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content {
-        display: flex;
-        flex-direction: column;
-        padding-top: 13vh; }
-        #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .large-text {
-          line-height: 1;
-          width: 100%;
-          text-transform: uppercase; }
-        #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-bottom-container {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          width: 100%;
-          margin-top: 5vh; }
-          #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-bottom-container .small-text-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1vh;
-            width: 60vw;
-            text-align: right;
-            margin-right: 2vw; }
-            #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-bottom-container .small-text-container .small-text {
-              font-size: 2vw;
-              line-height: 1.2;
-              text-transform: uppercase; }
-          #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-bottom-container .swiper-manifesto-image-container {
-            width: 30vw;
-            margin-left: auto; }
-            #swiper-manifesto-swiper-7 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-bottom-container .swiper-manifesto-image-container .swiper-manifesto-image {
-              width: 100%;
-              height: auto;
-              object-fit: cover; }
-
-#swiper-manifesto-swiper-8 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only {
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100vw;
-      height: 100%;
-      text-align: center; }
-      #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 4vh 5vw; }
-        #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .large-text {
-          font-size: 4vw;
-          line-height: 1;
-          text-transform: uppercase;
-          text-align: center; }
-          #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .large-text .small-text {
-            font-size: 2.5vw;
-            position: relative;
-            bottom: 3vh; }
-        #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-manifesto-image-container {
-          width: 40vw;
-          height: auto;
-          display: flex;
-          justify-content: center; }
-          #swiper-manifesto-swiper-8 .swiper-manifesto-swiper-slide-container .swiper-desktop-only .swiper-manifesto-content .swiper-manifesto-image-container .swiper-manifesto-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover; }
+      width: 100%;
+      height: 100vh;
+      overflow: hidden; }
+      .manifesto-swiper-container .swiper-wrapper .swiper-slide img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain; }
 
-#swiper-manifesto-swiper-9 {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
-      position: relative;
-      width: 100vw;
-      margin-top: 20vh; }
-      #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text {
-        font-size: 7vw;
-        text-transform: uppercase;
-        text-align: left;
-        width: 100vw;
-        display: flex;
-        flex-direction: column; }
-        #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text span {
-          margin-top: -15vh; }
-      #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .small-text {
-        font-size: 4vw;
-        vertical-align: top; }
-      #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .swiper-manifesto-image-container {
-        width: 40vw;
-        right: 30vw;
-        height: auto;
-        margin-left: auto;
-        position: relative;
-        bottom: 12vh; }
-        #swiper-manifesto-swiper-9 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .swiper-manifesto-image-container .swiper-manifesto-image {
-          width: 100%;
-          height: auto;
-          object-fit: cover; }
+/* Section Desktop */
+.manifesto-swiper-desktop {
+  display: none; }
+  @media (min-width: 1024px) {
+    .manifesto-swiper-desktop {
+      display: block; } }
 
-#swiper-manifesto-swiper-10 {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
-      position: relative;
-      width: 100vw;
-      height: 100vh; }
-      #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text {
-        font-size: 6vw;
-        line-height: 1.2;
-        text-transform: uppercase;
-        text-align: left;
-        width: 100vw;
-        padding: 0 5vw; }
-      #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .top-text {
-        position: absolute;
-        top: 5vh;
-        left: 0; }
-      #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .small-text {
-        font-size: 2vw;
-        position: relative;
-        bottom: 5vh; }
-      #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .swiper-manifesto-image-container {
-        position: absolute;
-        top: 20vh;
-        left: 50vw;
-        width: 30vw;
-        height: auto; }
-        #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .swiper-manifesto-image-container .swiper-manifesto-image {
-          width: 80%;
-          height: auto;
-          object-fit: cover; }
-      #swiper-manifesto-swiper-10 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .bottom-text {
-        position: absolute;
-        bottom: 5vh;
-        left: 0;
-        text-align: center;
-        width: 100vw; }
-
-#swiper-manifesto-swiper-11,
-#swiper-manifesto-swiper-12 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff; }
-  #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container,
-  #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; }
-    #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content,
-    #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh; }
-      #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text,
-      #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .large-text {
-        font-size: 7vw;
-        text-transform: uppercase;
-        text-align: center; }
-      #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .centered-text,
-      #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .centered-text {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100vw; }
-      #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .highlighted-text,
-      #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .highlighted-text {
-        font-weight: bold; }
-      #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .logo-container,
-      #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .logo-container {
-        margin-top: 5vh;
-        width: 40vw;
-        height: auto;
-        display: flex;
-        justify-content: center; }
-        #swiper-manifesto-swiper-11 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .logo-container .logo-image,
-        #swiper-manifesto-swiper-12 .swiper-manifesto-swiper-slide-container .swiper-manifesto-content .logo-container .logo-image {
-          width: 100%;
-          height: auto;
-          object-fit: contain; }
+/* Section Mobile */
+.manifesto-swiper-mobile {
+  display: none; }
+  @media (max-width: 1023px) {
+    .manifesto-swiper-mobile {
+      display: block; } }
 
 /* Popup styles */
 .popup {

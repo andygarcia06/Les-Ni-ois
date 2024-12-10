@@ -249,201 +249,107 @@ body.restaurant-body {
   padding: 0;
   box-sizing: border-box; }
 
+.close-popup-side-menu {
+  position: absolute;
+  top: 20px;
+  /* Position en haut de l'écran */
+  right: 20px;
+  /* Position à droite de l'écran */
+  color: black;
+  font-size: 18px;
+  font-weight: 100;
+  z-index: 20000;
+  font-family: 'Apercu Mono'; }
+  .close-popup-side-menu:hover, .close-popup-side-menu:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer; }
+
 /* Menu latéral */
 .side-menu {
   position: fixed;
   top: 0;
   right: -100%;
   /* Initialement en dehors de l'écran */
-  width: 12%;
+  width: 17%;
+  z-index: 30;
   height: 100%;
   background-color: #fff;
   /* Fond blanc */
   color: black;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: right 0.3s ease-in-out;
-  z-index: 1000;
   display: flex;
   flex-direction: column;
   padding: 20px;
   font-family: 'Apercu Mono', monospace;
   text-align: right !important;
-  /* Menu principal */
   /* Section des réseaux sociaux */ }
   @media (max-width: 1200px) {
     .side-menu {
-      width: 35%; } }
+      width: 25%; } }
   @media (max-width: 768px) {
     .side-menu {
       width: 45%; } }
   @media (max-width: 450px) {
     .side-menu {
-      width: 55%; } }
+      width: 42%; } }
   .side-menu.open {
     right: 0;
     /* Glisse le menu dans l'écran */ }
+  .side-menu ul li {
+    list-style: none; }
+    .side-menu ul li a {
+      text-decoration: none;
+      color: black; }
   .side-menu .main-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px 0;
-    font-family: "JeanLuc Thin";
-    text-transform: uppercase;
-    /* Sous-menu */ }
-    .side-menu .main-menu .big-menu-item {
-      font-size: 400%;
-      text-align: right; }
-      @media (max-width: 450px) {
-        .side-menu .main-menu .big-menu-item {
-          margin-top: -10px; } }
-    .side-menu .main-menu li {
-      margin: 10px 0;
-      font-size: 2.5rem;
-      /* Taille plus grande pour les titres principaux */
-      /* Police JeanLuc Thin pour les titres */
-      font-weight: normal; }
-      @media (max-width: 450px) {
-        .side-menu .main-menu li {
-          margin: 0px 0; } }
-      .side-menu .main-menu li a {
-        color: black;
-        text-decoration: none; }
-  .side-menu .submenu {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 20px 0;
-    font-family: 'Apercu Mono' !important;
-    /* Police Apercu Mono pour le sous-menu */
-    font-weight: normal;
-    text-transform: lowercase;
-    text-align: right; }
-    .side-menu .submenu li {
-      margin: 5px 0;
-      font-size: 1rem; }
-      @media (max-width: 450px) {
-        .side-menu .submenu li {
-          margin: 0px 0; } }
-      .side-menu .submenu li a {
-        color: black;
-        text-decoration: none; }
-  .side-menu .main-submenu a {
-    color: black;
-    font-weight: normal; }
-  .side-menu .main-submenu .secondary-menu a::after {
-    content: "";
-    display: block;
-    width: 60%;
-    left: 40%;
-    height: 1px;
-    background-color: black;
-    position: absolute;
-    bottom: -5px;
-    /* Légèrement en dessous de l'élément */
-    transition: all 0.3s ease; }
-  @media (max-width: 450px) {
-    .side-menu .main-submenu .secondary-menu a {
-      font-size: 3vw !important; } }
-  .side-menu .legal-menu,
+    margin-top: 5vh; }
   .side-menu .secondary-menu {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    text-align: right;
-    position: relative;
-    /* Style pour les éléments principaux avec effet de soulignement */
-    /* Ajuste le soulignement lorsque le sous-menu est ouvert */
-    /* Sous-menu avec transition pour affichage progressif */
-    /* Affiche le sous-menu en augmentant sa hauteur maximale */ }
-    .side-menu .legal-menu .legal-toggle,
-    .side-menu .legal-menu .secondary-menu li,
-    .side-menu .secondary-menu .legal-toggle,
-    .side-menu .secondary-menu .secondary-menu li {
+    margin-top: 30vh; }
+  .side-menu .big-menu-item {
+    font-family: 'Jeanluc thin';
+    font-size: 3.8rem; }
+  .side-menu .horizontal-bar {
+    width: 100px !important;
+    height: 2px;
+    background-color: black;
+    margin-top: 5px;
+    margin-left: auto;
+    /* Pousse la barre vers la droite */ }
+  .side-menu .main-submenu,
+  .side-menu p {
+    margin: 1vh 0; }
+    .side-menu .main-submenu a,
+    .side-menu p a {
+      font-weight: 600;
       font-size: 1rem;
-      font-weight: bold;
-      font-family: 'Apercu Mono', monospace;
-      position: relative;
-      margin: 10px 0;
+      /* Assurez-vous que 'font-weight' est correct */ }
+  .side-menu .main-submenu-legal {
+    position: relative; }
+    .side-menu .main-submenu-legal .secondary-menu-a {
       cursor: pointer;
-      /* Barre de soulignement dynamique */ }
-      @media (max-width: 450px) {
-        .side-menu .legal-menu .legal-toggle,
-        .side-menu .legal-menu .secondary-menu li,
-        .side-menu .secondary-menu .legal-toggle,
-        .side-menu .secondary-menu .secondary-menu li {
-          margin: 2px 0; } }
-      .side-menu .legal-menu .legal-toggle a,
-      .side-menu .legal-menu .secondary-menu li a,
-      .side-menu .secondary-menu .legal-toggle a,
-      .side-menu .secondary-menu .secondary-menu li a {
-        color: black;
-        text-decoration: none;
-        /* Pas de soulignement par défaut */ }
-        @media (max-width: 450px) {
-          .side-menu .legal-menu .legal-toggle a,
-          .side-menu .legal-menu .secondary-menu li a,
-          .side-menu .secondary-menu .legal-toggle a,
-          .side-menu .secondary-menu .secondary-menu li a {
-            font-size: 3.5vw !important; } }
-      .side-menu .legal-menu .legal-toggle::after,
-      .side-menu .legal-menu .secondary-menu li::after,
-      .side-menu .secondary-menu .legal-toggle::after,
-      .side-menu .secondary-menu .secondary-menu li::after {
-        content: "";
-        display: block;
-        width: 60%;
-        left: 40%;
-        height: 1px;
-        background-color: black;
-        position: absolute;
-        bottom: -5px;
-        /* Légèrement en dessous de l'élément */
-        text-align: right;
-        transition: all 0.3s ease; }
-    .side-menu .legal-menu .secondary-menu-a::after,
-    .side-menu .secondary-menu .secondary-menu-a::after {
-      content: "";
-      display: block;
-      width: 60%;
-      left: 40%;
-      height: 1px;
-      background-color: black;
-      position: absolute;
-      bottom: -5px;
-      /* Légèrement en dessous de l'élément */
-      text-align: right;
-      transition: all 0.3s ease; }
-    .side-menu .legal-menu .legal-toggle.open::after,
-    .side-menu .secondary-menu .legal-toggle.open::after {
-      bottom: -100px; }
-      @media (max-width: 768px) {
-        .side-menu .legal-menu .legal-toggle.open::after,
-        .side-menu .secondary-menu .legal-toggle.open::after {
-          bottom: -80px; } }
-    .side-menu .legal-menu .legal-submenu,
-    .side-menu .secondary-menu .legal-submenu {
+      text-decoration: none; }
+    .side-menu .main-submenu-legal .legal-submenu {
       list-style: none;
       padding: 0;
       margin: 0;
-      max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease;
-      font-family: 'Apercu Mono', monospace;
-      font-weight: normal; }
-      .side-menu .legal-menu .legal-submenu li,
-      .side-menu .secondary-menu .legal-submenu li {
-        margin: 8px 0;
-        font-size: 1rem; }
-        @media (max-width: 450px) {
-          .side-menu .legal-menu .legal-submenu li,
-          .side-menu .secondary-menu .legal-submenu li {
-            margin: 2px 0; } }
-        .side-menu .legal-menu .legal-submenu li a,
-        .side-menu .secondary-menu .legal-submenu li a {
-          color: black;
-          text-decoration: none; }
-    .side-menu .legal-menu .legal-toggle.open + .legal-submenu,
-    .side-menu .secondary-menu .legal-toggle.open + .legal-submenu {
-      max-height: 100px;
-      /* Ajustez cette valeur selon la hauteur nécessaire */ }
+      max-height: 0;
+      /* Masquer le sous-menu */
+      opacity: 0;
+      /* Rendre invisible */
+      transition: max-height 0.3s ease, opacity 0.3s ease; }
+      .side-menu .main-submenu-legal .legal-submenu li a {
+        font-family: 'Apercu Mono' !important;
+        font-weight: normal;
+        /* ou bold selon le besoin */
+        font-style: normal; }
+    .side-menu .main-submenu-legal.open .legal-submenu {
+      max-height: 300px;
+      /* Ajustez selon la hauteur totale du sous-menu */
+      opacity: 1;
+      /* Rendre visible */
+      margin-top: 1vh; }
   .side-menu .social-section {
     margin-top: 20px;
     text-align: right; }
@@ -460,16 +366,65 @@ body.restaurant-body {
     .side-menu .social-section .social-icons {
       display: flex;
       justify-content: right;
-      gap: 10px; }
+      gap: 20px; }
       .side-menu .social-section .social-icons a {
         color: black;
         /* Couleur de l'icône */
-        font-size: 1.5rem;
+        font-size: 2rem;
         /* Taille des icônes */
         transition: color 0.3s ease; }
         .side-menu .social-section .social-icons a:hover {
           color: #555;
           /* Couleur au survol */ }
+    .side-menu .social-section .fa-linkedin-in {
+      background-color: black;
+      color: white;
+      padding: 3px; }
+
+.submenu-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* Caché en dehors de l'écran */
+  z-index: 29;
+  height: 100%;
+  width: 20%;
+  /* Largeur du sous-menu */
+  background-color: black;
+  /* Fond noir */
+  color: white;
+  transition: right 0.3s ease-in-out;
+  /* Animation fluide */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto; }
+  .submenu-nav ul {
+    margin: 0;
+    margin-top: 7vh;
+    padding: 0;
+    list-style: none; }
+    .submenu-nav ul li {
+      margin-bottom: 1rem; }
+      .submenu-nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 3vw;
+        font-family: 'JeanLuc Thin', monospace; }
+        .submenu-nav ul li a:hover {
+          color: #555; }
+  .submenu-nav.active {
+    right: 17%;
+    /* Fait glisser le sous-menu dans l'écran */ }
+    @media (max-width: 1200px) {
+      .submenu-nav.active {
+        right: 25%; } }
+    @media (max-width: 768px) {
+      .submenu-nav.active {
+        right: 45%; } }
+    @media (max-width: 450px) {
+      .submenu-nav.active {
+        right: 42%; } }
 
 /* Navigation Styles */
 @media (max-width: 480px) {
@@ -559,8 +514,11 @@ body.restaurant-body {
     .restaurant-nav ul li {
       flex: 0 0 33.33%;
       text-align: center;
-      font-size: 2vw;
+      font-size: 1.3vw;
       background-color: #000; }
+      @media (max-width: 768px) {
+        .restaurant-nav ul li {
+          font-size: 3.8vw; } }
       .restaurant-nav ul li a {
         display: block;
         color: #fff;
@@ -570,6 +528,22 @@ body.restaurant-body {
         .restaurant-nav ul li a.active {
           background-color: #fff;
           color: #000; }
+
+.nav-hidden {
+  transform: translateY(-100%);
+  /* Déplace le menu vers le haut hors de la vue */
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  /* Transition fluide */
+  opacity: 0;
+  /* Rend le menu invisible */ }
+
+.nav-visible {
+  transform: translateY(0);
+  /* Retourne le menu à sa position d'origine */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  /* Transition fluide */
+  opacity: 1;
+  /* Rend le menu visible */ }
 
 /* Popup de volume */
 .nav-volume-popup {
@@ -595,6 +569,16 @@ body.restaurant-body {
       padding: 10px 20px;
       border-radius: 8px;
       /* Arrondi léger */ } }
+
+.shop-img {
+  width: 70%;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .shop-img {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20vh; } }
 
 .nav-volume-popup.nav-active {
   display: block;
@@ -1662,7 +1646,8 @@ body.popup-active .restaurant-button {
   .soon-container h2 {
     margin-top: -1vh; }
   .soon-container .soon-btn-container {
-    margin: auto; }
+    margin: auto;
+    margin-top: 0vh; }
 
 /* Style pour le conteneur d'image */
 /* Image au centre */
@@ -1687,7 +1672,8 @@ body.popup-active .restaurant-button {
     position: relative;
     bottom: 4vh; }
   .soon-container .soon-btn-container {
-    margin: auto; } }
+    margin: auto;
+    margin-top: -20vh; } }
 /* Pour les écrans de taille moyenne (tablettes) */
 /* Pour les petits écrans (mobiles) */
 @media (max-width: 768px) {
@@ -1704,7 +1690,8 @@ body.popup-active .restaurant-button {
     position: relative;
     bottom: 4vh; }
   .soon-container .soon-btn-container {
-    margin: auto; } }
+    margin: auto;
+    margin-top: 0vh; } }
 /* Styles pour radio.html */
 body.radio-body .transition-content {
   width: 100%;
@@ -2195,7 +2182,7 @@ body.radio-body .transition-content {
 @media (max-width: 768px) {
   .swiper-button-prev,
   .swiper-button-next {
-    top: 89%;
+    top: 93%;
     /* Position tout en bas */
     transform: translateY(0);
     /* Ajustement optionnel */ }
