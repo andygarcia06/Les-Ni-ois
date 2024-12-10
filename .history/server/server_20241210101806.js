@@ -31,23 +31,6 @@ app.get('/shop', (req, res) => {
     res.sendFile(path.join(__dirname, '../shop.html'));
 });
 
-app.get('/cgv', (req, res) => {
-    res.sendFile(path.join(__dirname, '../cgv.html'));
-});
-
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, '../contact.html'));
-});
-
-
-app.get('/radio', (req, res) => {
-    res.sendFile(path.join(__dirname, '../radio.html'));
-});
-
-app.get('/newsletter', (req, res) => {
-    res.sendFile(path.join(__dirname, '../newsletter.html'));
-});
-
 
 const clientId = process.env.CLIENT_ID || '1077077414006940';
 const clientSecret = process.env.CLIENT_SECRET || '4817228961952b02f53b0818f08ab975';
