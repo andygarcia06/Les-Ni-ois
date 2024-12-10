@@ -20,11 +20,6 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.json());
-
-// Middleware pour analyser les corps de requêtes URL-encodés
-app.use(express.urlencoded({ extended: true }));
-
 
 // Servir les fichiers statiques
 app.use('/assets', express.static(path.join(__dirname, '../assets')));

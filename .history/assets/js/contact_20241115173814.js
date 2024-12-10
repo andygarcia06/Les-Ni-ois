@@ -122,56 +122,27 @@ document.querySelectorAll('#subject button').forEach(button => {
 });
 
 // Envoie le formulaire au serveur pour envoyer un e-mail
+document.getElementById('sendEmailButton').addEventListener('click', async () => {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const subject = document.querySelector('input[name="subject"]').value;
+    const question = document.querySelector('input[name="question"]').value;
+    const message = document.getElementById('message').value;
 
-document.addEventListener('DOMContentLoaded', function() {
-    const sendEmailButton = document.getElementById('sendEmailButton');
-    const popup = document.getElementById('contactPopup');
-    const closeBtn = document.getElementById('closePopup');
+    try {
+        const response = await fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Important : indiquez le type de contenu comme JSON
+            },
+            body: JSON.stringify({ name, phone, email, subject, question, message })
+        });
 
-    sendEmailButton.addEventListener('click', async function(event) {
-        event.preventDefault(); // Empêche l'envoi réel du formulaire
-
-        // Récupérer les données du formulaire
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const subject = document.querySelector('input[name="subject"]').value;
-        const question = document.querySelector('input[name="question"]').value;
-        const message = document.getElementById('message').value;
-
-        try {
-            const response = await fetch('http://localhost:3000/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, phone, email, subject, question, message })
-            });
-
-            if (response.ok) {
-                // Afficher le popup en cas de succès
-                popup.classList.add('show');
-            } else {
-                console.error('Erreur lors de l\'envoi de l\'email:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Erreur lors de l\'envoi de l\'email:', error);
-        }
-    });
-
-    closeBtn.addEventListener('click', function() {
-        // Masquer le popup
-        popup.classList.remove('show');
-    });
-
-    // Ferme le popup si l'utilisateur clique en dehors du contenu
-    window.addEventListener('click', function(event) {
-        if (event.target === popup) {
-            popup.classList.remove('show');
-        }
-    });
+        const result = await response.text();
+        alert(result); // Affiche le message de confirmation
+    } catch (error) {
+        console.error('Erreur lors de l\'envoi de l\'email:', error);
+    }
 });
-
-
-
 

@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(cors());
 
 
 
@@ -17,14 +18,6 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
-
-app.use(cors());
-
-app.use(express.json());
-
-// Middleware pour analyser les corps de requêtes URL-encodés
-app.use(express.urlencoded({ extended: true }));
-
 
 // Servir les fichiers statiques
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
@@ -177,15 +170,7 @@ app.get('/fetch-instagram-data', async (req, res) => {
 // Route pour envoyer un email avec les informations du formulaire
 // Configurer le transporteur Nodemailer
 
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT),
-    secure: parseInt(process.env.SMTP_PORT) === 465, // true pour 465, false pour d'autres ports
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+
 // Vérifier la connexion SMTP
 transporter.verify((error, success) => {
     if (error) {

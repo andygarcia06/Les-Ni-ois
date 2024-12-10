@@ -121,9 +121,7 @@ document.querySelectorAll('#subject button').forEach(button => {
     });
 });
 
-// Envoie le formulaire au serveur pour envoyer un e-mail
-
-document.addEventListener('DOMContentLoaded', function() {
+// Envoie le formulaire au serveur pour envoyer un e-maildocument.addEventListener('DOMContentLoaded', function() {
     const sendEmailButton = document.getElementById('sendEmailButton');
     const popup = document.getElementById('contactPopup');
     const closeBtn = document.getElementById('closePopup');
@@ -170,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
             popup.classList.remove('show');
         }
     });
-});
 
 
 
