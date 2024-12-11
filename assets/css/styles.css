@@ -2359,7 +2359,7 @@ input[type="email"] {
   box-sizing: border-box; }
 
 textarea {
-  height: 25vh;
+  height: 22vh;
   /* Augmente la hauteur du champ message */
   resize: vertical;
   font-family: 'Apercu Mono'; }
