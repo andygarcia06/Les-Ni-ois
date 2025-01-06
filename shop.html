@@ -12,86 +12,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <meta name="view-transition" content="same-origin"/>
-
-    <!-- Favicon en format .ico -->
-<link rel="icon" href="./assets/img/favicon/favicon_generated.ico" type="image/x-icon">
-
-<!-- Favicon en format .png pour différentes tailles -->
-<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon_16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon_32x32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="./assets/img/favicon/favicon_48x48.png">
-<link rel="icon" type="image/png" sizes="64x64" href="./assets/img/favicon/favicon_64x64.png">
-<link rel="icon" type="image/png" sizes="128x128" href="./assets/img/favicon/favicon_128x128.png">
-<link rel="icon" type="image/png" sizes="256x256" href="./assets/img/favicon/favicon_256x256.png">
-
-<!-- Apple Touch Icon pour iOS -->
-<link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/favicon_256x256.png">
 </head>
 <body class="soon-body">
     <div id="audio-container">
         <audio id="radio-player" src="https://str0.creacast.com/purelectro2" preload="none"></audio>
     </div>
     <header>
-        <!-- <div class="burger-container">
+        <div class="burger-container">
             <div class="burger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </div> -->
+        </div>
         
         <!-- Navigation principale -->
         <nav class="restaurant-nav">
             <ul>
-                <li><a href="restaurant" >Resto</a></li>
-                <li><a href="shop" class="active">Shop</a></li>
-                <li><a href="radio">Radio</a></li>
+                <li><a href="restaurant.html" >Resto</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="radio.html">Radio</a></li>
             </ul>
         </nav>
         
         <!-- Menu latéral qui s'affiche avec le burger -->
 <!-- Menu latéral -->
-<!-- Menu latéral -->
 <div class="side-menu">
-    <span class="close-popup-side-menu">x</span>
-
     <ul class="main-menu">
-        <li class="big-menu-item"><a class="resto-link" href="/restaurant">RESTO</a></li>
-        <li class="big-menu-item"><a href="/shop">SHOP</a></li>
-        <li class="big-menu-item"><a href="/radio">RADIO</a></li>
+        <li class="big-menu-item"><a href="./restaurant.html">RESTO</a></li>
+        <ul class="submenu">
+            <li><a href="#">La carte</a></li>
+            <li><a href="#">Réserver</a></li>
+            <li><a href="#">Privatiser</a></li>
+        </ul>
+        <li class="big-menu-item"><a href="./shop.html">SHOP</a></li>
+        <li class="big-menu-item"><a href="./radio.html">RADIO</a></li>
     </ul>
 
-        <!-- Sous-menu affiché dans un nav -->
-        <nav class="submenu-nav" id="submenu-resto-nav">
-            <ul class="submenu">
-                <li><a href="#">La carte</a></li>
-                <li><a href="#">Réserver</a></li>
-                <li><a href="#">Privatiser</a></li>
-            </ul>
-        </nav>
-
     <ul class="secondary-menu">
-        <li class="main-submenu">
-            <a class="secondary-menu-a" href="/contact">Contact</a>
-            <div class="horizontal-bar"></div>
-        </li>
-        <li class="main-submenu">
-            <a class="secondary-menu-a" href="/newsletter">Newsletter</a>
-            <div class="horizontal-bar"></div>
-        </li>
-        <li class="main-submenu main-submenu-legal">
-            <a href="#" class="secondary-menu-a">Infos légales</a>
-            <ul class="legal-submenu">
-                <li><a href="/cgv">Mentions légales</a></li>
-                <li><a href="/cgv#cgv">CGV & CGU</a></li>
-                <li><a href="/cgv#confidentialite">Confidentialité</a></li>
-            </ul>    
-            <div class="horizontal-bar"></div> 
+        <li class="main-submenu"><a class="secondary-menu-a" href="./contact.html">Contact</a></li>
+        <li class="main-submenu"><a class="secondary-menu-a" href="./newsletter.html">Newsletter</a></li>
+    </ul>
 
+    <ul class="legal-menu">
+        <li class="legal-toggle main-submenu">
+            <a href="#" class="secondary-menu-a" onclick="toggleLegalMenu(event)">Infos légales</a>
         </li>
-
-        
-
+        <ul class="legal-submenu">
+            <li><a href="./confidentialité.html">Mentions légales</a></li>
+            <li><a href="./confidentialité.html">CGV & CGU</a></li>
+            <li><a href="./confidentialité.html">Confidentialité</a></li>
+        </ul>
     </ul>
 
     <div class="social-section">
@@ -106,7 +77,19 @@
         </nav>
     </header>
     <div class="soon-container">
-        <img class="shop-img" src="./assets/img/contact/shop.png" alt="Shop image ">
+        <div class="soon-top-text">
+            <h1>ON EST ENCORE À <span class="soon-small-text">LA</span> PLAGE</h1>
+        </div>
+    
+        <!-- Image au centre -->
+        <div class="soon-image-container">
+            <img src="assets/img/mnt/Port Saint Laurent 10.jpg" alt="Homme à la plage" class="soon-main-image">
+        </div>
+    
+        <!-- Texte en bas -->
+        <div class="soon-bottom-text">
+            <h2>MAIS ON S'Y MET BIENTÔT</h2>
+        </div>
 
         <div class="soon-btn-container">
             <button class="restaurant-button"><a href="https://shop.lesnicois.com/">Shopez la bouteille Rosé GARCIA</a></button>
@@ -148,7 +131,6 @@
     <script src="./assets/js/animation.js"></script>
     <script src="./assets/js/popup.js"></script>
     <script src="./assets/js/radio.js"></script>
-    <script src="./assets/js/manifesto-functions.js"></script>
 
 </body>
 </html>

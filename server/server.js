@@ -4,12 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 
 
 
@@ -18,55 +12,30 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(bodyParser.json());
 
-app.use(express.json());
-
-// Middleware pour analyser les corps de requêtes URL-encodés
-app.use(express.urlencoded({ extended: true }));
-
-
-// Servir les fichiers statiques
-app.use('/assets', express.static(path.join(__dirname, '../assets')));
-
-// Route par défaut pour servir index.html
+// Serve index.html as the default file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
-});
-
-app.get('/restaurant', (req, res) => {
-    res.sendFile(path.join(__dirname, '../restaurant.html'));
-});
-
-app.get('/shop', (req, res) => {
-    res.sendFile(path.join(__dirname, '../shop.html'));
-});
-
-
-app.get('/cgv', (req, res) => {
-    res.sendFile(path.join(__dirname, '../cgv.html'));
-});
-
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, '../contact.html'));
-});
-
-
-app.get('/radio', (req, res) => {
-    res.sendFile(path.join(__dirname, '../radio.html'));
-});
-
-app.get('/newsletter', (req, res) => {
-    res.sendFile(path.join(__dirname, '../newsletter.html'));
-});
+    res.sendFile('../index.html', { root: __dirname });
+  });
 
 
 const clientId = process.env.CLIENT_ID || '1077077414006940';
 const clientSecret = process.env.CLIENT_SECRET || '4817228961952b02f53b0818f08ab975';
 const redirectUri = process.env.REDIRECT_URI || 'https://fronthand.fr/';
 
+app.use(cors());
 
-
+// Définir le transporteur pour Nodemailer avec Hostinger
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'smtp.hostinger.com', // Serveur SMTP de Hostinger
+    port: parseInt(process.env.SMTP_PORT) || 465, // Port pour SSL
+    secure: parseInt(process.env.SMTP_PORT) === 465, // Utilise SSL si le port est 465
+    auth: {
+        user: process.env.EMAIL_USER, // Adresse e-mail de l'expéditeur
+        pass: process.env.EMAIL_PASS  // Mot de passe de l'e-mail
+    }
+});
 
 
 app.get('/', (req, res) => {
@@ -172,33 +141,12 @@ app.get('/fetch-instagram-data', async (req, res) => {
 });
 
 // Route pour envoyer un email avec les informations du formulaire
-// Configurer le transporteur Nodemailer
-
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT),
-    secure: parseInt(process.env.SMTP_PORT) === 465, // true pour 465, false pour d'autres ports
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
-// Vérifier la connexion SMTP
-transporter.verify((error, success) => {
-    if (error) {
-        console.error('Erreur de connexion SMTP:', error);
-    } else {
-        console.log('Serveur SMTP prêt à envoyer des messages.');
-    }
-});
-
-// Route POST pour envoyer un e-mail
 app.post('/send-email', (req, res) => {
     const { name, phone, email, subject, question, message } = req.body;
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: 'destinataire@example.com', // Remplacez par l'adresse de réception
+        to: 'andygarcia@fronthand.fr', // Adresse de réception pour le test
         subject: `Question de ${name} concernant ${subject} - ${question}`,
         text: `
             Nom: ${name}
@@ -207,20 +155,19 @@ app.post('/send-email', (req, res) => {
             Sujet: ${subject}
             Question: ${question}
             Message: ${message}
-        `,
+        `
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error('Erreur lors de l\'envoi de l\'e-mail:', error);
-            return res.status(500).send('Erreur lors de l\'envoi de l\'e-mail');
+            console.error('Erreur lors de l\'envoi de l\'email:', error);
+            return res.status(500).send('Erreur lors de l\'envoi de l\'email');
         }
-        console.log('E-mail envoyé:', info.response);
-        res.send('E-mail envoyé avec succès');
+        console.log('Email envoyé:', info.response);
+        res.send('Email envoyé avec succès');
     });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(3000, () => {
+    console.log('Serveur démarré sur http://localhost:3000');
 });

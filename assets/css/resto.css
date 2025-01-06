@@ -34,6 +34,9 @@ body, html {
   height: 100vh;
   /* Hauteur de la fenêtre */ }
 
+.resatrant-nav a {
+  font-size: 3vh !important; }
+
 .restaurant-nav {
   position: fixed;
   top: 0;
@@ -407,6 +410,9 @@ body.popup-active .restaurant-button {
   font-family: 'Apercu Mono', monospace;
   text-align: right !important;
   /* Section des réseaux sociaux */ }
+  @media (min-width: 2400px) {
+    .side-menu {
+      width: 15%; } }
   @media (max-width: 1200px) {
     .side-menu {
       width: 25%; } }
@@ -431,6 +437,9 @@ body.popup-active .restaurant-button {
   .side-menu .big-menu-item {
     font-family: 'Jeanluc thin';
     font-size: 3.8rem; }
+    @media (min-width: 2400px) {
+      .side-menu .big-menu-item {
+        font-size: 6.8rem; } }
   .side-menu .horizontal-bar {
     width: 100px !important;
     height: 2px;
@@ -438,6 +447,10 @@ body.popup-active .restaurant-button {
     margin-top: 5px;
     margin-left: auto;
     /* Pousse la barre vers la droite */ }
+    @media (min-width: 2400px) {
+      .side-menu .horizontal-bar {
+        margin-top: 10px;
+        width: 200px !important; } }
   .side-menu .main-submenu,
   .side-menu p {
     margin: 1vh 0; }
@@ -446,11 +459,18 @@ body.popup-active .restaurant-button {
       font-weight: 600;
       font-size: 1rem;
       /* Assurez-vous que 'font-weight' est correct */ }
+      @media (min-width: 2400px) {
+        .side-menu .main-submenu a,
+        .side-menu p a {
+          font-size: 2rem; } }
   .side-menu .main-submenu-legal {
     position: relative; }
     .side-menu .main-submenu-legal .secondary-menu-a {
       cursor: pointer;
       text-decoration: none; }
+      @media (min-width: 2400px) {
+        .side-menu .main-submenu-legal .secondary-menu-a {
+          font-size: 2rem; } }
     .side-menu .main-submenu-legal .legal-submenu {
       list-style: none;
       padding: 0;
@@ -466,6 +486,9 @@ body.popup-active .restaurant-button {
         font-weight: normal;
         /* ou bold selon le besoin */
         font-style: normal; }
+        @media (min-width: 2400px) {
+          .side-menu .main-submenu-legal .legal-submenu li a {
+            font-size: 2rem; } }
     .side-menu .main-submenu-legal.open .legal-submenu {
       max-height: 300px;
       /* Ajustez selon la hauteur totale du sous-menu */
@@ -484,6 +507,10 @@ body.popup-active .restaurant-button {
       @media (max-width: 450px) {
         .side-menu .social-section p {
           font-size: 3.5vw !important;
+          /* Taille des icônes */ } }
+      @media (min-width: 2100px) {
+        .side-menu .social-section p {
+          font-size: 1.3vw !important;
           /* Taille des icônes */ } }
     .side-menu .social-section .social-icons {
       display: flex;
@@ -538,6 +565,9 @@ body.popup-active .restaurant-button {
   .submenu-nav.active {
     right: 17%;
     /* Fait glisser le sous-menu dans l'écran */ }
+    @media (min-width: 2400px) {
+      .submenu-nav.active {
+        right: 16%; } }
     @media (max-width: 1200px) {
       .submenu-nav.active {
         right: 25%; } }
@@ -548,6 +578,9 @@ body.popup-active .restaurant-button {
     @media (max-width: 450px) {
       .submenu-nav.active {
         right: 42%; } }
+
+.slide-12 {
+  transform: scale(0.5); }
 
 .manifesto-sections-container {
   display: flex;
@@ -745,6 +778,9 @@ body.popup-active .restaurant-button {
     color: black;
     text-decoration: none;
     cursor: pointer; }
+  @media (min-width: 2400px) {
+    .close-popup {
+      font-size: 38px; } }
 
 .close-popup-side-menu {
   position: absolute;
@@ -761,5 +797,8 @@ body.popup-active .restaurant-button {
     color: black;
     text-decoration: none;
     cursor: pointer; }
+  @media (min-width: 2400px) {
+    .close-popup-side-menu {
+      font-size: 38px; } }
 
 /*# sourceMappingURL=resto.css.map */

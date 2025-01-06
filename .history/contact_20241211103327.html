@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Niçois - Contact</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Favicon en format .ico -->
+<link rel="icon" href="./assets/img/favicon/favicon_generated.ico" type="image/x-icon">
+
+<!-- Favicon en format .png pour différentes tailles -->
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon_16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon_32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./assets/img/favicon/favicon_48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="./assets/img/favicon/favicon_64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="./assets/img/favicon/favicon_128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="./assets/img/favicon/favicon_256x256.png">
+
+<!-- Apple Touch Icon pour iOS -->
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/favicon_256x256.png">
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</head>
+<body class="body-contact">
+    <header>
+        <nav class="other-nav">
+            <ul>
+                <li class="nav-logo"><a href="/index"><img src="./assets/img/logo-les-nicois-white-transparent.png" alt="logo les niçois"></a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/cgv" class="active">CGV/CGU</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+    
+            <div class="contact-container">
+                <!-- Image d'en-tête -->
+                <img src="./assets//img//contact/contact.jpg" alt="image de deux personnes sur le bord de la mer, promenade des Anglais à Nice" class="contact-image">
+        
+                <!-- Formulaire de contact -->
+                <div class="contact-form">
+                    <h2>CONTACTEZ-NOUS</h2>
+        
+                    <!-- Nom et Téléphone -->
+                    <div class="form-row">
+                        <input type="text" id="name" name="name" placeholder="Nom" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Téléphone" required>
+                    </div>
+        
+                    <!-- Adresse e-mail -->
+                    <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
+        
+                    <!-- Sélection du Sujet -->
+                    <div class="question-subject-container">
+                        <!-- Section Sujet -->
+                        <div class="form-section" id="subject-section">
+                            <div class="section-title">Sujet</div>
+                            <div id="subject" class="subject-options">
+                                <button type="button" value="resto">Resto</button>
+                                <button type="button" value="shop">Shop</button>
+                                <button type="button" value="autre">Autre</button>
+                            </div>
+                            <input type="hidden" name="subject" required>
+                        </div>
+                    
+                        <!-- Section Question -->
+                        <div class="form-section" id="question-section">
+                            <div class="section-title">Question</div>
+                            <div id="question" class="question-options">
+                                <!-- Les questions seront générées ici dynamiquement -->
+                            </div>
+                            <input type="hidden" name="question" required>
+                        </div>
+                    </div>
+                    
+        
+                    <!-- Message libre -->
+                    <div class="form-section">
+                        <div class="section-title">Message</div>
+                        <textarea id="message" name="message" placeholder="Chez nous, c'est mieux." required></textarea>
+                    </div>
+        
+                    <!-- Bouton Envoyer -->
+                    <button id="sendEmailButton" type="submit">Envoyer</button>
+                </div>
+            </div>
+    </main>
+    <div class="contact-popup" id="contactPopup">
+        <div class="contact-popup-content">
+            <span class="close-btn" id="closePopup">x</span>
+            <h2>Merci de nous avoir contactés !</h2>
+        </div>
+    </div>
+</body>
+    <script src="./assets/js/manifesto.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/player"></script>
+    <script src="./assets//js/animation.js"></script>
+    <script src="./assets/js/contact.js"></script>
+
+
+
+</body>
+
+<script>
+    
+</script>
+</html>
