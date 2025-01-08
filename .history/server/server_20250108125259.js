@@ -25,8 +25,8 @@ const PORT = process.env.PORT || 3000;
 
 // Serve index.html as the default file
 app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: `${__dirname}/../` });
-});
+    res.sendFile('../index.html', { root: __dirname });
+  });
 
 
 const clientId = process.env.CLIENT_ID || '1077077414006940';
