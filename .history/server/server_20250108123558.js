@@ -170,7 +170,7 @@ app.post('/send-email', (req, res) => {
         res.send('Email envoyé avec succès');
     });
 });
-app.listen(PORT, () => {
-    console.log(`Serveur démarré sur http://localhost:${PORT}`);
-});
 
+app.listen(3000, () => {
+    console.log('Serveur démarré sur http://localhost:3000');
+});
