@@ -1,0 +1,1184 @@
+:root {
+    view-transition-name: root;
+}
+
+@font-face {
+    font-family: 'Apercu Mono';
+    src: url('../fonts/Apercu-Mono.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu Mono';
+    src: url('../fonts/Apercu-Mono-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JeanLuc Thin';
+    src: url('../fonts/jeanlucweb-thin.eot'); /* Fallback pour IE9- */
+    src: url('../fonts/jeanlucweb-thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/jeanlucweb-thin.woff') format('woff'), /* Navigateur modernes */
+         url('../fonts/jeanlucweb-thin.otf') format('opentype'), /* OpenType */
+         url('../fonts/jeanlucweb-thin.svg#JeanLucThin') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Empêche le scroll natif */
+    height: 100%;
+  }
+  
+  .section {
+    width: 100%;
+    height: 100vh; /* Hauteur de la fenêtre */
+  }
+
+  .resatrant-nav a{
+    font-size: 3vh !important;
+  }
+
+
+// NAV
+.restaurant-nav {
+    position: fixed; // Rend la navigation fixe
+    top: 0; // Place la navigation en haut de la page
+    left: 0; // Aligne la navigation sur le bord gauche
+    width: 100%; // La navigation occupe toute la largeur
+    z-index: 10; // Assure que la navigation reste au-dessus des autres éléments
+    display: flex; // Disposition en ligne
+    justify-content: space-evenly; // Espacement égal entre les éléments
+    align-items: center; // Centre les éléments verticalement
+    font-family: 'Apercu Mono', monospace; // Police Apercu Mono
+    background-color: #000; // Fond noir pour la navigation
+  
+    ul {
+      display: flex; // Les items sont en ligne
+      width: 100%; // La liste occupe toute la largeur
+      margin: 0;
+      padding: 0;
+      list-style: none; // Supprime les puces
+  
+      li {
+        flex: 0 0 33.33%; // Chaque élément prend 33% de la largeur
+        text-align: center; // Centre le texte
+        font-size: 1.3vw; // Taille de la police responsive
+        background-color: #000; // Fond noir par défaut
+
+        @media (max-width: 768px) {
+            font-size: 3.8vw; // Taille de la police responsive
+
+        }
+  
+        a {
+          display: block; // Lien en mode bloc
+          color: #fff; // Texte blanc par défaut
+          text-decoration: none; // Supprime le soulignement
+          padding: 10px 0; // Espacement vertical
+          transition: all 0.3s ease; // Transition pour les interactions
+  
+          &.active {
+            background-color: #fff; // Fond blanc pour l'actif
+            color: #000; // Texte noir pour l'actif
+          }
+        }
+      }
+    }
+  }
+
+  .nav-hidden {
+    transform: translateY(-100%); /* Déplace le menu vers le haut hors de la vue */
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in; /* Transition fluide */
+    opacity: 0; /* Rend le menu invisible */
+}
+
+.nav-visible {
+    transform: translateY(0); /* Retourne le menu à sa position d'origine */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transition fluide */
+    opacity: 1; /* Rend le menu visible */
+}
+  
+
+  
+
+// BURGER & Buttons
+
+/* Burger button  */
+.burger-container {
+    position: fixed;
+    bottom: 20px;
+    right: 0px;
+    z-index: 4;
+    background-color: #000;
+    padding: 2px 5px !important;
+    margin-right: 60px;
+
+    @media (max-width: 480px) {
+        bottom: 5.3vh;
+        margin-right: 20px;
+    }
+
+    @media (min-width: 2400px) {
+
+    }
+
+
+}
+
+.burger {
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px !important;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+
+    @media (max-width: 480px) {
+        padding: 11px 10px !important;
+    }
+    
+
+
+    span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 3px;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: 480px) {
+            width: 15px;
+            height: 2px;
+        }
+        
+    }
+
+   /* Ajustements pour le mode ouvert */
+   &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+
+&.open span:nth-child(2) {
+    opacity: 0;
+}
+
+&.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -5px);
+    width: 18px; // Ajuster la largeur si nécessaire
+}
+}
+
+.restaurant-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 60px !important; /* Ajuster l'espacement entre les boutons */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3; 
+    margin-bottom: 20px;
+}
+
+.restaurant-button {
+    padding: 10px 45px !important;
+    font-size: 1.4vw !important;
+    background-color: #000;
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Apercu Mono';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.restaurant-button a {
+    color: #fff; /* Couleur par défaut du lien */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease;
+}
+
+.restaurant-button:hover {
+    transform: scale(1.03);
+}
+
+
+
+.restaurant-button a{
+    color: white !important;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        }
+
+    // Pour les très petits écrans (mobiles)
+    @media (max-width: 480px) {
+        font-size: 1rem;    }
+}
+
+body.popup-active .restaurant-button {
+    display: none;
+}
+
+
+/* Style des boutons quand l'info est active */
+// .restaurant-button.info-active {
+//     background-color: white;
+//     a{
+//         color: black;
+//     }
+
+// POPUP RESERVATION
+
+/* Popup Reservation Frame */
+
+
+
+#privatisation-content {
+    display: none; /* Hide privatisation by default */
+    button{
+        margin:40px auto 60px;
+        
+    }
+}
+.popup-nav-item.active {
+    background-color: white;
+    color: #000;
+}
+
+.popup-nav-item:not(.active) {
+    background-color: black;
+    color: white;
+}
+.popup-reservation-frame {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80% !important;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;
+    overflow: scroll;
+} 
+
+
+/* En-tête avec deux onglets (50% chacun) */
+.popup-reservation-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-nav {
+    display: flex;
+    width: 100%;
+}
+
+.popup-nav-item {
+    flex: 1; /* Chaque élément prend 50% */
+    text-align: center;
+    font-family: 'Apercu Mono' !important;
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.popup-nav-item:last-child {
+    border-right: none; /* Pas de bordure à droite pour le dernier onglet */
+}
+
+.popup-nav-item.active {
+    background-color: white;
+    color: #000;
+}
+
+.popup-reservation-close {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    font-family: 'Apercu Mono';
+}
+
+
+
+
+
+/* Quand l'onglet "Privatisation" est actif, toute la zone de l'en-tête est blanche */
+.popup-reservation-header.white-background {
+    background-color: white; /* Le fond entier de l'en-tête devient blanc */
+}
+
+.popup-reservation-header.white-background .popup-reservation-close {
+    color: black; /* Le bouton de fermeture devient noir */
+}
+
+.popup-reservation-header.white-background #reservation-tab {
+    background-color: black; /* Réservation reste noir */
+    color: white; /* Texte de réservation reste blanc */
+}
+
+.reservation-popup-content{
+    display: flex;
+    flex-direction: row;
+    height: 50vh;
+
+
+    .reservation-popup-left{
+        width: 49%;
+
+        .reservation-popup-form{
+            iframe{
+                width: 100%;
+                overflow: scroll;
+                height: 30vh;
+            }
+                }
+
+                .reservation-popup-note{
+                    text-align: center;
+                    color: #000;
+                    font-style: italic;
+                    font-size: 1vw;
+                }
+    }
+
+    .reservation-popup-right{
+        width: 51%;
+        background-image: url('../img/contact/reserver.jpg');
+        background-size: cover;
+    }
+}
+
+
+
+/* Media Queries for Tablet and Mobile */
+@media (max-width: 768px) {
+    /* Tablet view: remains the same */
+    .popup-reservation-frame {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile view: popup adjustments */
+    .popup-reservation-frame {
+        width: 98%;
+        height: auto; /* Adjust height as needed */
+        top: 5%;
+        height: 80vh;
+        transform: translate(-50%, 0);
+    }
+
+    .reservation-popup-content {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto;
+
+        .reservation-popup-left,
+        .reservation-popup-right {
+            width: 100%; /* Each takes full width */
+        }
+
+        .reservation-popup-left {
+            order: 2;
+            .reservation-popup-form {
+                iframe {
+                    height: 300px; /* Adjust iframe height for mobile */
+                }
+            }
+
+            .reservation-popup-note {
+                font-size: 0.9rem; /* Adjust font size for mobile */
+            }
+        }
+
+        .reservation-popup-right {
+            height: 200px; /* Adjust height for mobile */
+            background-size: cover;
+        }
+    }
+}
+
+#privatisation-content {
+    height: 100%; /* Adjust height as needed */
+    max-height: 80vh; /* Limit height to a maximum for scrollability */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+
+    .image-scroll-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center the content horizontally */
+        padding: 20px;
+
+        img {
+            max-width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px;
+        }
+
+        .restaurant-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000; /* Customize button background */
+            color: #fff; /* Customize button text color */
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Apercu Mono', monospace;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #444; /* Darker shade on hover */
+            }
+
+            a {
+                color: #fff; /* Ensure the link inherits the color */
+                text-decoration: none; /* Remove underline */
+            }
+        }
+    }
+}
+
+/* Optional: Add responsiveness for mobile */
+@media (max-width: 768px) {
+    #privatisation-content {
+        max-height: 70vh; /* Adjust the height for smaller screens */
+    }
+
+    .image-scroll-container {
+        img {
+            max-width: 90%; /* Reduce image width for smaller screens */
+        }
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
+    .restaurant-button {
+        font-size: 3vw;
+        padding: 20px 20px !important;
+    }
+
+    .restaurant-buttons {
+        gap: 10px; /* Réduire l'espacement entre les boutons */
+        bottom: 3vh;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .restaurant-button {
+        font-size: 4vw;
+        padding: 10px 10px !important;    }
+
+    .restaurant-buttons {
+        gap: 10px !important; /* Réduire encore plus l'espacement entre les boutons */
+    }
+
+
+}
+
+
+
+// SIDE NEVIGATION
+
+/* Menu latéral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initialement en dehors de l'écran */
+    width: 17%;
+    z-index: 30 !important;
+    height: 100%;
+    background-color: black; /* Fond blanc */
+    color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Apercu Mono', monospace;
+    text-align: right !important;
+
+    .submenu a{
+        margin-bottom: 4000vh;
+    }
+
+    @media (min-width: 2400px) {
+        width: 15%;
+    }
+
+    @media (max-width: 1200px) {
+        width: 25%;
+    }
+
+    @media (max-width: 768px) {
+        width: 45%;
+    }
+
+    @media (max-width: 450px) {
+        width: 42%;
+    }
+
+    &.open {
+        right: 0; /* Glisse le menu dans l'écran */
+    }
+
+    ul {
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+
+    .main-menu {
+        margin-top: 5vh;
+    }
+
+    .secondary-menu {
+        margin-top: 30vh;
+    }
+
+    .big-menu-item {
+        font-family: 'Jeanluc thin';
+        font-size: 5.2rem;
+
+        @media (min-width: 2400px) {
+            font-size: 6.8rem;
+        }
+    }
+
+    .horizontal-bar {
+        width: 100px !important;
+        height: 2px;
+        background-color: black;
+        margin-top: 5px;
+        margin-left: auto; /* Pousse la barre vers la droite */
+
+
+        @media (min-width: 2400px) {
+            margin-top: 10px;
+            width: 200px !important;
+
+        }
+    }
+
+    .main-submenu{
+        position: relative;
+        bottom: 20vh;
+    }
+
+    .main-submenu,
+    p {
+        margin: 2vh 0;
+
+        a {
+            font-weight: 600;
+            font-size: 1rem; /* Assurez-vous que 'font-weight' est correct */
+
+
+            @media (min-width: 2400px) {
+                font-size: 2rem;
+            }
+        }
+    }
+
+
+
+    .main-submenu-legal {
+        position: relative;
+
+        .secondary-menu-a {
+            cursor: pointer;
+            text-decoration: none;
+
+
+            @media (min-width: 2400px) {
+                font-size: 2rem;
+            }
+        }
+
+        .legal-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            max-height: 0; /* Masquer le sous-menu */
+            opacity: 0; /* Rendre invisible */
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+
+            li a {
+                font-family: 'Apercu Mono' !important;
+                font-weight: normal; /* ou bold selon le besoin */
+                font-style: normal;
+
+                @media (min-width: 2400px) {
+                    font-size: 2rem;
+                }
+            
+            }
+        }
+
+        &.open .legal-submenu {
+            max-height: 300px; /* Ajustez selon la hauteur totale du sous-menu */
+            opacity: 1; /* Rendre visible */
+            margin-top: 1vh;
+        }
+    }
+
+    /* Section des réseaux sociaux */
+    .social-section {
+        margin-top: -5vh !important;
+        text-align: right;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold; /* Apercu Bold pour "Suivez-nous" */
+            font-family: 'Apercu Mono', monospace;
+            margin-bottom: 10px;
+
+            @media (max-width: 450px) {
+                font-size: 3.5vw !important; /* Taille des icônes */
+            }
+
+            @media (min-width: 2100px) {
+                font-size: 1.3vw !important; /* Taille des icônes */
+
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+
+            a {
+                color: white; /* Couleur de l'icône */
+                font-size: 2rem; /* Taille des icônes */
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #555; /* Couleur au survol */
+                }
+            }
+        }
+
+        .fa-linkedin-in {
+            background-color: black;
+            color: white;
+            padding: 3px;
+        }
+    }
+}
+
+.submenu-nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Caché en dehors de l'écran */
+    z-index: 3;
+    height: 100%;
+    width: 15%; /* Largeur du sous-menu */
+    background-color: white; /* Fond blanc */
+    color: black;
+    transition: right 0.3s ease-in-out; /* Animation fluide */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 3px solid black;
+
+    ul {
+        margin: 0;
+        margin-top: calc(5vh + 15px);
+        padding: 0;
+        list-style: none;
+        flex: 1; /* Permet à `ul` d'occuper tout l'espace vertical */
+        display: flex; /* Active Flexbox sur `ul` */
+        flex-direction: column; /* Aligne les éléments en colonne */
+        // justify-content: center; /* Centre les éléments verticalement */
+        // align-items: center; /* Optionnel : centre horizontalement les éléments */
+        
+        li {
+            margin-bottom: 1rem;
+
+            a {
+                text-decoration: none;
+                color: black;
+                font-size:3vw;
+                font-family: 'JeanLuc Thin', monospace;
+
+                &:hover {
+                    color: #555;
+                }
+            }
+        }
+    }
+
+    &.active {
+        right: 17%; /* Fait glisser le sous-menu dans l'écran */
+
+        @media (min-width: 2400px) {
+            right: 16%;
+        }
+
+        @media (max-width: 1200px) {
+            right: 25%;
+        }
+
+        @media (max-width: 768px) {
+            right: 45%;
+            width: 30%;
+        }
+
+        @media (max-width: 450px) {
+            right: 42%;
+        }
+    }
+}
+
+.legal-submenu-nav{
+    position: fixed;
+    top: 0;
+    right: -100%; /* Caché en dehors de l'écran */
+    z-index: 3;
+    height: 100%;
+    width: 15%; /* Largeur du sous-menu */
+    background-color: white; /* Fond blanc */
+    color: black;
+    transition: right 0.3s ease-in-out; /* Animation fluide */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 3px solid black;
+
+    ul {
+        margin: 0;
+        margin-top: calc(62vh + 15px);
+        padding: 0;
+        list-style: none;
+        flex: 1; /* Permet à `ul` d'occuper tout l'espace vertical */
+        display: flex; /* Active Flexbox sur `ul` */
+        flex-direction: column; /* Aligne les éléments en colonne */
+        // justify-content: center; /* Centre les éléments verticalement */
+        // align-items: center; /* Optionnel : centre horizontalement les éléments */
+        
+        li {
+            margin-bottom: 1rem;
+
+            a {
+                text-decoration: none;
+                color: black;
+                font-size:2vw;
+                font-family: 'JeanLuc Thin', monospace;
+
+                &:hover {
+                    color: #555;
+                }
+            }
+        }
+    }
+
+    &.active {
+        right: 17%; /* Fait glisser le sous-menu dans l'écran */
+
+        @media (min-width: 2400px) {
+            right: 16%;
+        }
+
+        @media (max-width: 1200px) {
+            right: 25%;
+        }
+
+        @media (max-width: 768px) {
+            right: 45%;
+            width: 30%;
+        }
+
+        @media (max-width: 450px) {
+            right: 42%;
+        }
+    }
+}
+
+
+.slide-12{
+    transform: scale(0.5);
+}
+
+
+
+// Variables pour gérer les points de rupture
+$mobile-breakpoint: 768px;
+
+// Mixin pour appliquer 100dvh à chaque section
+@mixin full-device-height() {
+  height: 100dvh; // Toujours prendre en compte la hauteur visible du viewport
+  overflow: hidden; // Évite les débordements
+}
+
+
+
+// Application des styles
+.manifesto-sections-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .manifesto-section {
+    @include full-device-height(); // Chaque section occupe 100dvh
+    flex: 1; // Chaque section occupe un espace égal
+
+    &-left,
+    &-middle,
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; // Centrage vertical
+      align-items: center; // Centrage horizontal
+      position: relative; // Nécessaire pour les superpositions ou contenus positionnés
+      background-size: cover;
+      background-position: center;
+
+      .manifesto-content {
+        max-width: 100%;
+        text-align: center;
+
+        img{
+            max-width: 100%
+        }
+      }
+    }
+  }
+}
+
+// Gestion pour Swiper ou d'autres sections similaires
+.manifesto-swiper-container {
+  .swiper-slide {
+    @include full-device-height(); // Chaque slide occupe 100dvh
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// MANIFESTO SECTION 1
+
+.manifesto-sections-container {
+    display: flex;
+    flex-wrap: nowrap; // Aligne les sections horizontalement sur desktop
+    width: 100%; // Largeur totale
+    height: 100vh; // Chaque section prend 100% de la hauteur de la fenêtre
+  
+    .manifesto-section {
+      flex: 0 0 33.33%; // Chaque section occupe 33% de la largeur
+      display: flex;
+      flex-direction: column; // Empile le contenu verticalement
+      align-items: center;
+      justify-content: center;
+  
+      // Conteneur de l'image
+      .manifesto-image-container {
+        width: 100%; // Largeur pleine
+        height: 50%; // Prend 50% de la hauteur de la section
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      // Conteneur du texte
+      .manifesto-content {
+        width: 100%; // Largeur pleine
+        height: 50%; // Prend 50% de la hauteur de la section
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+  
+      &.manifesto-section-left,
+      &.manifesto-section-right {
+        // Image en haut, texte en bas
+        .manifesto-image-container {
+          order: 0; // Image en haut
+        }
+        .manifesto-content {
+          order: 1; // Contenu en bas
+        }
+      }
+  
+      &.manifesto-section-middle {
+        // Texte en haut, image en bas
+        .manifesto-image-container {
+          order: 1; // Image en bas
+        }
+        .manifesto-content {
+          order: 0; // Contenu en haut
+        }
+      }
+    }
+  }
+
+  // Style des images dans chaque section (prend toute la largeur et la hauteur)
+.manifesto-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.manifesto-image {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 40% center;
+    transition: opacity 1s ease;
+    z-index: 1;
+}
+
+.overlay {
+    opacity: 0;
+    z-index: 2;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+
+  
+  // Responsive design pour les petits écrans
+  @media (max-width: 1100px) {
+    .manifesto-sections-container {
+      height: 100dvh; // Hauteur dynamique basée sur la fenêtre visible
+      flex-direction: column; // Sections empilées en colonne
+  
+      .manifesto-section {
+        display: flex;
+        flex-direction: row; // Image et contenu côte à côte
+        height: 33.33333dvh; // Chaque section prend un tiers de la hauteur totale
+  
+        .manifesto-image-container,
+        .manifesto-content {
+          width: 50%; // Chaque élément occupe 50% de la largeur
+          height: 100%; // Prend toute la hauteur de la section
+          display: flex; // Pour centrer le contenu
+          justify-content: center;
+          align-items: center;
+  
+          img {
+            max-width: 100%; // Les images ne dépassent pas leur conteneur
+            max-height: 100%; // Les images respectent la hauteur disponible
+            object-fit: contain; // Les images conservent leurs proportions
+          }
+        }
+  
+        .manifesto-image-container {
+          background-size: cover; // L'image de fond occupe tout l'espace disponible
+          background-position: center; // Centre l'image de fond
+        }
+  
+        .manifesto-content {
+          text-align: center; // Centre le texte
+     }
+      }
+    }
+  }
+
+
+
+
+
+// SWIPER MANIFESTO SLIDE
+/* Masquer les swipers par défaut */
+.manifesto-swiper-container {
+    width: 100%;
+    height: 100vh;
+
+    .swiper-wrapper {
+        width: 100%;
+        height: 100vh;
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+            img {
+                width: 90%;
+                height: 90%;
+                object-fit: contain; // Les images remplissent la zone sans distorsion
+            }
+        }
+    }
+}
+
+/* Section Desktop */
+.manifesto-swiper-desktop {
+    display: none; // Masquer par défaut
+
+    @media (min-width: 1024px) {
+        display: block; // Afficher en desktop
+    }
+}
+
+/* Section Mobile */
+.manifesto-swiper-mobile {
+    display: none; // Masquer par défaut
+
+    @media (max-width: 1023px) {
+        display: block; // Afficher en mobile/tablette
+
+    }
+}
+
+
+
+
+
+
+
+
+// CARTE POPUP
+
+// POPUP
+
+/* Popup styles */
+
+
+
+
+.popup {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre plus visible */
+}
+
+.popup-content {
+    background-color: transparent; /* Rendre l'arrière-plan transparent */
+    margin: 0; /* Supprime toutes les marges */
+    padding: 0; /* Supprime tous les espacements internes */
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrer le swiper verticalement */
+    z-index: 2000;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+/* Positionner le bouton de fermeture en haut à droite */
+.close-popup {
+    position: absolute;
+    top: 20px; /* Position en haut de l'écran */
+    right: 20px; /* Position à droite de l'écran */
+    color: black;
+    font-size: 18px;
+    font-weight:100;
+    z-index: 20000;
+    font-family: 'Apercu Mono';
+
+    &:hover,
+    &:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    @media (min-width: 2400px) {
+        font-size: 38px;
+
+    }
+}
+
+.close-popup-side-menu {
+    position: absolute;
+    top: 20px; /* Position en haut de l'écran */
+    right: 20px; /* Position à droite de l'écran */
+    color: black;
+    font-size: 18px;
+    font-weight:100;
+    z-index: 20000;
+    font-family: 'Apercu Mono';
+
+    &:hover,
+    &:focus {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    @media (min-width: 2400px) {
+        font-size: 38px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
