@@ -185,7 +185,8 @@ body.index-body {
 
 #index-section-2 {
   background-image: url("../img/background/3.1.jpg");
-  background-position: 0px 10%; }
+  /* Image pour la section 3 */
+  background-size: 115% 100%; }
   @media (max-width: 768px) {
     #index-section-2 {
       background-image: url("../img/background/background-mobile-3.png");
@@ -193,8 +194,7 @@ body.index-body {
 
 #index-section-3 {
   background-image: url("../img/background/2.1.jpg");
-  /* Image pour la section 3 */
-  background-size: 115% 100%; }
+  background-position: 0px 10%; }
 
 /* Apparition du contenu et changement de couleur au survol *
 /* Responsive Media Query pour les tablettes */
@@ -219,13 +219,13 @@ body.index-body {
     /* Image pour la section 1 en mobile */ }
 
   #index-section-2 {
-    background-image: url("../img/background/3.1.jpg");
-    /* Image pour la section 3 en mobile */ }
-
-  #index-section-3 {
     background-image: url("../img/background/2.1.jpg");
     /* Image pour la section 2 en mobile */
     background-size: 120%; }
+
+  #index-section-3 {
+    background-image: url("../img/background/3.1.jpg");
+    /* Image pour la section 3 en mobile */ }
 
   .index-content p {
     font-size: 30vw !important; } }
@@ -270,10 +270,33 @@ body.index-body {
         /* Ajustement sur petits écrans */ } }
   .cookie-popup__text {
     font-size: 16px;
+    /* Taille de texte par défaut */
     line-height: 1.5;
     margin-bottom: 20px;
     font-family: 'Apercu Mono', monospace;
-    /* Police Apercu Mono */ }
+    /* Police Apercu Mono */
+    white-space: nowrap;
+    /* Empêche le texte de passer à la ligne */
+    overflow: hidden;
+    /* Cache le texte débordant */
+    text-overflow: ellipsis;
+    /* Ajoute des points de suspension si nécessaire */ }
+    @media (min-width: 2400px) {
+      .cookie-popup__text {
+        font-size: 22px;
+        /* Texte plus grand pour les écrans très larges */ } }
+    @media (max-width: 1200px) {
+      .cookie-popup__text {
+        font-size: 16px;
+        /* Texte légèrement réduit pour les écrans moyens */ } }
+    @media (max-width: 768px) {
+      .cookie-popup__text {
+        font-size: 14px;
+        /* Texte encore plus petit pour tablettes */ } }
+    @media (max-width: 450px) {
+      .cookie-popup__text {
+        font-size: 12px;
+        /* Texte très petit pour les petits écrans */ } }
   .cookie-popup__buttons {
     display: flex;
     gap: 10px;
@@ -299,6 +322,22 @@ body.index-body {
       /* Couleur pour le bouton "Refuser" */
       color: #000;
       /* Texte noir pour contraste */ }
+    @media (min-width: 2400px) {
+      .cookie-popup__button {
+        font-size: 22px;
+        /* Boutons légèrement plus grands sur très grand écran */ } }
+    @media (max-width: 1200px) {
+      .cookie-popup__button {
+        font-size: 15px;
+        /* Taille légèrement réduite pour les écrans moyens */ } }
+    @media (max-width: 768px) {
+      .cookie-popup__button {
+        font-size: 13px;
+        /* Boutons plus petits sur tablettes */ } }
+    @media (max-width: 450px) {
+      .cookie-popup__button {
+        font-size: 11px;
+        /* Boutons très petits sur petits écrans */ } }
 
 /* Styles pour restaurant.html */
 body.restaurant-body {
@@ -323,6 +362,7 @@ body.restaurant-body {
     text-decoration: none;
     cursor: pointer; }
 
+/* Menu latéral */
 .side-menu {
   position: fixed;
   top: 0;
@@ -342,9 +382,6 @@ body.restaurant-body {
   font-family: 'Apercu Mono', monospace;
   text-align: right !important;
   /* Section des réseaux sociaux */ }
-  @media (min-width: 2400px) {
-    .side-menu {
-      width: 15%; } }
   @media (max-width: 1200px) {
     .side-menu {
       width: 25%; } }
@@ -369,9 +406,6 @@ body.restaurant-body {
   .side-menu .big-menu-item {
     font-family: 'Jeanluc thin';
     font-size: 3.8rem; }
-    @media (min-width: 2400px) {
-      .side-menu .big-menu-item {
-        font-size: 6.8rem; } }
   .side-menu .horizontal-bar {
     width: 100px !important;
     height: 2px;
@@ -379,10 +413,6 @@ body.restaurant-body {
     margin-top: 5px;
     margin-left: auto;
     /* Pousse la barre vers la droite */ }
-    @media (min-width: 2400px) {
-      .side-menu .horizontal-bar {
-        margin-top: 10px;
-        width: 200px !important; } }
   .side-menu .main-submenu,
   .side-menu p {
     margin: 1vh 0; }
@@ -391,18 +421,11 @@ body.restaurant-body {
       font-weight: 600;
       font-size: 1rem;
       /* Assurez-vous que 'font-weight' est correct */ }
-      @media (min-width: 2400px) {
-        .side-menu .main-submenu a,
-        .side-menu p a {
-          font-size: 2rem; } }
   .side-menu .main-submenu-legal {
     position: relative; }
     .side-menu .main-submenu-legal .secondary-menu-a {
       cursor: pointer;
       text-decoration: none; }
-      @media (min-width: 2400px) {
-        .side-menu .main-submenu-legal .secondary-menu-a {
-          font-size: 2rem; } }
     .side-menu .main-submenu-legal .legal-submenu {
       list-style: none;
       padding: 0;
@@ -418,9 +441,6 @@ body.restaurant-body {
         font-weight: normal;
         /* ou bold selon le besoin */
         font-style: normal; }
-        @media (min-width: 2400px) {
-          .side-menu .main-submenu-legal .legal-submenu li a {
-            font-size: 2rem; } }
     .side-menu .main-submenu-legal.open .legal-submenu {
       max-height: 300px;
       /* Ajustez selon la hauteur totale du sous-menu */
@@ -439,10 +459,6 @@ body.restaurant-body {
       @media (max-width: 450px) {
         .side-menu .social-section p {
           font-size: 3.5vw !important;
-          /* Taille des icônes */ } }
-      @media (min-width: 2100px) {
-        .side-menu .social-section p {
-          font-size: 1.3vw !important;
           /* Taille des icônes */ } }
     .side-menu .social-section .social-icons {
       display: flex;
@@ -469,7 +485,7 @@ body.restaurant-body {
   /* Caché en dehors de l'écran */
   z-index: 29;
   height: 100%;
-  width: 15%;
+  width: 20%;
   /* Largeur du sous-menu */
   background-color: black;
   /* Fond noir */
@@ -497,22 +513,15 @@ body.restaurant-body {
   .submenu-nav.active {
     right: 17%;
     /* Fait glisser le sous-menu dans l'écran */ }
-    @media (min-width: 2400px) {
-      .submenu-nav.active {
-        right: 16%; } }
     @media (max-width: 1200px) {
       .submenu-nav.active {
         right: 25%; } }
     @media (max-width: 768px) {
       .submenu-nav.active {
-        right: 45%;
-        width: 30%; } }
+        right: 45%; } }
     @media (max-width: 450px) {
       .submenu-nav.active {
         right: 42%; } }
-
-.slide-12 {
-  transform: scale(0.5); }
 
 /* Navigation Styles */
 @media (max-width: 480px) {
@@ -814,19 +823,6 @@ body.restaurant-body {
   @media (max-width: 480px) {
     .burger-container {
       bottom: 5.4vh;
-      margin-right: 20px; } }
-
-.burger-container {
-  position: fixed;
-  bottom: 20px;
-  right: 0px;
-  z-index: 4;
-  background-color: #000;
-  padding: 2px 5px !important;
-  margin-right: 60px; }
-  @media (max-width: 480px) {
-    .burger-container {
-      bottom: 5.3vh;
       margin-right: 20px; } }
 
 .burger {

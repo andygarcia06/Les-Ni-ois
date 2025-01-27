@@ -95,7 +95,7 @@ body, html {
   right: 0px;
   z-index: 4;
   background-color: #000;
-  padding: 2px 5px !important;
+  padding: 5px 5px !important;
   margin-right: 60px; }
   @media (max-width: 480px) {
     .burger-container {
@@ -391,229 +391,176 @@ body.popup-active .restaurant-button {
     gap: 10px !important;
     /* Réduire encore plus l'espacement entre les boutons */ } }
 /* Menu latéral */
-.side-menu {
+.side-menu-container {
   position: fixed;
   top: 0;
-  right: -100%;
-  /* Initialement en dehors de l'écran */
-  width: 17%;
-  z-index: 30 !important;
+  right: -33.33%;
   height: 100%;
-  background-color: black;
-  color: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: right 0.3s ease-in-out;
+  width: 33.33%;
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  font-family: 'Apercu Mono', monospace;
-  text-align: right !important;
-  /* Media queries pour ajuster la largeur du menu */ }
-  .side-menu h2 {
-    font-size: 1.4rem;
-    font-weight: 100; }
-  .side-menu .submenu a {
-    margin-bottom: 4000vh; }
-  @media (min-width: 2400px) {
-    .side-menu {
-      width: 15%;
-      font-size: 1.6rem;
-      /* Taille du texte plus grande pour les très grands écrans */ } }
-  @media (max-width: 1200px) {
-    .side-menu {
-      width: 25%;
-      font-size: 1.2rem;
-      /* Réduire légèrement la taille du texte pour les tablettes */ } }
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 30;
+  transition: right 0.3s ease-in-out; }
+  .side-menu-container.active {
+    right: 0; }
+  @media (max-width: 1024px) {
+    .side-menu-container {
+      width: 40%;
+      right: -40%; }
+      .side-menu-container.active {
+        right: 0; } }
   @media (max-width: 768px) {
-    .side-menu {
-      width: 45%;
-      font-size: 1rem;
-      /* Taille de texte plus petite pour les écrans moyens */ } }
-  @media (max-width: 450px) {
-    .side-menu {
-      width: 42%;
-      font-size: 0.9rem;
-      /* Taille de texte encore plus petite pour les petits écrans */ } }
-  .side-menu.open {
-    right: 0;
-    /* Glisse le menu dans l'écran */ }
-  .side-menu ul li {
-    list-style: none; }
-    .side-menu ul li a {
-      text-decoration: none;
+    .side-menu-container {
+      width: 70%;
+      right: -70%; }
+      .side-menu-container.active {
+        right: 0; } }
+  .side-menu-container .submenu-nav {
+    width: 33.33%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; }
+    .side-menu-container .submenu-nav h2 {
+      font-family: 'Apercu Mono', monospace;
+      font-size: 1.4vw;
+      margin-bottom: 20px;
       color: white; }
-  .side-menu .main-menu {
-    margin-top: 3vh; }
-  .side-menu .secondary-menu {
-    margin-top: 30vh; }
-  .side-menu .big-menu-item {
-    font-family: 'Jeanluc thin';
-    font-size: 5.8rem; }
-    .side-menu .big-menu-item:last-child {
-      margin-bottom: 0; }
-    @media (min-width: 2400px) {
-      .side-menu .big-menu-item {
-        font-size: 6.8rem;
-        /* Taille du texte pour très grand écran */ } }
-    @media (max-width: 1200px) {
-      .side-menu .big-menu-item {
-        font-size: 4.5rem;
-        /* Taille réduite pour tablette */ } }
-    @media (max-width: 768px) {
-      .side-menu .big-menu-item {
-        font-size: 3rem;
-        /* Taille encore réduite pour tablette ou mobile */ } }
-    @media (max-width: 450px) {
-      .side-menu .big-menu-item {
-        font-size: 2rem;
-        /* Très petite taille pour mobile */ } }
-  .side-menu .horizontal-bar {
-    width: 100px !important;
-    height: 2px;
-    background-color: black;
-    margin-top: 5px;
-    margin-left: auto;
-    /* Pousse la barre vers la droite */ }
-    @media (min-width: 2400px) {
-      .side-menu .horizontal-bar {
-        margin-top: 10px;
-        width: 200px !important; } }
-    @media (max-width: 768px) {
-      .side-menu .horizontal-bar {
-        width: 70px;
-        /* Réduit la taille de la barre pour les petits écrans */ } }
-  .side-menu .main-submenu {
-    position: relative;
-    bottom: 25vh; }
-  .side-menu .main-submenu,
-  .side-menu p {
-    margin: 1vh 0; }
-    .side-menu .main-submenu a,
-    .side-menu p a {
-      font-weight: 100;
-      font-size: 1.4rem;
-      /* Taille du texte plus petite par défaut */ }
-      @media (min-width: 2400px) {
-        .side-menu .main-submenu a,
-        .side-menu p a {
-          font-size: 2rem; } }
       @media (max-width: 768px) {
-        .side-menu .main-submenu a,
-        .side-menu p a {
-          font-size: 1.2rem;
-          /* Taille plus petite pour mobile */ } }
-  .side-menu .main-submenu-legal {
-    position: relative; }
-    .side-menu .main-submenu-legal .secondary-menu-a {
-      cursor: pointer;
-      text-decoration: none; }
-      @media (min-width: 2400px) {
-        .side-menu .main-submenu-legal .secondary-menu-a {
-          font-size: 2rem; } }
-      @media (max-width: 768px) {
-        .side-menu .main-submenu-legal .secondary-menu-a {
-          font-size: 1.2rem;
-          /* Plus petit sur les écrans moyens */ } }
-    .side-menu .main-submenu-legal .legal-submenu {
+        .side-menu-container .submenu-nav h2 {
+          font-size: 4.4vw; } }
+    .side-menu-container .submenu-nav.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease-in-out; }
+    @media (max-width: 1024px) {
+      .side-menu-container .submenu-nav {
+        width: 60%; } }
+    @media (max-width: 768px) {
+      .side-menu-container .submenu-nav {
+        width: 60% !important; } }
+    .side-menu-container .submenu-nav ul {
       list-style: none;
       padding: 0;
-      margin: 0;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.3s ease, opacity 0.3s ease; }
-      .side-menu .main-submenu-legal .legal-submenu li a {
-        font-family: 'Apercu Mono' !important;
-        font-weight: normal; }
-        @media (min-width: 2400px) {
-          .side-menu .main-submenu-legal .legal-submenu li a {
-            font-size: 2rem; } }
+      margin-top: 30px; }
+      .side-menu-container .submenu-nav ul li {
+        margin-bottom: 10px; }
         @media (max-width: 768px) {
-          .side-menu .main-submenu-legal .legal-submenu li a {
-            font-size: 1.2rem;
-            /* Réduction de la taille du texte */ } }
-    .side-menu .main-submenu-legal.open .legal-submenu {
-      max-height: 300px;
-      opacity: 1;
-      margin-top: 1vh; }
-  .side-menu .social-section {
-    margin-top: -13vh !important;
-    text-align: right; }
-    .side-menu .social-section p {
-      font-size: 1.2rem;
-      font-weight: 100;
-      font-family: 'Apercu Mono', monospace;
-      margin-bottom: 10px; }
-      @media (max-width: 450px) {
-        .side-menu .social-section p {
-          font-size: 3.5vw !important;
-          /* Taille dynamique des icônes */ } }
-      @media (min-width: 2100px) {
-        .side-menu .social-section p {
-          font-size: 1.3vw !important; } }
-    .side-menu .social-section .social-icons {
-      display: flex;
-      justify-content: right;
-      gap: 20px; }
-      .side-menu .social-section .social-icons a {
-        color: white;
-        font-size: 2rem;
-        transition: color 0.3s ease; }
-        .side-menu .social-section .social-icons a:hover {
-          color: #555; }
-    .side-menu .social-section .fa-linkedin-in {
-      background-color: black;
-      color: white;
-      padding: 3px; }
-
-.submenu-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  z-index: 3;
-  height: 100%;
-  width: 11.7%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  transition: right 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  overflow-y: auto; }
-  .submenu-nav h2 {
-    margin-right: 20px; }
-  .submenu-nav ul {
-    margin: 0 20px;
-    margin-top: calc(4vh + 15px);
-    padding: 0;
-    list-style: none;
-    flex: 1;
+          .side-menu-container .submenu-nav ul li {
+            margin-bottom: 20px; } }
+        .side-menu-container .submenu-nav ul li a {
+          text-decoration: none;
+          color: white;
+          font-family: 'Apercu Mono', monospace;
+          font-size: 1.4vw; }
+          @media (max-width: 768px) {
+            .side-menu-container .submenu-nav ul li a {
+              font-size: 3.8vw; } }
+          .side-menu-container .submenu-nav ul li a:hover {
+            color: #555; }
+  .side-menu-container .side-menu {
+    width: 66.66%;
+    padding: 20px;
     display: flex;
-    flex-direction: column; }
-    .submenu-nav ul li {
-      margin-bottom: 1rem; }
-      .submenu-nav ul li a {
-        text-decoration: none;
-        color: white;
-        font-size: 1.2rem;
-        font-family: 'Apercu Mono', monospace; }
-        .submenu-nav ul li a:hover {
-          color: #555; }
-  .submenu-nav.active {
-    right: 19%; }
-    @media (min-width: 2400px) {
-      .submenu-nav.active {
-        right: 16%; } }
-    @media (max-width: 1200px) {
-      .submenu-nav.active {
-        right: 25%; } }
+    flex-direction: column;
+    background-color: black;
+    text-align: right; }
+    .side-menu-container .side-menu h2 {
+      font-family: 'Apercu Mono', monospace;
+      font-size: 1.4vw;
+      margin-bottom: 20px; }
+      @media (max-width: 768px) {
+        .side-menu-container .side-menu h2 {
+          font-size: 3.4vw; } }
+    @media (max-width: 1024px) {
+      .side-menu-container .side-menu {
+        width: 60%; } }
     @media (max-width: 768px) {
-      .submenu-nav.active {
-        right: 45%;
-        width: 30%; } }
-    @media (max-width: 450px) {
-      .submenu-nav.active {
-        right: 42%; } }
+      .side-menu-container .side-menu {
+        width: 60vh !important; } }
+    .side-menu-container .side-menu .close-popup-side-menu {
+      align-self: flex-end;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-bottom: 20px;
+      color: white; }
+    .side-menu-container .side-menu ul {
+      list-style: none;
+      padding: 0; }
+      .side-menu-container .side-menu ul .big-menu-item {
+        margin-bottom: 15px; }
+        .side-menu-container .side-menu ul .big-menu-item a {
+          text-decoration: none;
+          font-size: 5.8vw;
+          font-family: 'JeanLuc Thin', sans-serif;
+          color: white;
+          position: relative;
+          overflow: hidden; }
+          @media (max-width: 768px) {
+            .side-menu-container .side-menu ul .big-menu-item a {
+              font-size: 12.4vw; } }
+          .side-menu-container .side-menu ul .big-menu-item a:hover {
+            color: white; }
+          .side-menu-container .side-menu ul .big-menu-item a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 0;
+            background: white;
+            transition: width 0.3s ease-in-out; }
+          .side-menu-container .side-menu ul .big-menu-item a:hover::after {
+            width: 100%; }
+    .side-menu-container .side-menu .secondary-menu {
+      margin-top: auto; }
+      .side-menu-container .side-menu .secondary-menu .main-submenu {
+        margin-bottom: 10px;
+        position: relative;
+        bottom: 10vh; }
+        @media (max-width: 768px) {
+          .side-menu-container .side-menu .secondary-menu .main-submenu {
+            margin-bottom: 30px; } }
+        .side-menu-container .side-menu .secondary-menu .main-submenu a {
+          text-decoration: none;
+          font-size: 1.4vw;
+          color: white;
+          font-family: 'Apercu Mono', monospace; }
+          @media (max-width: 768px) {
+            .side-menu-container .side-menu .secondary-menu .main-submenu a {
+              font-size: 3.8vw; } }
+          .side-menu-container .side-menu .secondary-menu .main-submenu a:hover {
+            color: #555; }
+    .side-menu-container .side-menu .social-section {
+      margin-top: 20px; }
+      .side-menu-container .side-menu .social-section p {
+        margin-bottom: 10px;
+        font-size: 1.4vw;
+        color: white;
+        font-family: 'Apercu Mono', monospace; }
+        @media (max-width: 768px) {
+          .side-menu-container .side-menu .social-section p {
+            font-size: 3.8vw; } }
+      .side-menu-container .side-menu .social-section .social-icons {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: flex-end;
+        margin-right: 20px; }
+        .side-menu-container .side-menu .social-section .social-icons a {
+          font-size: 2.5em;
+          color: white; }
+          @media (max-width: 768px) {
+            .side-menu-container .side-menu .social-section .social-icons a {
+              font-size: 2em;
+              color: white; } }
+          .side-menu-container .side-menu .social-section .social-icons a:hover {
+            color: #555; }
 
 .slide-12 {
   transform: scale(0.5); }
