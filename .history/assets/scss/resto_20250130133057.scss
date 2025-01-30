@@ -269,45 +269,17 @@ body.popup-active .restaurant-button {
 }
 .popup-reservation-frame {
     position: fixed;
-    top: -100vh; // Position initiale hors de l'écran
+    top: 10%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 80% !important;
     background-color: white;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
     display: none;
     overflow: scroll;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; // Animation fluide
-
-    &.popup-enter {
-        top: 10%; // Apparition de la popup à sa position normale
-        opacity: 1;
-    }
-
-    &.popup-exit {
-        top: 100vh; // Déplacement vers le bas lors de la fermeture
-        opacity: 0;
-    }
-}
-
-/* Media Queries pour s'adapter aux écrans plus petits */
-@media (max-width: 768px) {
-    .popup-reservation-frame {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    .popup-reservation-frame {
-        width: 98%;
-        height: auto;
-        top: 5%;
-        height: 80vh;
-        transform: translate(-50%, 0);
-    }
-}
-
+} 
 
 
 /* En-tête avec deux onglets (50% chacun) */

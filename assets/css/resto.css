@@ -202,17 +202,34 @@ body.popup-active .restaurant-button {
 
 .popup-reservation-frame {
   position: fixed;
-  top: 10%;
+  top: -100vh;
   left: 50%;
   transform: translate(-50%, 0);
   width: 80% !important;
   background-color: white;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
   display: none;
-  overflow: scroll; }
+  overflow: scroll;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out; }
+  .popup-reservation-frame.popup-enter {
+    top: 10%;
+    opacity: 1; }
+  .popup-reservation-frame.popup-exit {
+    top: 100vh;
+    opacity: 0; }
 
+/* Media Queries pour s'adapter aux écrans plus petits */
+@media (max-width: 768px) {
+  .popup-reservation-frame {
+    width: 90%; } }
+@media (max-width: 480px) {
+  .popup-reservation-frame {
+    width: 98%;
+    height: auto;
+    top: 5%;
+    height: 80vh;
+    transform: translate(-50%, 0); } }
 /* En-tête avec deux onglets (50% chacun) */
 .popup-reservation-header {
   display: flex;

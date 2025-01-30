@@ -36,26 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let isDragging = false;
     let startX, startY, initialX, initialY;
 
-    // Fonction pour ouvrir la popup avec animation
+    // Fonction pour ouvrir la popup
     openReservationBtns.forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             popupReservation.style.display = 'block';
-            setTimeout(() => {
-                popupReservation.classList.add('popup-enter');
-                popupReservation.classList.remove('popup-exit');
-            }, 10); // Petit délai pour que l'animation soit bien prise en compte
         });
     });
 
-    // Fonction pour fermer la popup avec animation
+    // Fonction pour fermer la popup
     closeReservationBtn.addEventListener('click', function() {
-        popupReservation.classList.add('popup-exit');
-        popupReservation.classList.remove('popup-enter');
-
-        setTimeout(() => {
-            popupReservation.style.display = 'none';
-        }, 500); // Correspond à la durée de l'animation en CSS (0.5s)
+        popupReservation.style.display = 'none';
     });
 
     // Déplacement de la popup (draggable)
@@ -68,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Changer le curseur en "grabbing" (main fermée)
         header.classList.add('grabbing');
-        header.classList.remove('grab'); 
+        header.classList.remove('grab');  // Enlever la main ouverte
     });
 
     document.addEventListener('mousemove', function(e) {
@@ -91,16 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fermer la popup en cliquant à l'extérieur de son contenu
     window.addEventListener('click', function(e) {
         if (e.target === popupReservation) {
-            popupReservation.classList.add('popup-exit');
-            popupReservation.classList.remove('popup-enter');
-
-            setTimeout(() => {
-                popupReservation.style.display = 'none';
-            }, 500);
+            popupReservation.style.display = 'none';
         }
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const reservationTab = document.getElementById('reservation-tab');
