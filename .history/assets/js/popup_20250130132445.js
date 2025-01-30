@@ -218,3 +218,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })}); 
 
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const openPopupButton = document.querySelector(".open-popup");
+        const popup = document.getElementsByClassName("carte-popup");
+        const closePopup = document.querySelector(".close-popup");
+
+        // Ouvrir la popup
+        openPopupButton.addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche le comportement par défaut du lien
+            popup.style.display = "flex"; // Affiche la popup
+        });
+
+        // Fermer la popup
+        closePopup.addEventListener("click", function() {
+            popup.style.display = "none"; // Cache la popup
+        });
+
+        // Fermer la popup si on clique en dehors du contenu
+        popup.addEventListener("click", function(event) {
+            if (event.target === popup) {
+                popup.style.display = "none";
+            }
+        });
+    });

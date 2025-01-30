@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionne tous les éléments qui doivent ouvrir la popup
-    const openCartePopups = document.querySelectorAll('.open-popup'); 
-    const cartePopup = document.getElementById('carte-popup');
-    const closePopup = document.querySelector('.close-popup');
+    const popup = document.getElementById('carte-popup');
+    const openBtn = document.querySelector('.open-popup');
+    const closeBtn = document.querySelector('.close-popup');
+    const carteButtonContainer = document.querySelector('.restaurant-button');
 
-    // Ajouter un écouteur d'événement à chaque bouton "La carte"
-    openCartePopups.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault(); // Empêche le comportement par défaut du lien
-            cartePopup.style.display = 'flex'; // Affiche la popup
-        });
+    // Ouvrir la popup et masquer le conteneur du bouton "Carte"
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        popup.style.display = 'block';
+        carteButtonContainer.style.display = 'none';
     });
 
-    // Fermer la popup lors du clic sur le bouton de fermeture
-    closePopup.addEventListener('click', function() {
-        cartePopup.style.display = 'none';
+    // Fermer la popup et réafficher le conteneur du bouton "Carte"
+    closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+        carteButtonContainer.style.display = 'block';
     });
 
-    // Fermer la popup si l'utilisateur clique en dehors du contenu
-    window.addEventListener('click', function(event) {
-        if (event.target === cartePopup) {
-            cartePopup.style.display = 'none';
+    // Fermer la popup lorsqu'on clique à l'extérieur
+    window.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+            carteButtonContainer.style.display = 'block';
         }
     });
 });
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -218,3 +218,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })}); 
 
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const openPopupButton = document.querySelector(".open-popup");
+        const popup = document.getElementById("carte-popup");
+        const closePopup = document.querySelector(".close-popup");
+
+        // Ouvrir la popup
+        openPopupButton.addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche le comportement par défaut du lien
+            popup.style.display = "flex"; // Affiche la popup
+        });
+
+        // Fermer la popup
+        closePopup.addEventListener("click", function() {
+            popup.style.display = "none"; // Cache la popup
+        });
+
+        // Fermer la popup si on clique en dehors du contenu
+        popup.addEventListener("click", function(event) {
+            if (event.target === popup) {
+                popup.style.display = "none";
+            }
+        });
+    });
