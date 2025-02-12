@@ -4073,29 +4073,19 @@ button[type="submit"] {
     }
 }
 
-.back-button {
-    position: fixed;
-    top: 5%;
-    left: 20px; /* Ajustez la distance depuis la gauche si besoin */
-    z-index: 1000;
-    background-color: #000; /* Couleur de fond */
-    color: #fff; /* Couleur de l'icône */
+header .back-button {
+    position: absolute;
+    top: 20%;      // 20% du haut du header
+    left: 20px;    // 20px du bord gauche
+    font-family: 'JeanLuc Thin', sans-serif;
+    color: #fff;
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid white;
-  
-    &:hover {
-      background-color: #333;
-    }
+    font-size: 1.5rem; // Ajustez la taille si nécessaire
+    padding: 0;
+    outline: none;
   }
-  
 
 
 

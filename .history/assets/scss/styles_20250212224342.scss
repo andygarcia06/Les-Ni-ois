@@ -3,7 +3,27 @@
     view-transition-name: root;
 }
 
-
+.back-button {
+    position: fixed;
+    top: 20%;
+    left: 20px; /* Ajustez la distance depuis la gauche si besoin */
+    z-index: 1000;
+    background-color: #000; /* Couleur de fond */
+    color: #fff; /* Couleur de l'icône */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #333;
+    }
+  }
   
 
 @font-face {
@@ -4019,9 +4039,6 @@ button[type="submit"] {
         }
     }
 }
-
-  
-
 .contact-popup {
     display: none; // Masqué par défaut
     position: fixed;
@@ -4073,29 +4090,6 @@ button[type="submit"] {
     }
 }
 
-.back-button {
-    position: fixed;
-    top: 5%;
-    left: 20px; /* Ajustez la distance depuis la gauche si besoin */
-    z-index: 1000;
-    background-color: #000; /* Couleur de fond */
-    color: #fff; /* Couleur de l'icône */
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid white;
-  
-    &:hover {
-      background-color: #333;
-    }
-  }
-  
 
 
 

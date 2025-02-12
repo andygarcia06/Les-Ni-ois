@@ -4075,7 +4075,7 @@ button[type="submit"] {
 
 .back-button {
     position: fixed;
-    top: 5%;
+    top: 50%;
     left: 20px; /* Ajustez la distance depuis la gauche si besoin */
     z-index: 1000;
     background-color: #000; /* Couleur de fond */
@@ -4089,7 +4089,6 @@ button[type="submit"] {
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border: 1px solid white;
   
     &:hover {
       background-color: #333;

@@ -199,14 +199,4 @@ document.addEventListener("DOMContentLoaded", function () {
   
   updateImageSource();
   window.addEventListener("resize", updateImageSource);
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const backButton = document.getElementById("backButton");
-    if (backButton) {
-      backButton.addEventListener("click", function () {
-        window.history.back();
-      });
-    }
-  });
-  
   
